@@ -16,8 +16,9 @@
 **Stay Hungry, Stay Foolish.**
 &emsp;&emsp;——Steve Jobs
 
-- Mail：2694048168@qq.com
-- Weibo：云主宰苍穹
+- Mail: 2694048168@qq.com
+- Mail: weili_yzzcq@163.com
+- Weibo: 云主宰苍穹
 - GitHub: https://github.com/2694048168/
 - Gitee：https://gitee.com/weili_yzzcq/
 

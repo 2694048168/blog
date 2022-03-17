@@ -1,13 +1,15 @@
 - Python
-    - [**Python 解释器**]()
-    - [**Anaconda 环境管理**]()
+    - [**Python 解释器**](https://www.python.org/)
+    - [**Anaconda 环境管理**](https://www.anaconda.com/)
     - [**pip 包管理器和镜像配置**]()
 - CPlusPlus
-    - [**Windows GCC 编译工具链**]()
-    - [**CMake 构建工具**]()
+    - [**Windows GCC 编译工具链**](https://winlibs.com/)
+    - [**CMake 构建工具**](https://cmake.org/)
 - Linux
-    - [**Linux 命令查询**]()
+    - [**Linux 命令查询**](https://www.linuxcool.com/)
 - CV & DIP
-    - [**OpenCV**]()
+    - [**TensorFlow**](https://tensorflow.google.cn/)
+    - [**PyTorch**](https://pytorch.org/)
+    - [**OpenCV**](https://opencv.org/)
 - Author
     - [**简介**](PaperMD/author.md)
