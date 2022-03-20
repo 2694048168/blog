@@ -21,6 +21,8 @@
 
 - [TensorFlow2 环境测试](PaperMD/tf_env_test.md)
 - [TensorFlow2 Titanic dataset](PaperMD/titanic_dataset.md)
+- [TensorFlow2 IMDB dataset](PaperMD/imdb_dataset.md)
+- [TensorFlow2 Covid-19 dataset](PaperMD/covid_19.md)
 
 # CPlusPlus
 
