@@ -17,6 +17,21 @@
 - [TensorFlow2 GTSRB dataset](PaperMD/street_sign_example.md)
 - [TensorFlow2 CIFAR dataset](PaperMD/cifar_dataset.md)
 
+# Learning TensorFlow 2.0
+
+- [Tensor of TensorFlow](PaperMD/tensor_tensorflow.md)
+- [Compute Graph of TensorFlow](PaperMD/compute_graph_tensorflow.md)
+- [AutoGrad of TensorFlow](PaperMD/autograd_tensorflow.md)
+- [Hierarchy Low-level API of TensorFlow](PaperMD/hierarchy_tensorflow.md)
+- [Hierarchy Middel-level API of TensorFlow](PaperMD/hierarchy_middle.md)
+- [Hierarchy High-level API of TensorFlow](PaperMD/hierarchy_high.md)
+
+
+
+# Learning PyTorch
+
+
+
 # Python
 
 - [TensorFlow2 环境测试](PaperMD/tf_env_test.md)
