@@ -25,7 +25,17 @@
 - [Hierarchy Low-level API of TensorFlow](PaperMD/hierarchy_tensorflow.md)
 - [Hierarchy Middel-level API of TensorFlow](PaperMD/hierarchy_middle.md)
 - [Hierarchy High-level API of TensorFlow](PaperMD/hierarchy_high.md)
-
+- [Low-level API with Tensor](PaperMD/low_level_API_TF.md)
+- [Low-level API with Tensor Operators](PaperMD/tensor_operator_TF.md)
+- [Low-level API with Autograph](PaperMD/autograph_TF.md)
+- [Middle-level API of TensorFlow](PaperMD/middle_level_API_TF.md)
+- [Middle API with tf.data](PaperMD/middle_API_TF.md)
+- [Middle APIs for TensorFlow](PaperMD/middle_APIs_TF.md)
+- [High-level API of TensorFlow](PaperMD/high_level_API_TF.md)
+- [High APIs to train for TensorFlow](PaperMD/high_train_model_TF.md)
+- [Train on GPU for TensorFlow](PaperMD/train_GPU_TF.md)
+- [Train on Multi-GPU for TensorFlow](PaperMD/train_GPUs_TF.md)
+- [Model Deployment for TensorFlow](PaperMD/model_deploy_TF.md)
 
 
 # Learning PyTorch
