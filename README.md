@@ -16,6 +16,7 @@
 - [TensorFlow2 MNIST dataset](PaperMD/mnist_example.md)
 - [TensorFlow2 GTSRB dataset](PaperMD/street_sign_example.md)
 - [TensorFlow2 CIFAR dataset](PaperMD/cifar_dataset.md)
+- [PyTorch CIFAR dataset](PaperMD/cifar_dataset_pytorch.md)
 
 # Learning TensorFlow 2.0
 
@@ -48,6 +49,10 @@
 - [TensorFlow2 Titanic dataset](PaperMD/titanic_dataset.md)
 - [TensorFlow2 IMDB dataset](PaperMD/imdb_dataset.md)
 - [TensorFlow2 Covid-19 dataset](PaperMD/covid_19.md)
+- [PyTorch 环境测试](PaperMD/pt_env_test.md)
+- [PyTorch Titanic dataset](PaperMD/titanic_dataset_pytorch.md)
+- [PyTorch IMDB dataset](PaperMD/imdb_dataset_pytorch.md)
+- [PyToch Covid-19 dataset](PaperMD/covid_19_pytorch.md)
 
 # CPlusPlus
 

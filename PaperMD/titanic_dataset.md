@@ -81,7 +81,7 @@ plt.close()
 # Step 3 for correlation of age and label
 ax_corr_age_label = df_train_data.query("Survived==0")["Age"].plot(kind="density", figsize=(8, 6), fontsize=15)
 df_train_data.query("Survived==1")["Age"].plot(kind="density", figsize=(8, 6), fontsize=15)
-ax_corr_age_label.legend(["Survived==0", "Survived==0"], fontsize=12)
+ax_corr_age_label.legend(["Survived==0", "Survived==1"], fontsize=12)
 ax_corr_age_label.set_ylabel("Density", fontsize=15)
 ax_corr_age_label.set_xlabel("Age", fontsize=15)
 # plt.show()
