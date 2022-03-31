@@ -41,6 +41,9 @@
 
 # Learning PyTorch
 
+- [Tensor of PyTorch](PaperMD/tensor_pytorch.md)
+- [Compute Graph of PyTorch](PaperMD/compute_graph_pytorch.md)
+- [AutoGrad of PyTorch](PaperMD/autograd_pytorch.md)
 
 
 # Python
