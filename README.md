@@ -44,6 +44,9 @@
 - [Tensor of PyTorch](PaperMD/tensor_pytorch.md)
 - [Compute Graph of PyTorch](PaperMD/compute_graph_pytorch.md)
 - [AutoGrad of PyTorch](PaperMD/autograd_pytorch.md)
+- [Hierarchy Low-level API of PyTorch](PaperMD/hierarchy_low_level_API_pt.md)
+- [Hierarchy Middel-level API of PyTorch](PaperMD/hierarchy_middle_level_API_pt.md)
+- [Hierarchy High-level API of PyTorch](PaperMD/hierarchy_high_level_API_pt.md)
 
 
 # Python

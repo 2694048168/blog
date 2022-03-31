@@ -14,9 +14,11 @@
 import torch
 import torchvision
 import torchtext
+import torchkeras
 
 if __name__ == "__main__":
     print(f"PyTorch Version : {torch.__version__}")
     print(f"TorchVision Version : {torchvision.__version__}")
-    print(f"TorchVision Version : {torchtext.__version__}")
+    print(f"Torchtext Version : {torchtext.__version__}")
+    print(f"Torchkeras Version : {torchkeras.__version__}")
 ```
