@@ -29,8 +29,8 @@
 - [Low-level API with Tensor](PaperMD/low_level_API_TF.md)
 - [Low-level API with Tensor Operators](PaperMD/tensor_operator_TF.md)
 - [Low-level API with Autograph](PaperMD/autograph_TF.md)
-- [Middle-level API of TensorFlow](PaperMD/middle_level_API_TF.md)
-- [Middle API with tf.data](PaperMD/middle_API_TF.md)
+- [Middle-level API of tf.data](PaperMD/middle_level_API_TF.md)
+- [Middle API with tf.feature_column](PaperMD/middle_API_TF.md)
 - [Middle APIs for TensorFlow](PaperMD/middle_APIs_TF.md)
 - [High-level API of TensorFlow](PaperMD/high_level_API_TF.md)
 - [High APIs to train for TensorFlow](PaperMD/high_train_model_TF.md)
@@ -47,6 +47,13 @@
 - [Hierarchy Low-level API of PyTorch](PaperMD/hierarchy_low_level_API_pt.md)
 - [Hierarchy Middel-level API of PyTorch](PaperMD/hierarchy_middle_level_API_pt.md)
 - [Hierarchy High-level API of PyTorch](PaperMD/hierarchy_high_level_API_pt.md)
+- [Low-level API with Tensor](PaperMD/low_level_tensor_pt.md)
+- [Low-level API with Tensor Operators](PaperMD/low_level_tensor_operator_pt.md)
+- [Low-level API with functional and Module](PaperMD/low_level_functional_pt.md)
+- [Middle-level API for data_pipe PyTorch](PaperMD/middle_data_pipe_pt.md)
+- [Middle-level API for layers PyTorch](PaperMD/middle_layers_pt.md)
+- [Middle-level API for losses PyTorch](PaperMD/middle_losses_pt.md)
+- [Middle-level API for TensorBoard PyTorch](PaperMD/middle_tensorboard_pt.md)
 
 
 # Python
