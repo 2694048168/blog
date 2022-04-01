@@ -54,6 +54,9 @@
 - [Middle-level API for layers PyTorch](PaperMD/middle_layers_pt.md)
 - [Middle-level API for losses PyTorch](PaperMD/middle_losses_pt.md)
 - [Middle-level API for TensorBoard PyTorch](PaperMD/middle_tensorboard_pt.md)
+- [Build Models for PyTorch](PaperMD/build_model_pytorch.md)
+- [Train Models for PyTorch](PaperMD/train_model_pytorch.md)
+- [Train Models on GPU for PyTorch](PaperMD/train_gpu_pytorch.md)
 
 
 # Python
