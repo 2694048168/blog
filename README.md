@@ -61,6 +61,7 @@
 
 # Python
 
+- [Python 环境 for AI and DL and ML](PaperMD/python_env_ai.md)
 - [TensorFlow2 环境测试](PaperMD/tf_env_test.md)
 - [TensorFlow2 Titanic dataset](PaperMD/titanic_dataset.md)
 - [TensorFlow2 IMDB dataset](PaperMD/imdb_dataset.md)
@@ -71,8 +72,3 @@
 - [PyToch Covid-19 dataset](PaperMD/covid_19_pytorch.md)
 
 # CPlusPlus
-
-
-# Author
-
-- [笔者简介](PaperMD/author.md)

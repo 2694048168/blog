@@ -7,14 +7,18 @@
 
 --------------------------------------------------------------------------------
 
+**Success is not final, failure is not fatal: it is the courage to continue that counts.**
+&emsp;&emsp;—— Winston Churchill
+
 **Talk is cheap. Show me the code.**
-&emsp;&emsp;——Linus Torvalds
+&emsp;&emsp;—— Linus Torvalds
 
 **掌中星辰转日月，手心苍穹天外天。**
-&emsp;——云主宰苍穹
+&emsp;—— 云主宰苍穹
 
 **Stay Hungry, Stay Foolish.**
-&emsp;&emsp;——Steve Jobs
+&emsp;&emsp;—— Steve Jobs
+
 
 - Mail: 2694048168@qq.com
 - Mail: weili_yzzcq@163.com
