@@ -1,5 +1,8 @@
 # PyTorch 动态计算图 dynamic compute graph
 
+![image](./../images/torch_dynamic_graph.gif)
+
+
 ```python
 #!/usr/bin/env python3
 # encoding: utf-8

@@ -1,5 +1,7 @@
 # The Hierarchy of TensorFlow2
 
+![image](./../images/hierarchy_tensorflow.png)
+
 ```python
 #!/usr/bin/env python3
 # encoding: utf-8

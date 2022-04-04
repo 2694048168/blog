@@ -1,4 +1,4 @@
-# Python environment for artificial intelligence (AI) Deep Learning (DL) and Machine Learning (ML)
+# Python environment for Artificial Intelligence (AI) Deep Learning (DL) and Machine Learning (ML)
 
 ## Python interpreter 解释器
 
@@ -14,11 +14,11 @@
 
 > Anaconda 默认里面有很多预先安装的科学计算库, 包括 python 解释器和 conda 管理器.
 
-> Download sit: https://www.anaconda.com/
+> Download site: https://www.anaconda.com/
 
 > Miniconda 默认里面只有 python 解释器 (pip 集成在里面)和 conda 管理器
 
-> Download sit: https://docs.conda.io/en/latest/miniconda.html
+> Download site: https://docs.conda.io/en/latest/miniconda.html
 
 ```shell
 # 1. conda 创建新的 python 环境
