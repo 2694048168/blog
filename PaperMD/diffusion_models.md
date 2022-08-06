@@ -116,6 +116,7 @@ $$ \sum \sum p_{r}(x, y) = 1$$
 $$ \sum \int p_{r}(x, y)\mathrm{d}y  = 1$$
 $$ \int \sum p_{r}(x, y)\mathrm{d}x  = 1$$
 
+
 $ p_{r}(x, y, z) $ 可以推广到多元随机变量的联合概率分布；同时也可以推广到多维随机变量 $ p_{r}(X) $ , 其中 $ X = [x_{1}, x_{1}, x_{1}, \dots, x_{k}]^T $; 同时也可以推广多元多维随机变量的联合概率分布 $ p_{r}(X, Y) $ and $ p_{r}(X, Y, Z) $
 
 ### 3. 边缘化 Marginalization
@@ -124,10 +125,12 @@ $ p_{r}(x, y, z) $ 可以推广到多元随机变量的联合概率分布；同�
 
 任意单随机变量的概率分布可以通过其联合概率分布对其他随机变量进行积分或者求和计算得出，该计算过程称之为边缘化 (marginalization)，该过程计算结果称之为边缘分布 (marginal distribution)。
 
+
 $$ p_{r}(x) = \int p_{r}(x, y) \mathrm{d}y $$
 $$ p_{r}(y) = \int p_{r}(x, y) \mathrm{d}x $$
 $$ p_{r}(z) = \int \int p_{r}(x, y, z) \mathrm{d}x \mathrm{d}y $$
 $$ p_{r}(x, y) = \sum_{w} \int p_{r}(w, x, y, z) \mathrm{d}z $$
+
 
 ### 4. 条件概率 Conditional Probability
 
@@ -138,7 +141,9 @@ $$ p_{r}(x|y) = \frac{p_{r}(x,y)}{p_{r}(y)} $$
 $$ p_{r}(x,y) = p_{r}(x|y)p_{r}(y) $$
 $$ p_{r}(x,y) = p_{r}(y|x)p_{r}(x) $$
 
+
 **利用条件概率分布可以不断将联合概率分布分解为乘积的形式**
+
 
 $$
 \begin{aligned}
@@ -149,7 +154,9 @@ p_{r}(w,x,y,z)
 \end{aligned}
 $$
 
+
 **同时利用上马尔科夫链的条件独立性质 $x -> y -> z$**
+
 
 $$
 \begin{aligned}
@@ -159,6 +166,7 @@ p_{r}(x,y,z)
 &= p_{r}(x|y)p_{r}(y|z)p_{r}(z) \newline
 \end{aligned}
 $$
+
 
 ### 5. 贝叶斯公式 Bayes's Rule
 
@@ -173,6 +181,7 @@ $$
 
 - 正向概率：随机抽取一个学生，是穿长裤的概率和穿裙子的概率分别是多大？
 - 逆向概率：抽取到一个穿长裤的学生，无法确定性别，推断其是女生的概率是多大？
+
 
 $$
 \begin{aligned}
@@ -189,14 +198,19 @@ P(Girl|Pants)
 \end{aligned}
 $$
 
+
 **贝叶斯公式 Bayes's Rule**
+
 
 $$ P(A|B) = \frac{P(B|A) P(A)}{P(B)} $$
 
+
 > we can expressed the joint probability in two ways. We can combine these formulations to find a relationship between $ P_{r}(x|y)$ and $P_{r}(y|x)$
+
 
 $$ p_{r}(x, y) = p_{r}(y|x)p_{x} = p_{r}(x|y)p_{y} $$
 $$ p_{r}(y|x) = \frac{p_{r}(x|y)p_{r}(y)}{p_{r}(x)} $$
+
 
 $$
 \begin{aligned}
@@ -207,9 +221,11 @@ $$
 \end{aligned}
 $$
 
+
 其中 $p_{r}(y|x)$ 称之为后验概率 (posterior); $p_{r}(y)$ 称之为先验概率 (prior); $p_{r}(x)$ 称之为证据 (evidence); $p_{r}(x|y)$ 称之为似然性 (likelihood).
 
 **多元变量的贝叶斯公式 Bayes's rule**
+
 
 $$
 \begin{aligned}
@@ -219,6 +235,7 @@ p_{r}(x_{t-1},x_{t},x_{0})
 \end{aligned}
 $$
 
+
 $$
 \begin{aligned}
 p_{r}(x_{t},x_{t-1},x_{0})  
@@ -227,7 +244,9 @@ p_{r}(x_{t},x_{t-1},x_{0})
 \end{aligned}
 $$
 
+
 两种形式的联合概率分布表示的是同一个联合概率分布，因此是完全相等的，故此可以推导出：
+
 
 $$
 \begin{aligned}
@@ -238,21 +257,25 @@ p_{r}(x_{t-1}|x_{t},x_{0})
 \end{aligned}
 $$
 
+
 ### 6. 独立性 Independence
 
 > 在概率论和统计学中，独立同分布 (Independent and Identically Distributed, IID, iid, i.i.d.) 的假设指的是一组随机变量中每一个变量的概率分布相同，且这些随机变量互相独立。
 
 若 $x$ and $y$ 互相独立，则条件概率分布和联合概率分布为，即独立随机变量的联合概率分布等于边缘概率分布的累计乘积
 
+
 $$ p_{r}(x|y) = p_{r}(x) $$
 $$ p_{r}(y|x) = p_{r}(y) $$
 $$ p_{r}(x, y) = p_{r}(x|y)p_{r}(y) = p_{r}(x)p_{r}(y) = p_{r}(x|y)p_{r}(y|x)$$
+
 
 **条件的独立性 Conditional Independence**
 
 > Confusingly, the conditional independence of $x_{1}$ and $x_{3}$ given $x_{2}$ does not mean that $x_{1}$ and $x_{3}$ are themselves independent. It merely implies that if we know variable $x_{2}$, then $x_{1}$ provides no further information about $x_{3}$ and vice versa.
 
 对于多元随机变量 $p_{r}(x_{1},x_{2},x_{3})$, 若在 $x_{2}$ 条件下，$x_{1}$ 和 $x_{3}$ 互相独立，这种情况称之为条件独立性; 注意，条件独立是对称的。可以将联合概率分布写成条件概率的乘积形式：
+
 
 $$
 \begin{aligned}
@@ -263,7 +286,9 @@ p_{r}(x_{1},x_{2},x_{3})
 \end{aligned}
 $$
 
+
 <span style="color:GoldenRod">**Note that conditional independence relations are always symmetric**</span>
+
 
 $$
 \begin{aligned}
@@ -274,6 +299,7 @@ p_{r}(x_{3},x_{2},x_{1})
 \end{aligned}
 $$
 
+
 条件独立关系意味着对条件分布以一定的方式进行因子分解(并因此视为冗余)，这种冗余意味着可用更少量的参数来描述数据的概率分布，同时对含有大规模参数的模型更加易于处理。计算机视觉中常引入图模型来表示这种条件独立关系，如有向图模型(即贝叶斯网络)，链式模型(即马尔科夫链)和树模型。参考书籍 "Computer Vision: Models, Learning, and Inference".
 
 ### 7. 期望 Expectation
@@ -282,6 +308,7 @@ $$
 
 随机变量 $x$ 在仿射变换函数 $f[\bullet]$ 下进行变换，需要计算对应 $f[\bullet]$ 变换后的期望输出结果；可以将这个问题转化为从随机变量 $x$ 的概率分布 $P_{r}(x=x^{\ast})$ 中抽取大量样本，计算对应的仿射变换的值，并计算一系列数值的均值，该均值就是期望。
 
+
 $$E\left [f\left [ x \right ]  \right ] =\sum_{x}f\left [  x\right ]  p_{r}(x)=\int_{x} f\left [  x\right ]  p_{r}(x) \mathrm{d}x $$
 
 $$E\left [f\left [ x,y \right ]  \right ] =\sum_{x} \sum_{y} f\left [ x,y\right ] p_{r}(x,y)=\int_{x} \int_{y} f\left [ x,y\right ]  p_{r}(x,y) \mathrm{d}x \mathrm{d}y $$
@@ -289,6 +316,7 @@ $$E\left [f\left [ x,y \right ]  \right ] =\sum_{x} \sum_{y} f\left [ x,y\right 
 $$E\left [f\left [ x,y,z \right ] \right ] =\sum_{x} \sum_{y} \sum_{z} f\left [ x,y,z\right ] p_{r}(x,y,z)=\int_{x} \int_{y} \int_{z} f\left [ x,y,z\right ]  p_{r}(x,y,z) \mathrm{d}x \mathrm{d}y \mathrm{d}z $$
 
 $$E\left [f\left [ x_{1},x_{2}, \dots, x_{k} \right ] \right ] =\sum_{i=1}^{k} \sum_{i} f\left [ x_{1},x_{2}, \dots, x_{k}\right ] p_{r}( x_{1},x_{2}, \dots, x_{k})=\prod_{i=1}^{k} \int_{i} f\left [ x_{1},x_{2}, \dots, x_{k}\right ]  p_{r}(x_{1},x_{2}, \dots, x_{k}) \mathrm{d}i $$
+
 
 有一些特殊的仿射变换函数 $f[\bullet]$，其计算后的期望有一些特殊的名称，这些特殊的名称常用于量化概括复杂概率分布的性质。
 
@@ -307,7 +335,9 @@ $$E\left [f\left [ x_{1},x_{2}, \dots, x_{k} \right ] \right ] =\sum_{i=1}^{k} \
 
 如果从高斯分布中随机采样一个样本，这个过程不可微分的，即无法反传梯度的。通过**重参数 (reparameterization) 技巧**[<sup>[17]</sup>](#refer-17)来使其可微。最通常的做法是把这种随机性通过一个独立的随机变量 $\epsilon$ 进行转移。举个例子，如果要从高斯分布 $z\sim \mathcal{N}\left ( z;\mu_{\theta},\sigma^{2}_{\theta} I\right ) $ 中采样一个 z，可以写成:
 
+
 $$ z = \mu_{\theta} + \sigma_{\theta} \odot \epsilon , \epsilon \sim \mathcal{N}\left ( 0,I\right ) $$
+
 
 上式的 z 依旧是有随机性的，且满足均值为 $\mu_{\theta}$, 方差为 $\epsilon_{\theta}$ 的高斯分布。这里的 $\mu_{\theta}$ 和 $\sigma_{\theta}$ 可以由参数化神经网络推断得到的。使得采样过程依旧梯度可导，随机性被转嫁到 $\epsilon$ 上。
 
@@ -319,7 +349,9 @@ $$ z = \mu_{\theta} + \sigma_{\theta} \odot \epsilon , \epsilon \sim \mathcal{N}
 
 The simplest case of a normal distribution is known as the standard normal distribution or unit normal distribution. This is a special case when $\mu =0$ and $\sigma =1$, and it is described by this probability density function (or density):
 
+
 $$\varphi(z)=\frac{e^{-z^{2}/2}}{\sqrt{2\pi}} $$
+
 
 The variable $z$ has a mean of $0$ and a variance and standard deviation of $1$. The density $\varphi(z)$ has its peak $1/{\sqrt {2\pi}}$ at $z=0$ and inflection points at $z=+1$ and $z=-1$.
 
@@ -327,7 +359,9 @@ The variable $z$ has a mean of $0$ and a variance and standard deviation of $1$.
 
 Every normal distribution is a version of the standard normal distribution, whose domain has been stretched by a factor $\sigma$ (the standard deviation) and then translated by $\mu$ (the mean value):
 
+
 $$ f(x\mid \mu ,\sigma^{2}) = \frac{1}{\sigma} \varphi (\frac{x-\mu}{\sigma}) $$
+
 
 The probability density must be scaled by $1/\sigma$ so that the integral is still 1.
 
@@ -339,11 +373,14 @@ The probability density of the standard Gaussian distribution (standard normal d
 
 The normal distribution is often referred to as $N(\mu ,\sigma^{2}$ or $\mathcal{N}(\mu,\sigma^{2}$. Thus when a random variable $X$ is normally distributed with mean $\mu$ and standard deviation $\sigma$, one may write:
 
+
 $$ X \sim \mathcal{N}(\mu ,\sigma^{2}).$$
+
 
 **4. Alternative parameterizations**
 
 Some authors advocate using the precision $\tau$ as the parameter defining the width of the distribution, instead of the deviation $\sigma$ or the variance $\sigma^{2}$. The precision is normally defined as the reciprocal of the variance, $1/\sigma^{2}$. The formula for the distribution then becomes:
+
 
 $$
 \begin{aligned}
@@ -357,6 +394,7 @@ f(x)
 &= \frac{1}{\sigma^{2}}x^{2} -  \frac{2 \mu}{\sigma^{2}}x + \frac{\mu^{2}}{\sigma^{2}}\newline
 \end{aligned}
 $$
+
 
 ### **10. 信息论和概率模型**
 
@@ -372,6 +410,7 @@ Fitting probability models
 
 最大似然 ML 用来求数据 $x_{i}$ , $[i=1, 2, 3, \cdots, I]$ 最有可能的参数集合 $\mathbf{\hat{\theta}}$ 。为了计算在单个数据点 $x_{i}$ 处的似然函数 $P_{r}(x_{i} \mid \mathbf{\theta})$ , 只需要简单估计在 $x_{i}$ 处的概率密度函数 (probability density function, pdf) 。假设每一个数据点都是从分布中独立采样，点的集合的似然函数 $P_{r}(x_{1\cdots}I \mid \mathbf{\theta})$ 就是独立似然的乘积。因此，参数的最大似然估计如下：
 
+
 $$
 \begin{aligned}
 \mathbf{\hat{\theta}}
@@ -382,6 +421,7 @@ $$
 \end{aligned}
 $$
 
+
 为了估计新的数据点 $x^{\ast}$ 的概率分布，其中计算 $x^{\ast}$ 属于拟合模型的概率，用最大似然拟合参数 $\mathbf{\hat{\theta}}$ 简单估计概率密度函数 $P_{r}(x^{\ast} \mid \mathbf{\hat{\theta}})$ 即可。
 
 **Maximum a posteriori, MAP**
@@ -389,6 +429,7 @@ $$
 最大后验拟合 MAP 中，引入参数 $\theta$ 的先验 (prior) 信息。 From previous experience we may know something about the possible parameter values. For example, in a time-sequence  the values of the parameters at time $t$ tell us a lot about the possible values at time $t + 1$. 而且这个先验信息可以被先验分布所编码。
 
 最大后验估计就是最大化参数的后验概率 $P_{r}(\mathbf{\theta} \mid x_{1 \cdots I})$
+
 
 $$
 \begin{aligned}
@@ -399,9 +440,12 @@ $$
 \end{aligned}
 $$
 
+
 其中，对前两行和随后的假设的独立性之间使用贝叶斯公式；实际上，可以忽略对于参数而言是常数项的分母 (即与参数 $\theta$ 无关) ，这样并不会影响最大值的位置，简化为：
 
+
 $$\mathbf{\hat{\theta}} = \underset{\theta}{argmax} [\prod_{i=1}^{I} P_{r}(x_{i} \mid \mathbf{\theta}) P_{r}(\mathbf{\theta})]$$
+
 
 将该式子与最大似然估计对比可知，除了先验部分之外完全一致；ML 是 MAP 在先验信息未知情况下的一个特例。对于概率密度 ($x^{\ast}$ 在拟合模型下的概率) 则可以通过新参数估计概率密度函数 $P_{r}(x^{\ast} \mid \mathbf{\hat{\theta}})$ 进行计算。
 
@@ -412,7 +456,9 @@ of the parameters θ and admit what is obvious; there may be many values of the 
 
 使用贝叶斯公式在数据 $\{ x_{i} \}_{i=1}^{I}$ 上计算参数 $\mathbf{\theta}$ 的概率分布：
 
+
 $$P_{r}(\mathbf{\theta} \mid x_{1 \cdots I})= \frac{\prod_{i=1}^{I} P_{r}(x_{r} \mid \mathbf{\theta}) P_{r}(\mathbf{\theta})}{P_{r}(x_{i \cdots I})}$$
+
 
 估计预测分布对于贝叶斯的情况更加困难 (computationally untractable in DPM paper), 因为没有估计单一模型，而是通过概率模型来拟合一个概率分布；因此，计算：
 
@@ -422,6 +468,7 @@ $$P_{r}(x^{\ast} \mid x_{1 \cdots I}) = \int P_{r}(x^{\ast} \mid \mathbf{\theta}
 
 如果用 ML 和 MAP 估计密度都确定为 $\mathbf{\hat{\theta}}$ 前提的特殊概率分布，那么 ML、MAP、and Bayerian 中预测概率密度的估计可以统一起来。更加一般形式化，将三者当作中心在 $\mathbf{\hat{\theta}}$ 处的贝塔函数即可 (delta functions centered at $\mathbf{\hat{\theta}}$) ，设 $\delta[z]$ 是一个积分为 1， 而且除了 $z=0$ 处之外都为 $0$ 的函数 (信息与系统处理里面的冲激函数或脉冲函数)，那么则有如下式子：
 
+
 $$
 \begin{aligned}
 P_{r}(x^{\ast} \mid x_{1 \cdots I}) 
@@ -430,6 +477,7 @@ P_{r}(x^{\ast} \mid x_{1 \cdots I})
 & \text{where $\int \delta[\mathbf{\theta} - \mathbf{\hat{\theta}}] \mathrm{d}\theta = 1$}
 \end{aligned}
 $$
+
 
 which is exactly the calculation we originally prescribed:  we simply evaluate the probability of the data under the  model with the estimated parameters. 可以估计数据在参数模型下的概率。
 
@@ -443,11 +491,14 @@ which is exactly the calculation we originally prescribed:  we simply evaluate t
 
 > 其实也就可以说一件事情发生概率很小的话，那么当其发生的时候所代表的信息量也更大
 
+
 $$I = log_{2}(\frac{1}{p(x)}) = -log_{2}(p(x))$$
+
 
 - 信息熵 (香农熵)：信息熵则代表一个分布的信息量,或者编码的平均长度。
 
 > 信息熵度量的是随机变量 (<span style="color:green">**离散和连续**</span>) 或整个系统的不确定性，熵越大，随机变量或系统的不确定性就越大，也就是信息量的一个总期望值也叫均值；根据真实分布，能够找到一个最优策略，以最小的代价消除系统的不确定性，而这个代价大小就是信息熵；信息熵衡量了系统的不确定性，而要消除这个不确定性，所要付出的最小努力(猜题次数、编码长度等)的大小就是信息熵。
+
 
 $$
 \begin{aligned}
@@ -459,6 +510,7 @@ H(p)
 \end{aligned}
 $$
 
+
 $$
 \begin{aligned}
 H(p) 
@@ -469,11 +521,13 @@ H(p)
 \end{aligned}
 $$
 
+
 在信息论和编码中 log 的底数是 2，但一般在神经网络中，默认以 e (<span style="color:DeepPink">e = 2.73 magic number, such as 42 </span>) 为底，这样算出来的香农信息量虽然不是最小的可用于完整表示实践的比特数，但对于信息熵的含义来说是区别不大的，只要这个底数大于 1，就可以表达信息熵的大小。
 
 - 交叉熵: 本质上可以视为用一个猜测(预估)的分布的编码方式去编码其真实的分布, 得到的平均编码长度或者信息量。
 
 > 交叉熵，用来度量在给定的真实分布 $p$ 下，使用非真实分布 $q$ 所指定的策略消除系统的不确定性所需要付出的努力的大小; 交叉熵越低，这个策略就越好，最低的交叉熵也就是使用了真实分布所计算出来的信息熵，故此 “交叉熵 = 信息熵” ；这也是为什么在机器学习中的分类算法中，总是最小化交叉熵，因为交叉熵越低，就证明由算法所产生的策略最接近最优策略，也间接证明算法所算出的非真实分布越接近真实分布。
+
 
 $$
 \begin{aligned}
@@ -486,7 +540,9 @@ H_p(q)
 \end{aligned}
 $$
 
+
 > 相对熵 (KL 散度)：KL散度或距离是度量两个分布的差异，KL 距离一般用 $D(p||q)$ 或 $D_{p}(q)$ 称之为 $p$ 对 $q$ 的相对熵。
+
 
 $$
 \begin{aligned}
@@ -500,6 +556,7 @@ D(p || q) = D_p(q)
 \end{aligned}
 $$
 
+
 在 $p$ and $q$ 满足可交换的条件下，交叉熵和 KL 散度相等。还有联合信息熵；条件信息熵；自信息；互信息等针对不同用途的度量形式。
 
 > [Difference of KL divergence and cross entropy](https://stats.stackexchange.com/questions/357963/what-is-the-difference-cross-entropy-and-kl-divergence)
@@ -507,6 +564,7 @@ $$
 利用 詹森不等式 ([Jensen's inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality)) 可以推导出 KL 散度的非负性：
 
 > 对数的期望大于等于期望的对数 $\Phi(E[X]) \le E[\Phi(X)]$
+
 
 $$
 \begin{aligned}
@@ -523,6 +581,7 @@ D_{KL}(p || q)
 &= 0 \newline
 \end{aligned}
 $$
+
 
 -------------------------------------
 
@@ -541,7 +600,7 @@ $$
 <!-- ![generative-overview](./Images/DDPM.png) -->
 
 <center class="half">
-    <img src="./images/forward_diffusion_s_curve.gif"><img src="./images/reverse_diffusion_s_curve.gif">
+    <img src="./images/forward_diffusion_s_curve.gif", width="50%" /><img src="./images/reverse_diffusion_s_curve.gif", width="50%" />
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -550,7 +609,7 @@ $$
 </center>
 
 <center class="half">
-    <img src="./images/forward_diffusion_swiss_roll.gif"><img src="./images/reverse_diffusion_swiss_roll.gif">
+    <img src="./images/forward_diffusion_swiss_roll.gif", width="50%" /><img src="./images/reverse_diffusion_swiss_roll.gif", width="50%" />
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -564,7 +623,9 @@ $$
 
 original data distribution: $x_{0} \sim q(x)$
 
+
 $$q(x_{t} \mid x_{t-1}) \sim \mathcal{N}(x_{t}; \sqrt{1 - \beta_{t}}x_{t-1}, \beta_{t}I)$$
+
 
 where $\beta_{t}$ denotes diffusion rate in DPM paper;  denotes variance(noise) schedule in DDPM and IDDPM papers; and then the add noise $\beta_{t} \in (0, 1)$ , ${t=1, 2, 3, \cdots, T}$ , $\beta_{1} < \beta_{2}<\beta_{3}\cdots<\beta_{T}$ ; and then can proof the reverse process is still gaussian disribution.
 
@@ -572,7 +633,9 @@ where $\beta_{t}$ denotes diffusion rate in DPM paper;  denotes variance(noise) 
 
 and the joint probability formulation as following:
 
+
 $$q(x_{1:T} \mid x_{0}) = \prod_{t=1}^{T} q(x_{t} \mid x_{t-1})$$
+
 
 theoretically, $T \to \infty$ , $x_{T} \to \mathcal{N}(0, I)$ ,the Isotropic Gaussian distribution.
 
@@ -581,6 +644,7 @@ theoretically, $T \to \infty$ , $x_{T} \to \mathcal{N}(0, I)$ ,the Isotropic Gau
 > 不是简单的对噪声进行线性叠加，而是使用<span style="color:Crimson">**重参数技巧(Reparameterization Trick)**</span>进行仿射变换的方式添加噪声。
 
 如果要从高斯分布 $z\sim \mathcal{N}\left ( z;\mu_{\theta},\sigma^{2}_{\theta} I\right ) $ 中采样一个 $\bar{z}$，可以写成:
+
 
 $$ \bar{z} = \mu_{\theta} + \sigma_{\theta} \odot \epsilon , \epsilon \sim \mathcal{N}\left ( 0,I\right ) $$
 
@@ -598,6 +662,7 @@ $$\cdots$$
 
 $$x_{T} = \sqrt{\beta_{T}}z_{T} + \sqrt{1 - \beta_{T}}x_{T-1}$$
 
+
 这样不断的对原始数据分布进行添加扰动，打乱有规矩的数据概率分布，也就是热力学中的熵增过程，不断变得混乱，最终趋近一个拥有良好性质而且解析上易于处理的分布。 ("**The data distribution is gradually converted into a well behaved (analytically tractable) distribution $π(y)$ by repeated application
 of a Markov diffusion kernel.**" quote from DPM paper ICML'2015.)
 
@@ -605,10 +670,13 @@ of a Markov diffusion kernel.**" quote from DPM paper ICML'2015.)
 
 前向扩散过程中有一个良好的性质，就是任意时刻的 $x_{t}$ 可以由 $x_{0}$ 和 $\beta_{t}$ 直接计算得到采样；利用重参数技巧(Reparameterization Trick) 可以得到下面式子：
 
+
 <!-- $$ x_{t} = \sqrt{\beta_{t}}z + \sqrt{1-\beta_{t}}x_{t-1} ; z \in \mathcal{N}(0, I) \tag{1}$$  -->
 $$ x_{t} = \sqrt{\beta_{t}}z + \sqrt{1-\beta_{t}}x_{t-1} ; z \in \mathcal{N}(0, I) $$ 
 
+
 令 $ \alpha_{t} = 1 - \beta_{t}$ , 则上式子可以化简为：
+
 
 $$
 \begin{aligned}
@@ -619,23 +687,34 @@ x_{t}
 \end{aligned}
 $$
 
+
 对上式子中的后面两项进行处理，根据高斯分布的性质：
+
 
 $$\sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} \sim \mathcal{N}(0, \alpha_{t}(1- \alpha_{t-1})I) ; z_{2} \in \mathcal{N}(0, I)$$
 
+
 $$\sqrt{1 - \alpha_{t}} z_{1} \sim \mathcal{N}(0, (1- \alpha_{t})I) ; z_{1} \in \mathcal{N}(0, I)$$
+
 
 $$ X \sim \mathcal{N}(\mu_{1}, \sigma_{1}^{2}); $$
 
+
 $$ Y \sim \mathcal{N}(\mu_{2}, \sigma_{2}^{2}); $$
+
 
 $$ aX + bY \sim \mathcal{N}(a\mu_{1} + b\mu_{2}, a^{2}\sigma_{1}^{2} + b^{2}\sigma_{2}^{2}); $$
 
+
 $$ \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} + \sqrt{1 - \alpha_{t}} z_{1} \sim \mathcal{N}(0, (\alpha_{t}(1- \alpha_{t-1}) + (1- \alpha_{t}))I); $$
+
 
 $$ \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} + \sqrt{1 - \alpha_{t}} z_{1} \sim \mathcal{N}(0, (\alpha_{t}- \alpha_{t}\alpha_{t-1} + 1- \alpha_{t})I); $$
 
+
 $$ \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} + \sqrt{1 - \alpha_{t}} z_{1} \sim \mathcal{N}(0, (1- \alpha_{t}\alpha_{t-1})I); $$
+
+
 
 $$
 \begin{aligned}
@@ -650,13 +729,18 @@ $$
 \end{aligned}
 $$
 
+
 令 $ \bar{\alpha}_{t} = \prod_{i=1}^{T} \alpha_{i}$ , 则上式子可以化简为：
+
 
 $$x_{t} = \sqrt{\bar{\alpha}_{t}}x_{0} + \color{green}\sqrt{1 - \bar{\alpha}_{t}}\bar{z}_{t} ; \color{red}\bar{z}_{t} \in \mathcal{N}(0, I)$$
 
+
 $$q(x_{t} \mid x_{0}) = \mathcal{N}(\mathbf{x}_t; \sqrt{\bar{\alpha}_t} \mathbf{x}_0, (1 - \bar{\alpha}_t)\mathbf{I})$$
 
+
 故此总结一下前向扩散过程的概率分布满足一下式子：
+
 
 $$
 \begin{aligned}
@@ -666,6 +750,7 @@ q(x_{t} \mid x_{t-1})
 \end{aligned}
 $$
 
+
 $$
 \begin{aligned}
 q(x_{t} \mid x_{0})
@@ -674,7 +759,11 @@ q(x_{t} \mid x_{0})
 \end{aligned}
 $$
 
+
+
 这样根据前向扩散过程的要求，最终迭代 $T$ 次后，$x_{T}$ 变成一个标准高斯分布，则可以计算出迭代次数 $T$ 的具体数值(e.g. T=1000)：
+
+
 
 $$
 sub. to \left\{
@@ -684,6 +773,8 @@ sub. to \left\{
 \end{aligned}
 \right.
 $$
+
+
 
 因此前向扩散过程中的迭代步数是有一个有限的可解析的数值，$t \in (0, T) $ 进行采样得到具体的数值，the sample-step schedule is different, PDM and DDPM paper is uniform schedule(均匀采样); but IDDPM paper is simple importance sampling technique(基于 loss 进行重要性采样)
 
@@ -695,13 +786,20 @@ $$
 
 因此假设逆向过程的分布 $q(x_{t-1} \mid x_{t}) \sim \mathcal{N}(x_{t-1}; \mu_{\theta}(x_{t}, t), \Sigma_{\theta}(x_{t}, t))$ , 利用 NN 拟合 $\mu_{\theta}$ 和 $\Sigma_{\theta}$ , 均值和方差都是关于 $(x_{t}, t)$ 的仿射变换函数
 
+
+
 $$ q(x_{t-1} \mid x_{t}) = p_{\theta}(x_{t-1} \mid x_{t}) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_{t}, t), \Sigma_{\theta}(x_{t}, t)) $$
+
 
 and the joint probability dist. as follow:
 
+
 $$ p_{\theta}(X_{0:T}) = p(X_{T}) \prod_{t=1}^{T}(x_{t-1} \mid x_{t}) $$
 
+
 > <span style="color:Gold">虽然无法计算出 $q(x_{t-1} \mid x_{t})$ ,但是可以计算出逆向扩散过程的后验概率分布 $q(x_{t-1} \mid x_{t}, x_{0})$ . </span> 联合概率分布可以分解为条件概率分布的乘积形式
+
+
 
 $$
 \begin{aligned}
@@ -711,7 +809,11 @@ q(x_{t-1}, x_{t}, x_{0})
 \end{aligned}
 $$
 
+
+
 基于 diffusion process (forward or reverse) 都是马尔可夫过程 (Markov chain) ，在给定 $x_{0}$ 条件下，$x_{t-1}$ 和 $x_{t}$ 条件独立，则利用对称性，$q(x_{t-1}, x_{t}, x_{0})$ 联合概率分布有如下相同等式
+
+
 
 $$
 \begin{aligned}
@@ -721,7 +823,9 @@ q(x_{t-1}, x_{t}, x_{0})
 \end{aligned}
 $$
 
+
 那么逆向扩散过程的后验概率分布如下推导：
+
 
 $$
 \begin{aligned}
@@ -734,13 +838,24 @@ q(x_{t-1} \mid x_{t}, x_{0})
 \end{aligned} \newline
 $$
 
-$$ q(x_{t} \mid x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}}x_{t-1}, \beta_{t}I) $$
+$$
+\begin{aligned}
+q(x_{t} \mid x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}}x_{t-1}, \beta_{t}I)
+\end{aligned}
+$$
 
-$$ q(x_{t} \mid x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I) $$
+$$
+\begin{aligned}
+q(x_{t} \mid x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I)
+\end{aligned}
+$$
+
 
 $$ q(x_{t-1} \mid x_{0}) = \mathcal{N}(x_{t-1}; \sqrt{\bar{\alpha}_{t-1}}x_{0}, (1 - \bar{\alpha}_{t-1})I) $$
 
+
 将高斯前向扩散过程带入后验分布式子中，可以化简如下：
+
 
 $$
 \begin{aligned}
@@ -760,7 +875,11 @@ q(x_{t-1} \mid x_{t}, x_{0})
 \end{aligned} \newline
 $$
 
+
+
 逆向扩散过程的后验概率分布依然满足高斯分布，假设服从以下分布：
+
+
 
 $$
 \begin{aligned}
@@ -771,7 +890,11 @@ q(x_{t-1} \mid x_{t}, x_{0})
 \end{aligned} \newline
 $$
 
+
+
 根据以上关于 $q(x_{t-1} \mid x_{t}, x_{0})$ 的两个式子，可以计算出逆向扩散过程中的真实的均值和方差估计 (用于训练 NN 的监督 GT)：
+
+
 
 $$
 \begin{aligned}
@@ -788,6 +911,8 @@ $$
 &= \color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} & \text{; DDPM paper} \newline 
 \end{aligned} \newline
 $$
+
+
 
 $$
 \begin{aligned}
@@ -807,10 +932,13 @@ $$
 \end{aligned}  \newline
 $$
 
+
 前向扩散过程中，任意时刻的 $x_{t}$ 与 $x_{0}$ 关系如下：
+
 
 $$q(x_{t} \mid x_{0})
 = \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I) \bar{z}_{t} $$
+
 
 $$
 \begin{aligned}
@@ -820,7 +948,9 @@ x_{t} &= \sqrt{\bar{\alpha}_{t}}x_{0} + \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t} 
 \end{aligned}  \newline
 $$
 
+
 将该关于 $x_{0}$ 的式子代入上式关于均值 $\widetilde{\mu}_{t}(x_{t},x_{0})$ 中可以推导如下：
+
 
 $$
 \begin{aligned}
@@ -843,15 +973,21 @@ $$
 \end{aligned}  \newline
 $$
 
+
 **Inference Phase of DDPM**
+
 
 $$p_{\theta}(x_{t-1} \mid x_{t}) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_{t}, t), \Sigma_{\theta}(x_{t}, t)) $$
 
+
 根据该式子，可以理解 DDPM paper 的核心思想，训练 NN 网络去预测 $\bar{z}_{t}$ , 用于去噪 (denoising DPM), NN 网络预测的结果为 ${z}_{\theta}(x_{t}, t)$ , 则采样时候的均值可以直接计算得到如下(DDPM paper 中的损失函数为 $\mathcal{L}_{simple}(\theta)$)：
+
 
 $$\mu_{\theta}(x_{t},t) = \frac{1}{\sqrt{\alpha_{t}}} (x_{t} - \frac{\beta_{t}}{\sqrt{1-\bar{\alpha}_{t}}}{z}_{\theta}(x_{t}, t) )$$
 
+
 DDPM paper 中对于方差的策略，直接使用逆向扩散过程推导的解析结果 $\widetilde{\beta}_{t}$ , 而且实验结果显示使用前向过程的方差数值和使用逆向过程的后验方差数值，最终的实验结果近视；不需要训练的策略，如下式子：
+
 
 $$
 \begin{aligned}
@@ -862,9 +998,12 @@ $$
 \end{aligned}
 $$
 
+
 IDDPM paper 中对方差策略进行了修正，可以通过 NN 神经网络来学习方差 $\Sigma_{\theta}(x_{t}, t) $ , 根据 VAE 进行推导，可以优化 variational lower bound (VLB) 从而引导方差进行学习；不过方差的可信范围非常小，导致即使在对数域，NN 也很难学习，因此 IDDPM paper 中使用参数化(模型输出的一个向量 $v$) $\beta_{t}$ 和 $\widetilde{\beta}_{t}$ 来进行学习和优化; 故此 Improved DDPM 中的损失函数为：
 
+
 $$\mathcal{L}_{hybrid} = \mathcal{L}_{simple} + \lambda \mathcal{L}_{vlb}$$
+
 
 #### **Optimize Diffusion Models**
 
@@ -884,13 +1023,18 @@ $$\mathcal{L}_{hybrid} = \mathcal{L}_{simple} + \lambda \mathcal{L}_{vlb}$$
 
 DDPM 的优化目标就是训练 NN 神经网络拟合估计出 $\mu_{\theta}(x_{t},t)$ and $\Sigma_{\theta}(x_{t}, t)$ ; 通过真实数据分布下，最大化模型 NN 预测分布的对数似然即可估计出靠谱的均值和方差；即优化在 $x_{0} \sim q(x_{0})$ 下 $p_{\theta}(x_{0}) $ 的交叉熵：
 
+
 $$p_{\theta}(x_{t-1} \mid x_{t})  = \mathcal{N}(x_{t-1};\mu_{\theta}(x_{t},t), \Sigma_{\theta}(x_{t}, t)=\beta_{t}I)$$
 
+
 $$\mathcal{L} = E_{x \sim q(x_{0})}[-\log{p_{\theta}(x_{0})}]$$
+
+
 
 > Note: "Training is performed by optimizing the usual variational bound on negative log likelihood," quote from DDPM paper; 
 
 > "The combination of $q$ and $p$ is a variational auto-encoder (Kingma & Welling, 2013), and we can write the variational lower bound (VLB)," quote from Improved DDPM paper.
+
 
 $$
 \begin{aligned}
@@ -905,6 +1049,7 @@ $$
 \end{aligned}
 $$
 
+
 **Note that：**
 
 - 第 2 行式子成立的理由: KL 散度的非负性
@@ -915,6 +1060,7 @@ $$
 
 对上式子两边取期望 $E_{q(x_{0})}$, 即为类似计算 VAE 中的变分下限 ([Evidence lower bound](https://en.wikipedia.org/wiki/Evidence_lower_bound))：
 
+
 $$
 \begin{aligned}
 \mathcal{L}_{VLB} 
@@ -924,7 +1070,9 @@ $$
 \end{aligned}
 $$
 
+
 which has a lower bound provided by [Jense's inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality) ; 利用 Jense's inequality 将积分的凸函数的值与凸函数的积分联系起来，提供下限；计算期望对于连续变量而言就是计算积分；这样十分类似 VAE 中的推导形式, 从而可以优化交叉熵对目标分布进行学习：
+
 
 $$
 \begin{aligned}
@@ -946,11 +1094,13 @@ $$
 \end{aligned}
 $$
 
+
 **Note that：**
 
 - 第 2 行式子成立的理由: $p_{\theta}(x_{0})$ 与求  $q(x_{1:T} \mid x_{0})$ 的期望无关, 而且积分结果为 1
 
 进一步对 $\mathcal{L}_{VLB}$ 推导，根据 Improved DDPM paper 中的形式：
+
 
 $$
 \begin{aligned}
@@ -979,6 +1129,7 @@ L_\text{VLB}
 \end{aligned}
 $$
 
+
 **Note that：**
 
 - 第 2 行式子: convert Joint dist. into conditional dist. prod.
@@ -990,7 +1141,9 @@ $$
 
 **recall that: where the expectation **line No.9** is over a distribution $\bar{q}(x_{t-1})$ that is independent from the variable (namely $x_{t-1}$).** 
 
+
 $$D_{\text{KL}}(q(x) || p(x)) = \mathbb{E}_{q(x)} [\log q(x) / p(x)]$$
+
 
 $$
 \begin{aligned}
@@ -1007,9 +1160,11 @@ gereral_{line-9}
 \end{aligned}
 $$
 
+
 这样就得到了 Improved DDPM paper 的优化目标
 
 Let’s label each component in the variational lower bound loss separately:
+
 
 $$
 \begin{aligned}
@@ -1019,6 +1174,7 @@ L_t &= D_\text{KL}(q(\mathbf{x}_t \vert \mathbf{x}_{t+1}, \mathbf{x}_0) \paralle
 L_0 &= - \log p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)
 \end{aligned}
 $$
+
 
 > Every KL term in $L_\text{VLB}$  (except for $L_0$) compares two Gaussian distributions and therefore they can be computed in [closed form](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions).  $L_T$ is constant and can be ignored during training because $q$ has no learnable parameters and $\mathbf{x}_T$ is a Gaussian noise. [Ho et al. 2020](https://arxiv.org/abs/2006.11239) models $L_0$ using a separate discrete decoder derived from $\mathcal{N}(\mathbf{x}_0; \boldsymbol{\mu}_\theta(\mathbf{x}_1, 1), \boldsymbol{\Sigma}_\theta(\mathbf{x}_1, 1))$ . (DDPM paper 中对逆向扩散过程中最后一步从噪声变为原始数据的处理)
 
@@ -1040,13 +1196,15 @@ $$
 
 > DDPMs Connection to SDEs(stochastic differential equation, 随机微分方程), ODEs(ordinary differential equation, 常微分方程), PDEs(partial differential equation, 偏微分方程)
 
+
 $$
 \begin{align}
 \mathbf{x}_{i+1} \gets \mathbf{x}_i + \epsilon \nabla_\mathbf{x} \log p(\mathbf{x}) + \sqrt{2\epsilon}~ \mathbf{z}_i, \quad i=0,1,\cdots, K,
 \end{align}
 $$
 
-<center class="half">
+
+<center>
     <img src="./images/Langevin_dynamics.gif">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1056,7 +1214,7 @@ $$
 </center>
 
 <center class="half">
-    <img src="./images/celeba_large.gif"><img src="./images/cifar10_large.gif">
+    <img src="./images/celeba_large.gif", width="50%" /><img src="./images/cifar10_large.gif", width="50%" />
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1126,7 +1284,7 @@ return {'samples': imgs[-1],
 </center>
 
 <center class="half">
-    <img src="./images/forward_reverse_diffusion_s_curve.gif"><img src="./images/forward_reverse_diffusion_swiss_roll.gif">
+    <img src="./images/forward_reverse_diffusion_s_curve.gif", width="50%" /><img src="./images/forward_reverse_diffusion_swiss_roll.gif", width="50%" />
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1134,7 +1292,7 @@ return {'samples': imgs[-1],
     padding: 2px;">Fig. 14. The S curve(left) and a two dimensions swiss roll(right) distribution from forward to reverse diffusion process.</div>
 </center>
 
-<center class="half">
+<center>
     <img src="./images/DDPM_Code.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1144,7 +1302,7 @@ return {'samples': imgs[-1],
 </center>
 <!-- ![DDPM Code](./Images/DDPM_Code.png) -->
 
-<center class="half">
+<center>
     <img src="./images/UNet_architecture.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1153,7 +1311,7 @@ return {'samples': imgs[-1],
     padding: 2px;">Fig. 16. U-Net Architecture. (Image source from U-Net paper on MICCAI'2015)</div>
 </center>
 
-<center class="half">
+<center>
     <img src="./images/MHSA.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1163,7 +1321,22 @@ return {'samples': imgs[-1],
 attention layers running in parallel. (Image source from Transformer paper on NeurIPS'2017)</div>
 </center>
 
-## Reference 参考文献
+
+-------------
+
+Cited as:
+```shell
+@article{WeiLi2022DDPMs,
+  title   = Image Generation via Diffusion Models,
+  author  = Wei Li,
+  journal = https://2694048168.github.io/blog/,
+  year    = 2022,
+  url     = https://2694048168.github.io/blog/#/PaperMD/diffusion_models
+}
+```
+
+
+## Reference
 
 ----------------------------
 
