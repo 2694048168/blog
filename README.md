@@ -1,15 +1,19 @@
-# Github and Gitee
 <!-- 自定义徽章 对应 github 仓库 -->
 [![](https://img.shields.io/badge/ComputerVisionDeepLearning-github-brightgreen)](https://github.com/2694048168/ComputerVisionDeepLearning)
+&emsp;&emsp;[![](https://img.shields.io/badge/MachineLearning-github-brightgreen)](https://github.com/2694048168/MachineLearning)
+&emsp;&emsp;[![](https://img.shields.io/badge/LeetCodeAlgorithm-github-brightgreen)](https://github.com/2694048168/LeetCodeAlgorithm)
+&emsp;&emsp;[![](https://img.shields.io/badge/CPlusPlus-github-brightgreen)](https://github.com/2694048168/C-and-C-plus-plus)
+&emsp;&emsp;[![](https://img.shields.io/badge/Linux-github-brightgreen)](https://github.com/2694048168/Linux_OS)
 
-[![](https://img.shields.io/badge/MachineLearning-github-brightgreen)](https://github.com/2694048168/MachineLearning)
+### [Diffusion Probability Models for Deep Generative, DDPMs](PaperMD/diffusion_models.md)
 
-[![](https://img.shields.io/badge/LeetCodeAlgorithm-github-brightgreen)](https://github.com/2694048168/LeetCodeAlgorithm)
+<center class="half">
+    <!-- <img src="./images/generative-overview.png", width="569", height="394" /> -->
+    <!-- <img src="./images/generative-overview.png", width="50%", height="50%" /> -->
+    <img src="./images/DDPM.png", width="50%" /><img src="./images/generative-overview.png", width="50%" />
+</center>
 
-[![](https://img.shields.io/badge/CPlusPlus-github-brightgreen)](https://github.com/2694048168/C-and-C-plus-plus)
-
-[![](https://img.shields.io/badge/Linux-github-brightgreen)](https://github.com/2694048168/Linux_OS)
-
+----------------
 
 # Computer Vision and Deep Learning
 
@@ -61,6 +65,7 @@
 
 # Python
 
+- [Python 环境配置](PaperMD/python_env_ai.md)
 - [TensorFlow2 环境测试](PaperMD/tf_env_test.md)
 - [TensorFlow2 Titanic dataset](PaperMD/titanic_dataset.md)
 - [TensorFlow2 IMDB dataset](PaperMD/imdb_dataset.md)

@@ -2,7 +2,7 @@
 
 ## Source code to Binary code
 
-```c++
+```cpp
 /**
  * @file hello.cpp
  * @author Wei Li (weili_yzzcq@163.com)
