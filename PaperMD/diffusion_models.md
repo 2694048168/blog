@@ -9,7 +9,7 @@
 > Deep Generative Learning: Learning to generate data
 
 <center>
-    <img src="./../images/Diffusion_Models_Slide.png" />
+    <img src="./images/Diffusion_Models_Slide.png" />
 </center>
 
 **Application of Diffusion**
@@ -27,7 +27,7 @@
 [DALLE 2: a new AI system that can create realistic images and art from a description in natural language](https://openai.com/dall-e-2/)
 
 <center>
-    <img src="./../images/DALLE2_0.jpg">
+    <img src="./images/DALLE2_0.jpg">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -38,7 +38,7 @@
 [Imagen: unprecedented photorealism x deep level of language understanding](https://imagen.research.google/)
 
 <center>
-    <img src="./../images/Imagen_1.jpg">
+    <img src="./images/Imagen_1.jpg">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -62,7 +62,7 @@
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./../images/generative-overview.png">
+    src="./images/generative-overview.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -76,7 +76,7 @@ Diffusion Models 和其他生成模型最大的区别是它的 latent code(z) �
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./../images/2022_CVPR_DDPMs_tutorial_fig.png">
+    src="./images/2022_CVPR_DDPMs_tutorial_fig.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -95,7 +95,7 @@ Diffusion Models 和其他生成模型最大的区别是它的 latent code(z) �
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./../images/probability_visual.png">
+    src="./images/probability_visual.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -295,7 +295,7 @@ $$E\left [f\left [ x_{1},x_{2}, \dots, x_{k} \right ] \right ] =\sum_{i=1}^{k} \
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./../images/expectation.png">
+    src="./images/expectation.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -531,7 +531,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./../images/DDPM.png">
+    src="./images/DDPM.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -541,7 +541,7 @@ $$
 <!-- ![generative-overview](./Images/DDPM.png) -->
 
 <center class="half">
-    <img src="./../images/forward_diffusion_s_curve.gif"><img src="./../images/reverse_diffusion_s_curve.gif">
+    <img src="./images/forward_diffusion_s_curve.gif"><img src="./images/reverse_diffusion_s_curve.gif">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -550,7 +550,7 @@ $$
 </center>
 
 <center class="half">
-    <img src="./../images/forward_diffusion_swiss_roll.gif"><img src="./../images/reverse_diffusion_swiss_roll.gif">
+    <img src="./images/forward_diffusion_swiss_roll.gif"><img src="./images/reverse_diffusion_swiss_roll.gif">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1047,7 +1047,7 @@ $$
 $$
 
 <center class="half">
-    <img src="./../images/Langevin_dynamics.gif">
+    <img src="./images/Langevin_dynamics.gif">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1056,7 +1056,7 @@ $$
 </center>
 
 <center class="half">
-    <img src="./../images/celeba_large.gif"><img src="./../images/cifar10_large.gif">
+    <img src="./images/celeba_large.gif"><img src="./images/cifar10_large.gif">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1067,7 +1067,7 @@ $$
 ## Code Implementation 代码实现
 
 <center class="center">
-    <img src="./../images/DDPM_algo.png">
+    <img src="./images/DDPM_algo.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1117,7 +1117,7 @@ return {'samples': imgs[-1],
 ```
 
 <center class="center">
-    <img src="./../images/DPM_fig.png">
+    <img src="./images/DPM_fig.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1126,7 +1126,7 @@ return {'samples': imgs[-1],
 </center>
 
 <center class="half">
-    <img src="./../images/forward_reverse_diffusion_s_curve.gif"><img src="./../images/forward_reverse_diffusion_swiss_roll.gif">
+    <img src="./images/forward_reverse_diffusion_s_curve.gif"><img src="./images/forward_reverse_diffusion_swiss_roll.gif">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1135,7 +1135,7 @@ return {'samples': imgs[-1],
 </center>
 
 <center class="half">
-    <img src="./../images/DDPM_Code.png">
+    <img src="./images/DDPM_Code.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1145,7 +1145,7 @@ return {'samples': imgs[-1],
 <!-- ![DDPM Code](./Images/DDPM_Code.png) -->
 
 <center class="half">
-    <img src="./../images/UNet_architecture.png">
+    <img src="./images/UNet_architecture.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -1154,7 +1154,7 @@ return {'samples': imgs[-1],
 </center>
 
 <center class="half">
-    <img src="./../images/MHSA.png">
+    <img src="./images/MHSA.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
