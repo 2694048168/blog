@@ -1,84 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<html lang="zh-cn">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-    <title>Wei Li Blog</title> <!-- TODO: Update. -->
+  <meta charset="UTF-8">
+  <title>Wei Li Blog</title>
     <meta name="description"
-        content="Blog of Wei Li with the DocsifyJS project for making notes."> <!-- TODO: Update. -->
+        content="Blog of Wei Li with the DocsifyJS project for making notes.">
 
-    <link rel="stylesheet" href="//unpkg.com/docsify@4/lib/themes/vue.css"> <!-- TODO: Replace the theme name or leave as is. -->
-    
-    <style>
-        /* Fix issue on mobile devices where a custom cover image goes off the screen. */
-        section.cover.show {
-            height: 100%;
-        }
+  <!-- 解除其他平台的防盗链 -->
+  <meta name="referrer" content="never">
 
-    </style>
-
-    <!-- Edit on GitHub plugin. -->
-    <script defer src="//unpkg.com/docsify-edit-on-github@1/index.js"></script>
-
-    <!-- 字数统计 -->
-    <script defer src="//unpkg.com/docsify-count/dist/countable.js"></script>
-
-    <!-- 复制到剪贴板 -->
-    <script defer src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
-
-    <!-- Docsify core. -->
-    <script defer src="//unpkg.com/docsify@4/lib/docsify.min.js"></script>
-    <!-- Syntax highlighting.-->
-    <!-- TODO: Add prism-bash, prism-python, prism-javascript etc. as separate items so you can load syntax highlighting for that language. -->
-    <script defer src="//unpkg.com/prismjs@1/components/prism-markdown.min.js"></script>
-    <script defer src="//unpkg.com/prismjs@1/components/prism-bash.min.js"></script>
-    <script defer src="//unpkg.com/prismjs@1/components/prism-python.min.js"></script>
-    <script defer src="//unpkg.com/prismjs@1/components/prism-cpp.min.js"></script>
-
-    <!-- 支持 LaTex 公式 -->
-    <!-- CDN files for docsify-katex -->
-    <!-- https://github.com/upupming/docsify-katex -->
-    <!-- CDN files for docsify-katex -->
-    <script defer src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
-    <!-- or <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex@latest/dist/docsify-katex.js"></script> -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
-    
-    <!-- MathJax3 -->
-    <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script defer type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+  <link rel="stylesheet" type="text/css" href="style/myStyle.css"/>
 
 </head>
 
 <body class="close">
-    <div id="app"></div>
+<!-- <body class="close" background="" style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;"> -->
+  <div id="app">Loading...</div>
+  <a class="to-top">Top</a>
 
-    <script defer>
-        var repoUrl = "https://github.com/2694048168"; // TODO: Update.
-        var editPath = repoUrl + "/blog/blob/main/";
-        var editMsg = "📝 Edit on GitHub";
-        
-        window.$docsify = {
-            name: "Wei Li Blog", // TODO: Update.
-            repo: repoUrl,
-            
-            auto2top: true,
-            coverpage: true,
-            // 导航栏功能开启: _navbar.md
-            loadNavbar: true,
-            loadSidebar: false,
-            subMaxLevel: 2,
+  <script>
+    window.$docsify = {
+      el: '#app',
+      name: 'Wei Li Blog',
+      repo: 'https://github.com/2694048168',
+      loadNavbar: true, //开启导航栏
+      coverpage: true,  //开启封面
+      loadSidebar: false, //开启侧边栏
+      auto2top: true,   //切换页面自动回到顶部
+      // subMaxLevel: 3,   //目录最大级数
+      // maxLevel: 5,      //可配置最大支持渲染的标题层级
+      homepage: 'README.md', //设置中文的README.md作为首页
 
-            // themeColor: "#3170a7", // TODO: Set your own color.
-            count:{ countable:true, fontsize:'0.9em', color:'rgb(90,90,90)', language:'chinese' },
-            count:{ countable:true, fontsize:'0.9em', color:'rgb(90,90,90)', language:'english' },
-
-            copyCode: {
+      count:{ countable:true, fontsize:'0.9em', color:'rgb(90,90,90)', language:'chinese' },
+      count:{ countable:true, fontsize:'0.9em', color:'rgb(90,90,90)', language:'english' },
+      
+      copyCode: {
               // buttonText : 'buttonText:String',
               // errorText : 'errorText:String',
               // successText: 'successText:String'
@@ -103,32 +63,69 @@
                 '/': 'Copied'
               }
             },
-
-            plugins: [
-                EditOnGithubPlugin.create(editPath, null, editMsg)
-            ],
-        };
-
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[', '\\]']],
-        processEscapes: true,
-        processEnvironments: true
+      
+      footer: {
+        copy: 'Copyright &copy; 2022 💖 </span>',
+        auth: ' <strong>--Wei Li 黎为--</strong>',
+        pre: '<hr/>',
+        style: 'text-align: center;',
       },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+
+
+      'flexible-alerts': {
+        style: 'flat'
       }
-    };
+   
+    }
+  </script>
 
-    window.addEventListener('load', (event) => {
-        document.querySelectorAll("mjx-container").forEach(function(x){
-          x.parentElement.classList += 'has-jax'})
-      });
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 
-    </script>
+  <!-- docsify表情包 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  
+  <!-- 复制代码到剪切板 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+  <!-- Latest v2.x.x -->
+  <script src="https://unpkg.com/docsify-copy-code@2"></script>
+  <!-- Latest (not recommended for production) -->
+  <script src="https://unpkg.com/docsify-copy-code"></script>
+
+  <!-- C++、Java、python、bash等等语法高亮 -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-markdown.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-c.min.js"></script>
+  
+  <!-- CDN files for docsify-katex -->
+  <!-- <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script> -->
+  <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex@latest/dist/docsify-katex.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
+  
+  <!-- 文档页脚增强 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-footer-enh/dist/docsify-footer.min.js"></script>
+
+  <!-- 访问量统计 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- 字数统计 -->
+  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+
+  <!-- 置顶插件 -->
+  <script src="style/jquery-1.11.3.min.js"></script>
+  <script src="style/jquery.toTop.min.js"></script>
+  <script>
+    $('.to-top').toTop();
+  </script>
+
+  <!-- Markdown 引用样式美化 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts/dist/docsify-plugin-flexible-alerts.min.js"></script>
+
+  <!-- 图片缩放 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.js"></script>
 
 
 </body>
-
 </html>

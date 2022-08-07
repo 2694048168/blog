@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 解除其他平台的防盗链 -->
+    <meta name="referrer" content="never">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>Wei Li Blog</title> <!-- TODO: Update. -->
+    <meta name="description"
+        content="Blog of Wei Li with the DocsifyJS project for making notes."> <!-- TODO: Update. -->
+
+    <link rel="stylesheet" href="//unpkg.com/docsify@4/lib/themes/vue.css"> <!-- TODO: Replace the theme name or leave as is. -->
+    <link rel="stylesheet" type="text/css" href="style/myStyle.css"/>
+
+    <!-- alert -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" type='text/css' media='all' />
+    
+    <style>
+        /* Fix issue on mobile devices where a custom cover image goes off the screen. */
+        section.cover.show {
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body class="close" background="" style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
+    <div id="app"></div>
+    <a class="to-top">Top</a>
+
+    <script>
+        // var repoUrl = "https://github.com/2694048168"; // TODO: Update.
+        // var editPath = repoUrl + "/blog/blob/main/";
+        // var editMsg = "📝 Edit on GitHub";
+        
+        window.$docsify = {
+            name: "Wei Li Blog", // TODO: Update.
+            repo: "https://github.com/2694048168",
+
+            coverpage: true,
+            // 导航栏功能开启: _navbar.md
+            loadNavbar: true,
+            
+            auto2top: true,
+            loadSidebar: false,
+            subMaxLevel: 2,
+
+            // themeColor: "#3170a7", // TODO: Set your own color.
+            count:{ countable:true, fontsize:'0.9em', color:'rgb(90,90,90)', language:'chinese' },
+            count:{ countable:true, fontsize:'0.9em', color:'rgb(90,90,90)', language:'english' },
+
+            copyCode: {
+              // buttonText : 'buttonText:String',
+              // errorText : 'errorText:String',
+              // successText: 'successText:String'
+
+              buttonText: {
+                '/zh-cn/': '点击复制',
+                '/ru/': 'Скопировать в буфер обмена',
+                '/de-de/': 'Klicken Sie zum Kopieren',
+                '/es/': 'Haga clic para copiar',
+                '/': 'Copy to clipboard'
+              },
+              errorText: {
+                '/zh-cn/': '错误',
+                '/ru/': 'ошибка',
+                '/': 'Error'
+              },
+              successText: {
+                '/zh-cn/': '复制',
+                '/ru/': 'Скопировано',
+                '/de-de/': 'Kopiert',
+                '/es/': 'Copiado',
+                '/': 'Copied'
+              }
+            },
+
+          footer: {
+            copy: 'Copyright &copy; 2022 💖 </span>',
+            auth: ' <strong>--Wei Li 黎为--</strong>',
+            pre: '<hr/>',
+            style: 'text-align: center;', 
+          },
+
+          plugins: [
+              EditOnGithubPlugin.create(editPath, null, editMsg)
+          ],
+
+          'flexible-alerts': {
+            style: 'flat'
+            },
+        };
+
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function(x){
+          x.parentElement.classList += 'has-jax'})
+      });
+
+    </script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/docsify@4/lib/docsify.min.js"></script>
+
+    <!-- Edit on GitHub plugin. -->
+    <script src="//unpkg.com/docsify-edit-on-github@1/index.js"></script>
+
+    <!-- Syntax highlighting.-->
+    <!-- TODO: Add prism-bash, prism-python, prism-javascript etc. as separate items so you can load syntax highlighting for that language. -->
+    <script defer src="//unpkg.com/prismjs@1/components/prism-markdown.min.js"></script>
+    <script defer src="//unpkg.com/prismjs@1/components/prism-bash.min.js"></script>
+    <script defer src="//unpkg.com/prismjs@1/components/prism-python.min.js"></script>
+    <script defer src="//unpkg.com/prismjs@1/components/prism-cpp.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/npm/prismjs/components/prism-c.min.js"></script>
+
+    <!-- docsify表情包 -->
+    <script defer src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+    <!-- 复制代码到剪切板 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+
+    <!-- CDN files for docsify-katex -->
+    <script defer src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+
+    <!-- 文档页脚增强 -->
+    <script defer src="//cdn.jsdelivr.net/npm/docsify-footer-enh/dist/docsify-footer.min.js"></script>
+
+    <!-- 访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <!-- 字数统计 -->
+    <script defer src="//unpkg.com/docsify-count/dist/countable.js"></script>
+
+    <!-- 置顶插件 -->
+    <script src="style/jquery-1.11.3.min.js"></script>
+    <script src="style/jquery.toTop.min.js"></script>
+    <script>
+      $('.to-top').toTop();
+    </script>
+
+    <!-- Markdown 引用样式美化 -->
+    <script defer src="//cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts/dist/docsify-plugin-flexible-alerts.min.js"></script>
+
+    <!-- 图片缩放 -->
+    <script defer src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.js"></script>
+
+
+</body>
+
+</html>

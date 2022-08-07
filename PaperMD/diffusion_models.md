@@ -26,24 +26,24 @@
 
 [DALLE 2: a new AI system that can create realistic images and art from a description in natural language](https://openai.com/dall-e-2/)
 
-<center>
-    <img src="./images/DALLE2_0.jpg">
+<center class="half">
+    <img src="./images/DALLE2_0.png", width="50%" /><img src="./images/DALLE2_1.png", width="50%" />
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 1. An astronaut riding a horse in a photorealistic style. (Image source from DALLE-2, OpenAI)</div>
+    padding: 2px;">Fig. 1. Some Samples from DELLE 2. (Image source from DALLE-2 paper, OpenAI)</div>
 </center>
 
 [Imagen: unprecedented photorealism x deep level of language understanding](https://imagen.research.google/)
 
-<center>
-    <img src="./images/Imagen_1.jpg">
+<center class="half">
+    <img src="./images/Imagen_0.png", width="50%" /><img src="./images/Imagen_1.png", width="50%" />
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 2. The Toronto skyline with Google brain logo written in fireworks. (Image source from Imagen, Google)</div>
+    padding: 2px;">Fig. 2. Some Samples from Imagen. (Image source from Imagen paper, Google)</div>
 </center>
 
 ## Image Generation Paradigm 图像生成研究范式
@@ -148,9 +148,9 @@ $$ p_{r}(x,y) = p_{r}(y|x)p_{r}(x) $$
 $$
 \begin{aligned}
 p_{r}(w,x,y,z)
-&= p_{r}(w,x,y|z)p_{r}(z) \newline
-&= p_{r}(w,x|y,z)p_{r}(y|z)p_{r}(z) \newline
-&= p_{r}(w|x,y,z)p_{r}(x|y,z)p_{r}(y|z)p_{r}(z) \newline
+&= p_{r}(w,x,y|z)p_{r}(z) \\
+&= p_{r}(w,x|y,z)p_{r}(y|z)p_{r}(z) \\
+&= p_{r}(w|x,y,z)p_{r}(x|y,z)p_{r}(y|z)p_{r}(z) \\
 \end{aligned}
 $$
 
@@ -161,9 +161,9 @@ $$
 $$
 \begin{aligned}
 p_{r}(x,y,z)
-&= p_{r}(x,y|z)p_{r}(z) \newline
-&= p_{r}(x|y,z)p_{r}(y|z)p_{r}(z) \newline
-&= p_{r}(x|y)p_{r}(y|z)p_{r}(z) \newline
+&= p_{r}(x,y|z)p_{r}(z) \\
+&= p_{r}(x|y,z)p_{r}(y|z)p_{r}(z) \\
+&= p_{r}(x|y)p_{r}(y|z)p_{r}(z) \\
 \end{aligned}
 $$
 
@@ -185,16 +185,16 @@ $$
 
 $$
 \begin{aligned}
-& \text{假设学校学生的总人数为M} \newline
-& \text{穿长裤的男生为：} M\ast P(Boy)\ast P(Pants|Boy) \newline
-& \text{穿长裤的女生为：} M\ast P(Girl)\ast P(Pants|Girl) \newline
-& \text{穿长裤的学生总人数为：}  \newline
-& M\ast P(Boy)\ast P(Pants|Boy) + M\ast P(Girl)\ast P(Pants|Girl) \newline
-& \text{求解穿长裤的学生里面有多少女生：}\newline
+& \text{假设学校学生的总人数为M} \\
+& \text{穿长裤的男生为：} M\ast P(Boy)\ast P(Pants|Boy) \\
+& \text{穿长裤的女生为：} M\ast P(Girl)\ast P(Pants|Girl) \\
+& \text{穿长裤的学生总人数为：}  \\
+& M\ast P(Boy)\ast P(Pants|Boy) + M\ast P(Girl)\ast P(Pants|Girl) \\
+& \text{求解穿长裤的学生里面有多少女生：}\\
 P(Girl|Pants)
-&= \frac{M\ast P(Girl)\ast P(Pants|Girl)}{M\ast P(Boy)\ast P(Pants|Boy) + M\ast P(Girl)\ast P(Pants|Girl)} \newline
-&= \frac{P(Girl)\ast P(Pants|Girl)}{P(Boy)\ast P(Pants|Boy) + P(Girl)\ast P(Pants|Girl)}  & \text{;分母就是P(Pants)} \newline
-&= \frac{P(Pants|Girl) \ast P(Girl)}{P(Pants)} \newline
+&= \frac{M\ast P(Girl)\ast P(Pants|Girl)}{M\ast P(Boy)\ast P(Pants|Boy) + M\ast P(Girl)\ast P(Pants|Girl)} \\
+&= \frac{P(Girl)\ast P(Pants|Girl)}{P(Boy)\ast P(Pants|Boy) + P(Girl)\ast P(Pants|Girl)}  & \text{;分母就是P(Pants)} \\
+&= \frac{P(Pants|Girl) \ast P(Girl)}{P(Pants)} \\
 \end{aligned}
 $$
 
@@ -215,9 +215,9 @@ $$ p_{r}(y|x) = \frac{p_{r}(x|y)p_{r}(y)}{p_{r}(x)} $$
 $$
 \begin{aligned}
 {\color{DeepPink}p_{r}(y|x)}
-&= \frac{{\color{cyan}p_{r}(x|y)} {\color{red}p_{r}(y)}} {\color{blue}p_{r}(x)} & \text{ ;origin Bayes's rule} \newline
-&= \frac{p_{r}(x|y)p_{r}(y)}{\int p_{r}(x,y) \mathrm{d}y} & \text{ ;marginal dist.}\newline
-&= \frac{p_{r}(x|y)p_{r}(y)}{\int p_{r}(x|y)p_{r}(t) \mathrm{d}y} & \text{ ;conditional dist.} \newline
+&= \frac{{\color{cyan}p_{r}(x|y)} {\color{red}p_{r}(y)}} {\color{blue}p_{r}(x)} & \text{ ;origin Bayes's rule} \\
+&= \frac{p_{r}(x|y)p_{r}(y)}{\int p_{r}(x,y) \mathrm{d}y} & \text{ ;marginal dist.}\\
+&= \frac{p_{r}(x|y)p_{r}(y)}{\int p_{r}(x|y)p_{r}(t) \mathrm{d}y} & \text{ ;conditional dist.} \\
 \end{aligned}
 $$
 
@@ -230,8 +230,8 @@ $$
 $$
 \begin{aligned}
 p_{r}(x_{t-1},x_{t},x_{0})  
-&= p_{r}(x_{t-1}, x_{t}|x_{0})p_{r}(x_{0}) \newline
-&= p_{r}(x_{t-1}|x_{t},x_{0})p_{r}(x_{t}|x_{0})p_{r}(x_{0}) \newline
+&= p_{r}(x_{t-1}, x_{t}|x_{0})p_{r}(x_{0}) \\
+&= p_{r}(x_{t-1}|x_{t},x_{0})p_{r}(x_{t}|x_{0})p_{r}(x_{0}) \\
 \end{aligned}
 $$
 
@@ -239,8 +239,8 @@ $$
 $$
 \begin{aligned}
 p_{r}(x_{t},x_{t-1},x_{0})  
-&= p_{r}(x_{t}, x_{t-1}|x_{0})p_{r}(x_{0}) \newline
-&= p_{r}(x_{t}|x_{t-1},x_{0})p_{r}(x_{t-1}|x_{0})p_{r}(x_{0}) \newline
+&= p_{r}(x_{t}, x_{t-1}|x_{0})p_{r}(x_{0}) \\
+&= p_{r}(x_{t}|x_{t-1},x_{0})p_{r}(x_{t-1}|x_{0})p_{r}(x_{0}) \\
 \end{aligned}
 $$
 
@@ -251,9 +251,9 @@ $$
 $$
 \begin{aligned}
 p_{r}(x_{t-1}|x_{t},x_{0})
-&= \frac{p_{r}(x_{t},x_{t-1},x_{0})}{p_{r}(x_{t}|x_{0})p_{r}(x_{0})} \newline
-&= \frac{p_{r}(x_{t}|x_{t-1},x_{0})p_{r}(x_{t-1}|x_{0})p_{r}(x_{0})}{p_{r}(x_{t}|x_{0})p_{r}(x_{0})} \newline
-&= \frac{p_{r}(x_{t}|x_{t-1},x_{0})p_{r}(x_{t-1}|x_{0})}{p_{r}(x_{t}|x_{0})} \newline
+&= \frac{p_{r}(x_{t},x_{t-1},x_{0})}{p_{r}(x_{t}|x_{0})p_{r}(x_{0})} \\
+&= \frac{p_{r}(x_{t}|x_{t-1},x_{0})p_{r}(x_{t-1}|x_{0})p_{r}(x_{0})}{p_{r}(x_{t}|x_{0})p_{r}(x_{0})} \\
+&= \frac{p_{r}(x_{t}|x_{t-1},x_{0})p_{r}(x_{t-1}|x_{0})}{p_{r}(x_{t}|x_{0})} \\
 \end{aligned}
 $$
 
@@ -280,9 +280,9 @@ $$ p_{r}(x, y) = p_{r}(x|y)p_{r}(y) = p_{r}(x)p_{r}(y) = p_{r}(x|y)p_{r}(y|x)$$
 $$
 \begin{aligned}
 p_{r}(x_{1},x_{2},x_{3})
-&= p_{r}(x_{1}, x_{2}|x_{3})p_{r}(x_{3}) \newline
-&= p_{r}(x_{1}|x_{2}, x_{3})p_{r}(x_{2}|x_{3})p_{r}(x_{3}) \newline
-&= p_{r}(x_{1}|x_{2})p_{r}(x_{2}|x_{3})p_{r}(x_{3}) & \text{ ;Conditional Independence} \newline
+&= p_{r}(x_{1}, x_{2}|x_{3})p_{r}(x_{3}) \\
+&= p_{r}(x_{1}|x_{2}, x_{3})p_{r}(x_{2}|x_{3})p_{r}(x_{3}) \\
+&= p_{r}(x_{1}|x_{2})p_{r}(x_{2}|x_{3})p_{r}(x_{3}) & \text{ ;Conditional Independence} \\
 \end{aligned}
 $$
 
@@ -293,9 +293,9 @@ $$
 $$
 \begin{aligned}
 p_{r}(x_{3},x_{2},x_{1})  
-&= p_{r}(x_{3}, x_{2}|x_{1})p_{r}(x_{1}) \newline
-&= p_{r}(x_{3}|x_{2}, x_{1})p_{r}(x_{2}|x_{1})p_{r}(x_{1}) \newline
-&= p_{r}(x_{3}|x_{2})p_{r}(x_{2}|x_{1})p_{r}(x_{1}) & \text{ ;Conditional Independence}\newline
+&= p_{r}(x_{3}, x_{2}|x_{1})p_{r}(x_{1}) \\
+&= p_{r}(x_{3}|x_{2}, x_{1})p_{r}(x_{2}|x_{1})p_{r}(x_{1}) \\
+&= p_{r}(x_{3}|x_{2})p_{r}(x_{2}|x_{1})p_{r}(x_{1}) & \text{ ;Conditional Independence}\\
 \end{aligned}
 $$
 
@@ -385,13 +385,13 @@ Some authors advocate using the precision $\tau$ as the parameter defining the w
 $$
 \begin{aligned}
 f(x)  
-&= \sqrt{\frac{\tau}{2\pi}} e^{\frac{-\tau (x - \mu)^{2}}{2}} \newline
-&= \sqrt{\frac{1}{2\pi \sigma^{2}}} e^{- \frac{(x - \mu)^{2}}{2 \sigma^{2}}} \newline
-&= \sqrt{\frac{1}{2\pi \sigma^{2}}} exp(- \frac{(x - \mu)^{2}}{2 \sigma^{2}}) \newline
-&\propto exp(- \frac{(x - \mu)^{2}}{2 \sigma^{2}}) \newline
-&\propto exp(\frac{(x - \mu)^{2}}{\sigma^{2}}) \newline
-&\propto \frac{x^{2} - 2 \mu x + \mu^{2}}{\sigma^{2}} \newline
-&= \frac{1}{\sigma^{2}}x^{2} -  \frac{2 \mu}{\sigma^{2}}x + \frac{\mu^{2}}{\sigma^{2}}\newline
+&= \sqrt{\frac{\tau}{2\pi}} e^{\frac{-\tau (x - \mu)^{2}}{2}} \\
+&= \sqrt{\frac{1}{2\pi \sigma^{2}}} e^{- \frac{(x - \mu)^{2}}{2 \sigma^{2}}} \\
+&= \sqrt{\frac{1}{2\pi \sigma^{2}}} exp(- \frac{(x - \mu)^{2}}{2 \sigma^{2}}) \\
+&\propto exp(- \frac{(x - \mu)^{2}}{2 \sigma^{2}}) \\
+&\propto exp(\frac{(x - \mu)^{2}}{\sigma^{2}}) \\
+&\propto \frac{x^{2} - 2 \mu x + \mu^{2}}{\sigma^{2}} \\
+&= \frac{1}{\sigma^{2}}x^{2} -  \frac{2 \mu}{\sigma^{2}}x + \frac{\mu^{2}}{\sigma^{2}}\\
 \end{aligned}
 $$
 
@@ -414,10 +414,10 @@ Fitting probability models
 $$
 \begin{aligned}
 \mathbf{\hat{\theta}}
-&=\underset{\theta}{argmax}[P_{r}(x_{1\cdots}I \mid \mathbf{\theta})] \newline
-&=\underset{\theta}{argmax}[\prod_{i=1}^{I} P_{r}(x_{i} \mid \mathbf{\theta})] \newline
-\newline
-& \text{其中，$\underset{\theta}{argmax} f[\theta]$ 返回使得 $f[\theta]$ 最大化的 $\theta$ 数值} \newline
+&=\underset{\theta}{argmax}[P_{r}(x_{1\cdots}I \mid \mathbf{\theta})] \\
+&=\underset{\theta}{argmax}[\prod_{i=1}^{I} P_{r}(x_{i} \mid \mathbf{\theta})] \\
+\\
+& \text{其中，$\underset{\theta}{argmax} f[\theta]$ 返回使得 $f[\theta]$ 最大化的 $\theta$ 数值} \\
 \end{aligned}
 $$
 
@@ -434,9 +434,9 @@ $$
 $$
 \begin{aligned}
 \mathbf{\hat{\theta}}
-&=\underset{\theta}{argmax}[P_{r}(\mathbf{\theta} \mid x_{1 \cdots I})] \newline
-&=\underset{\theta}{argmax}[\frac{P_{r}(x_{1 \cdots I} \mid \mathbf{\theta}) P_{r}(\mathbf{\theta})}{P_{r}(x_{1 \cdots I})}] \newline
-&=\underset{\theta}{argmax}[\frac{\prod_{i=1}^{I} P_{r}(x_{i} \mid \mathbf{\theta}) P_{r}(\mathbf{\theta})}{P_{r}(x_{i \cdots I})}] \newline
+&=\underset{\theta}{argmax}[P_{r}(\mathbf{\theta} \mid x_{1 \cdots I})] \\
+&=\underset{\theta}{argmax}[\frac{P_{r}(x_{1 \cdots I} \mid \mathbf{\theta}) P_{r}(\mathbf{\theta})}{P_{r}(x_{1 \cdots I})}] \\
+&=\underset{\theta}{argmax}[\frac{\prod_{i=1}^{I} P_{r}(x_{i} \mid \mathbf{\theta}) P_{r}(\mathbf{\theta})}{P_{r}(x_{i \cdots I})}] \\
 \end{aligned}
 $$
 
@@ -472,8 +472,8 @@ $$P_{r}(x^{\ast} \mid x_{1 \cdots I}) = \int P_{r}(x^{\ast} \mid \mathbf{\theta}
 $$
 \begin{aligned}
 P_{r}(x^{\ast} \mid x_{1 \cdots I}) 
-&= \int P_{r}(x^{\ast} \mid \mathbf{\theta}) \delta[\mathbf{\theta} - \mathbf{\hat{\theta}}] \mathrm{d}\theta \newline
-&= P_{r}(x^{\ast} \mid \mathbf{\theta}) \newline
+&= \int P_{r}(x^{\ast} \mid \mathbf{\theta}) \delta[\mathbf{\theta} - \mathbf{\hat{\theta}}] \mathrm{d}\theta \\
+&= P_{r}(x^{\ast} \mid \mathbf{\theta}) \\
 & \text{where $\int \delta[\mathbf{\theta} - \mathbf{\hat{\theta}}] \mathrm{d}\theta = 1$}
 \end{aligned}
 $$
@@ -503,10 +503,10 @@ $$I = log_{2}(\frac{1}{p(x)}) = -log_{2}(p(x))$$
 $$
 \begin{aligned}
 H(p) 
-&= \sum_{x}p(x) log_{2}(\frac{1}{p(x)}) \newline
-&= -\sum_{x}p(x) log_{2}(p(x)) \newline
-&= E_{x \sim p(x)}[-log_{2}p(x)] \newline
-&= -\sum_{i=1}^{n} p(x) log_{2}(p(x)) \newline
+&= \sum_{x}p(x) log_{2}(\frac{1}{p(x)}) \\
+&= -\sum_{x}p(x) log_{2}(p(x)) \\
+&= E_{x \sim p(x)}[-log_{2}p(x)] \\
+&= -\sum_{i=1}^{n} p(x) log_{2}(p(x)) \\
 \end{aligned}
 $$
 
@@ -514,10 +514,10 @@ $$
 $$
 \begin{aligned}
 H(p) 
-&= \int p(x) log_{2}(\frac{1}{p(x)}) \mathrm{d}x \newline
-&= -\int p(x) log_{2}(p(x)) \mathrm{d}x \newline
-&= E_{x \sim p(x)}[-log_{2}p(x)] \newline
-&= -\int_{-\infty}^{\infty} p(x) log_{2}(p(x)) \newline
+&= \int p(x) log_{2}(\frac{1}{p(x)}) \mathrm{d}x \\
+&= -\int p(x) log_{2}(p(x)) \mathrm{d}x \\
+&= E_{x \sim p(x)}[-log_{2}p(x)] \\
+&= -\int_{-\infty}^{\infty} p(x) log_{2}(p(x)) \\
 \end{aligned}
 $$
 
@@ -532,11 +532,11 @@ $$
 $$
 \begin{aligned}
 H_p(q) 
-&= \sum_{x}p(x)log(\frac{1}{q(x)}) \newline
-&= - \sum_{x}p(x)log(q(x)) \newline
-&= - \sum_{i=1}^{n} p(x_{i})log(q(x_{i})) \newline
-&= - E_{x \sim p(x)} log(q(x)) & \text{; 离散和连续}\newline
-&= - \int_{-\infty}^{\infty} p(x)log(q(x)) \mathrm{d}x \newline
+&= \sum_{x}p(x)log(\frac{1}{q(x)}) \\
+&= - \sum_{x}p(x)log(q(x)) \\
+&= - \sum_{i=1}^{n} p(x_{i})log(q(x_{i})) \\
+&= - E_{x \sim p(x)} log(q(x)) & \text{; 离散和连续}\\
+&= - \int_{-\infty}^{\infty} p(x)log(q(x)) \mathrm{d}x \\
 \end{aligned}
 $$
 
@@ -547,12 +547,12 @@ $$
 $$
 \begin{aligned}
 D(p || q) = D_p(q) 
-&= H_{p}(q) - H(P) & \text{; cross entropy minus information entropy} \newline
-&= \sum_{x}p(x)log(\frac{1}{q(x)}) - [- \sum_{i=1}^{n} p(x) log(p(x))] \newline
-&= \sum_{x}p(x)log(\frac{1}{q(x)}) + \sum_{i=1}^{n} p(x) log(p(x)) \newline
-&= \sum_{x}p(x) \log{\frac{p(x)}{q(x)}} \newline
-&= E_{x \sim p(x)} [\log{\frac{p(x)}{q(x)}}] \newline
-&= D_{KL}(p || q) \newline
+&= H_{p}(q) - H(P) & \text{; cross entropy minus information entropy} \\
+&= \sum_{x}p(x)log(\frac{1}{q(x)}) - [- \sum_{i=1}^{n} p(x) log(p(x))] \\
+&= \sum_{x}p(x)log(\frac{1}{q(x)}) + \sum_{i=1}^{n} p(x) log(p(x)) \\
+&= \sum_{x}p(x) \log{\frac{p(x)}{q(x)}} \\
+&= E_{x \sim p(x)} [\log{\frac{p(x)}{q(x)}}] \\
+&= D_{KL}(p || q) \\
 \end{aligned}
 $$
 
@@ -569,16 +569,16 @@ $$
 $$
 \begin{aligned}
 D_{KL}(p || q)
-&= \sum_{x}p(x)log(\frac{p(x)}{q(x)}) \newline
-&= - \sum_{x}p(x)log(\frac{q(x)}{p(x)}) \newline
-&= - \int_{-\infty}^{\infty} p(x)\mathrm{d}x log(\frac{q(x)}{p(x)}) \newline
-&= - E_{x \sim p(x)}[log(\frac{q(x)}{p(x)})] \newline
-&\le - log E_{x \sim p(x)}[\frac{q(x)}{p(x)}] \newline
-&\ge log E_{x \sim p(x)}[\frac{q(x)}{p(x)}] \newline
-&= log \sum_{x} p(x) \frac{q(x)}{p(x)} \newline
-&= log \sum_{x} q(x) \newline
-&= log(1) \newline
-&= 0 \newline
+&= \sum_{x}p(x)log(\frac{p(x)}{q(x)}) \\
+&= - \sum_{x}p(x)log(\frac{q(x)}{p(x)}) \\
+&= - \int_{-\infty}^{\infty} p(x)\mathrm{d}x log(\frac{q(x)}{p(x)}) \\
+&= - E_{x \sim p(x)}[log(\frac{q(x)}{p(x)})] \\
+&\le - log E_{x \sim p(x)}[\frac{q(x)}{p(x)}] \\
+&\ge log E_{x \sim p(x)}[\frac{q(x)}{p(x)}] \\
+&= log \sum_{x} p(x) \frac{q(x)}{p(x)} \\
+&= log \sum_{x} q(x) \\
+&= log(1) \\
+&= 0 \\
 \end{aligned}
 $$
 
@@ -681,9 +681,9 @@ $$ x_{t} = \sqrt{\beta_{t}}z + \sqrt{1-\beta_{t}}x_{t-1} ; z \in \mathcal{N}(0, 
 $$
 \begin{aligned}
 x_{t}
-&= \sqrt{ \alpha_{t} } x_{t-1} + \sqrt{1 - \alpha_{t}} z_{1} \newline
-&= \sqrt{\alpha_{t}} (\sqrt{\alpha_{t-1}}x_{t-2} + \sqrt{1 - \alpha_{t-1}}z_{2}) + \sqrt{1 - \alpha_{t}} z_{1} & \text{;不断利用重参数技巧进行采样} \newline
-&= \sqrt{\alpha_{t} \alpha_{t-1}}x_{t-2} + {\color{red} \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2}} + {\color{blue} \sqrt{1 - \alpha_{t}} z_{1}} \newline
+&= \sqrt{ \alpha_{t} } x_{t-1} + \sqrt{1 - \alpha_{t}} z_{1} \\
+&= \sqrt{\alpha_{t}} (\sqrt{\alpha_{t-1}}x_{t-2} + \sqrt{1 - \alpha_{t-1}}z_{2}) + \sqrt{1 - \alpha_{t}} z_{1} & \text{;不断利用重参数技巧进行采样} \\
+&= \sqrt{\alpha_{t} \alpha_{t-1}}x_{t-2} + {\color{red} \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2}} + {\color{blue} \sqrt{1 - \alpha_{t}} z_{1}} \\
 \end{aligned}
 $$
 
@@ -719,13 +719,13 @@ $$ \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} + \sqrt{1 - \alpha_{t}} z_{1} \sim \
 $$
 \begin{aligned}
 则原式
-&= x_{t}\newline
-&= \sqrt{\alpha_{t}\alpha_{t-1}}x_{t-2} + {\color{red}\sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2}} + {\color{blue}\sqrt{1 - \alpha_{t}} z_{1}} \newline
-&= \sqrt{\alpha_{t}\alpha_{t-1}}x_{t-2} + \color{green}\sqrt{1- \alpha_{t}\alpha_{t-1}}\bar{z_{2}} \newline
-&= \cdots & \text{;相同的方式不断迭代}\newline
-&= \sqrt{\alpha_{t}\alpha_{t-2} \cdots \alpha_{t=T-1}}x_{1} + \color{green}\sqrt{1- \alpha_{t}\alpha_{t-1} \cdots \alpha_{t=T-1}}\bar{z_{T}} \newline
-&= \sqrt{\alpha_{t}\alpha_{t-1} \cdots \alpha_{t=T}}x_{0} + \color{green}\sqrt{1- \alpha_{t}\alpha_{t-1} \cdots \alpha_{t=T}}\bar{z_{T+1}} \newline
-&= \sqrt{\prod_{i=1}^{T} \alpha_{i}}x_{0} + \color{green}\sqrt{1- \prod_{i=1}^{T} \alpha_{i}}\bar{z_{T+1}} \newline
+&= x_{t}\\
+&= \sqrt{\alpha_{t}\alpha_{t-1}}x_{t-2} + {\color{red}\sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2}} + {\color{blue}\sqrt{1 - \alpha_{t}} z_{1}} \\
+&= \sqrt{\alpha_{t}\alpha_{t-1}}x_{t-2} + \color{green}\sqrt{1- \alpha_{t}\alpha_{t-1}}\bar{z_{2}} \\
+&= \cdots & \text{;相同的方式不断迭代}\\
+&= \sqrt{\alpha_{t}\alpha_{t-2} \cdots \alpha_{t=T-1}}x_{1} + \color{green}\sqrt{1- \alpha_{t}\alpha_{t-1} \cdots \alpha_{t=T-1}}\bar{z_{T}} \\
+&= \sqrt{\alpha_{t}\alpha_{t-1} \cdots \alpha_{t=T}}x_{0} + \color{green}\sqrt{1- \alpha_{t}\alpha_{t-1} \cdots \alpha_{t=T}}\bar{z_{T+1}} \\
+&= \sqrt{\prod_{i=1}^{T} \alpha_{i}}x_{0} + \color{green}\sqrt{1- \prod_{i=1}^{T} \alpha_{i}}\bar{z_{T+1}} \\
 \end{aligned}
 $$
 
@@ -745,8 +745,8 @@ $$q(x_{t} \mid x_{0}) = \mathcal{N}(\mathbf{x}_t; \sqrt{\bar{\alpha}_t} \mathbf{
 $$
 \begin{aligned}
 q(x_{t} \mid x_{t-1})
-&\sim \mathcal{N}(x_{t}; \sqrt{1 - \beta_{t}}x_{t-1}, \beta_{t}I) \newline
-&= \mathcal{N}(x_{t}; \sqrt{1 - \beta_{t}}x_{t-1}, \beta_{t}I) \bar{z}_{t} \newline
+&\sim \mathcal{N}(x_{t}; \sqrt{1 - \beta_{t}}x_{t-1}, \beta_{t}I) \\
+&= \mathcal{N}(x_{t}; \sqrt{1 - \beta_{t}}x_{t-1}, \beta_{t}I) \bar{z}_{t} \\
 \end{aligned}
 $$
 
@@ -754,8 +754,8 @@ $$
 $$
 \begin{aligned}
 q(x_{t} \mid x_{0})
-&\sim \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I) \newline
-&= \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I) \bar{z}_{t} \newline
+&\sim \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I) \\
+&= \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I) \bar{z}_{t} \\
 \end{aligned}
 $$
 
@@ -768,8 +768,8 @@ $$
 $$
 sub. to \left\{
 \begin{aligned}
-&\sqrt{\bar{\alpha_{t}}}x_{0} = 0 \newline
-&1 - \bar{\alpha_{t}} = 1 \newline
+&\sqrt{\bar{\alpha_{t}}}x_{0} = 0 \\
+&1 - \bar{\alpha_{t}} = 1 \\
 \end{aligned}
 \right.
 $$
@@ -797,15 +797,15 @@ and the joint probability dist. as follow:
 $$ p_{\theta}(X_{0:T}) = p(X_{T}) \prod_{t=1}^{T}(x_{t-1} \mid x_{t}) $$
 
 
-> <span style="color:Gold">虽然无法计算出 $q(x_{t-1} \mid x_{t})$ ,但是可以计算出逆向扩散过程的后验概率分布 $q(x_{t-1} \mid x_{t}, x_{0})$ . </span> 联合概率分布可以分解为条件概率分布的乘积形式
+> <span style="color:green">虽然无法计算出 $q(x_{t-1} \mid x_{t})$ ,但是可以计算出逆向扩散过程的后验概率分布 $q(x_{t-1} \mid x_{t}, x_{0})$ . </span> 联合概率分布可以分解为条件概率分布的乘积形式
 
 
 
 $$
 \begin{aligned}
 q(x_{t-1}, x_{t}, x_{0})
-&= q(x_{t-1}, x_{t} \mid x_{0})q(x_{0}) \newline
-&= q(x_{t-1} \mid x_{t}, x_{0})q(x_{t} \mid x_{0})q(x_{0}) \newline
+&= q(x_{t-1}, x_{t} \mid x_{0})q(x_{0}) \\
+&= q(x_{t-1} \mid x_{t}, x_{0})q(x_{t} \mid x_{0})q(x_{0}) \\
 \end{aligned}
 $$
 
@@ -818,8 +818,8 @@ $$
 $$
 \begin{aligned}
 q(x_{t-1}, x_{t}, x_{0})
-&= q(x_{t}, x_{t-1} \mid x_{0})q(x_{0}) \newline
-&= q(x_{t} \mid x_{t-1}, x_{0})q(x_{t-1} \mid x_{0})q(x_{0}) \newline
+&= q(x_{t}, x_{t-1} \mid x_{0})q(x_{0}) \\
+&= q(x_{t} \mid x_{t-1}, x_{0})q(x_{t-1} \mid x_{0})q(x_{0}) \\
 \end{aligned}
 $$
 
@@ -830,12 +830,12 @@ $$
 $$
 \begin{aligned}
 q(x_{t-1} \mid x_{t}, x_{0})
-&=\frac{q(x_{t-1}, x_{t}, x_{0})}{q(x_{t} \mid x_{0}) q(x_{0})} \newline
-&=\frac{q(x_{t} \mid x_{t-1}, x_{0})q(x_{t-1} \mid x_{0})q(x_{0})}{q(x_{t} \mid x_{0}) q(x_{0})} \newline
-&=\frac{q(x_{t} \mid x_{t-1}, x_{0})q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} \newline
-&=q(x_{t} \mid x_{t-1}, x_{0}) \frac{q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} \newline
-&=\color{red} q(x_{t} \mid x_{t-1}) \frac{q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} & \text{; Markov chain}\newline
-\end{aligned} \newline
+&=\frac{q(x_{t-1}, x_{t}, x_{0})}{q(x_{t} \mid x_{0}) q(x_{0})} \\
+&=\frac{q(x_{t} \mid x_{t-1}, x_{0})q(x_{t-1} \mid x_{0})q(x_{0})}{q(x_{t} \mid x_{0}) q(x_{0})} \\
+&=\frac{q(x_{t} \mid x_{t-1}, x_{0})q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} \\
+&=q(x_{t} \mid x_{t-1}, x_{0}) \frac{q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} \\
+&=\color{red} q(x_{t} \mid x_{t-1}) \frac{q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} & \text{; Markov chain}\\
+\end{aligned} \\
 $$
 
 $$
@@ -850,8 +850,11 @@ q(x_{t} \mid x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar
 \end{aligned}
 $$
 
-
-$$ q(x_{t-1} \mid x_{0}) = \mathcal{N}(x_{t-1}; \sqrt{\bar{\alpha}_{t-1}}x_{0}, (1 - \bar{\alpha}_{t-1})I) $$
+$$
+\begin{aligned}
+q(x_{t-1} \mid x_{0}) = \mathcal{N}(x_{t-1}; \sqrt{\bar{\alpha}_{t-1}}x_{0}, (1 - \bar{\alpha}_{t-1})I)
+\end{aligned}
+$$
 
 
 将高斯前向扩散过程带入后验分布式子中，可以化简如下：
@@ -861,20 +864,21 @@ $$
 \begin{aligned}
 q(x_{t-1} \mid x_{t}, x_{0})
 
-&=\color{red} q(x_{t} \mid x_{t-1}) \frac{q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} \newline
+&=\color{red} q(x_{t} \mid x_{t-1}) \frac{q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} \\
 
-&\sim \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}}x_{t-1}, \beta_{t}I) \frac{\mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I)}{\mathcal{N}(x_{t-1}; \sqrt{\bar{\alpha}_{t-1}}x_{0}, (1 - \bar{\alpha}_{t-1})I)} \newline
+&\sim \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}}x_{t-1}, \beta_{t}I) \frac{\mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I)}{\mathcal{N}(x_{t-1}; \sqrt{\bar{\alpha}_{t-1}}x_{0}, (1 - \bar{\alpha}_{t-1})I)} \\
 
-&\propto exp(-\frac{1}{2}[\color{green} \frac{(x_{t} - \sqrt{1-\beta_{t}}x_{t-1})^{2}}{\beta_{t}} + \frac{(x_{t-1} - \sqrt{\bar{\alpha}_{t-1}}x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{(x_{t} - \sqrt{\bar{\alpha}_{t}}x_{0})^{2}}{1-\bar{\alpha}_{t}}]) & \text{; 相同底数的幂函数相乘，指数相加即可; 将高斯函数写成指数表示的形式} \newline
+&\propto exp(-\frac{1}{2}[\color{green} \frac{(x_{t} - \sqrt{1-\beta_{t}}x_{t-1})^{2}}{\beta_{t}} + \frac{(x_{t-1} - \sqrt{\bar{\alpha}_{t-1}}x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{(x_{t} - \sqrt{\bar{\alpha}_{t}}x_{0})^{2}}{1-\bar{\alpha}_{t}}]) \\ 
 
-&\propto exp(\frac{x_{t}^{2} - 2\sqrt{1-\beta_{t}}x_{t-1}x_{t} + (1-\beta_{t})(x_{t-1})^{2}}{\beta_{t}} + \frac{x_{t-1}^{2} - 2\sqrt{\bar{\alpha}_{t-1}}x_{0}x_{t-1} + \bar{\alpha}_{t-1}(x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{x_{t}^{2} - 2\sqrt{\bar{\alpha}_{t}}x_{0}x_{t} + \bar{\alpha}_{t}(x_{0})^{2}}{1-\bar{\alpha}_{t}}) & \text{; 将分子平方展开} \newline
+&\propto exp(\frac{x_{t}^{2} - 2\sqrt{1-\beta_{t}}x_{t-1}x_{t} + (1-\beta_{t})(x_{t-1})^{2}}{\beta_{t}} + \frac{x_{t-1}^{2} - 2\sqrt{\bar{\alpha}_{t-1}}x_{0}x_{t-1} + \bar{\alpha}_{t-1}(x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{x_{t}^{2} - 2\sqrt{\bar{\alpha}_{t}}x_{0}x_{t} + \bar{\alpha}_{t}(x_{0})^{2}}{1-\bar{\alpha}_{t}}) \\
 
-&\propto \frac{x_{t}^{2} - 2\sqrt{1-\beta_{t}}x_{t-1}x_{t} + (1-\beta_{t})(x_{t-1})^{2}}{\beta_{t}} + \frac{x_{t-1}^{2} - 2\sqrt{\bar{\alpha}_{t-1}}x_{0}x_{t-1} + \bar{\alpha}_{t-1}(x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{x_{t}^{2} - 2\sqrt{\bar{\alpha}_{t}}x_{0}x_{t} + \bar{\alpha}_{t}(x_{0})^{2}}{1-\bar{\alpha}_{t}} & \text{; 以 $x_{t-1}$ 为变量进行合并} \newline
+&\propto \frac{x_{t}^{2} - 2\sqrt{1-\beta_{t}}x_{t-1}x_{t} + (1-\beta_{t})(x_{t-1})^{2}}{\beta_{t}} + \frac{x_{t-1}^{2} - 2\sqrt{\bar{\alpha}_{t-1}}x_{0}x_{t-1} + \bar{\alpha}_{t-1}(x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{x_{t}^{2} - 2\sqrt{\bar{\alpha}_{t}}x_{0}x_{t} + \bar{\alpha}_{t}(x_{0})^{2}}{1-\bar{\alpha}_{t}} \\
 
-&\propto (\frac{1-\beta_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}})x_{t-1}^{2} - (\frac{2\sqrt{1-\beta_{t}}x_{t}}{\beta_{t}} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_{0}}{1-\bar{\alpha}_{t-1}})x_{t-1} + C(x_{t}, x_{0}) & \text{; 其中 $C$ 与 $x_{t-1}$ 无关的常量} \newline
-\end{aligned} \newline
+&\propto (\frac{1-\beta_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}})x_{t-1}^{2} - (\frac{2\sqrt{1-\beta_{t}}x_{t}}{\beta_{t}} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_{0}}{1-\bar{\alpha}_{t-1}})x_{t-1} + C(x_{t}, x_{0}) \\
+\end{aligned} \\
 $$
 
+> from line 1 to line 2: 相同底数的幂函数相乘，指数相加即可; 将高斯函数写成指数表示的形式 <br> from line 2 to line 3: 将分子平方展开 <br> from line 3 to line 4: 以 $x_{t-1}$ 为变量进行合并 <br> from line 4 to line 5: 其中 $C$ 与 $x_{t-1}$ 无关的常量 <br>
 
 
 逆向扩散过程的后验概率分布依然满足高斯分布，假设服从以下分布：
@@ -884,10 +888,10 @@ $$
 $$
 \begin{aligned}
 q(x_{t-1} \mid x_{t}, x_{0})
-&\sim \mathcal{N}(x_{t-1}; \widetilde{\mu}(x_{t}, x_{0}), \widetilde{\beta}_{t}I) \newline
-&\sim exp(x_{t-1}; \widetilde{\mu}(x_{t}, x_{0}), \widetilde{\beta}_{t}I) \newline
-&\propto \color{Aquamarine} (\frac{1}{\widetilde{\beta}_{t}})x_{t-1}^{2} - (\frac{2\widetilde{\mu}}{\widetilde{\beta}_{t}})x_{t-1} + \frac{\widetilde{\mu}^{2}}{\widetilde{\beta}_{t}} \newline
-\end{aligned} \newline
+&\sim \mathcal{N}(x_{t-1}; \widetilde{\mu}(x_{t}, x_{0}), \widetilde{\beta}_{t}I) \\
+&\sim exp(x_{t-1}; \widetilde{\mu}(x_{t}, x_{0}), \widetilde{\beta}_{t}I) \\
+&\propto \color{Aquamarine} (\frac{1}{\widetilde{\beta}_{t}})x_{t-1}^{2} - (\frac{2\widetilde{\mu}}{\widetilde{\beta}_{t}})x_{t-1} + \frac{\widetilde{\mu}^{2}}{\widetilde{\beta}_{t}} \\
+\end{aligned} \\
 $$
 
 
@@ -899,17 +903,17 @@ $$
 $$
 \begin{aligned}
 \frac{1}{\widetilde{\beta}_{t}}
-&= \frac{1-\beta_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}} \newline
-&= \frac{(1-\beta_{t})(1-\bar{\alpha}_{t-1})+\beta_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})} \newline
+&= \frac{1-\beta_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}} \\
+&= \frac{(1-\beta_{t})(1-\bar{\alpha}_{t-1})+\beta_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})} \\
 
-\Rightarrow \widetilde{\beta}_{t} &= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{(1-\beta_{t})(1-\bar{\alpha}_{t-1})+\beta_{t}} \newline
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}(1-\bar{\alpha}_{t-1})+\beta_{t}} & \text{; $\beta_{t}=1-\alpha_{t}$} \newline 
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\alpha_{t}\bar{\alpha}_{t-1}+\beta_{t}} \newline 
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\bar{\alpha}_{t}+\beta_{t}} \newline 
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\bar{\alpha}_{t}+(1-\alpha_{t})} \newline 
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}} \newline 
-&= \color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} & \text{; DDPM paper} \newline 
-\end{aligned} \newline
+\Rightarrow \widetilde{\beta}_{t} &= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{(1-\beta_{t})(1-\bar{\alpha}_{t-1})+\beta_{t}} \\
+&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}(1-\bar{\alpha}_{t-1})+\beta_{t}} & \text{; $\beta_{t}=1-\alpha_{t}$} \\ 
+&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\alpha_{t}\bar{\alpha}_{t-1}+\beta_{t}} \\ 
+&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\bar{\alpha}_{t}+\beta_{t}} \\ 
+&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\bar{\alpha}_{t}+(1-\alpha_{t})} \\ 
+&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}} \\ 
+&= \color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} & \text{; DDPM paper} \\ 
+\end{aligned} \\
 $$
 
 
@@ -917,19 +921,19 @@ $$
 $$
 \begin{aligned}
 \frac{2\widetilde{\mu}}{\widetilde{\beta}_{t}}
-&= \frac{2\sqrt{1-\beta_{t}}x_{t}}{\beta_{t}} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_{0}}{1-\bar{\alpha}_{t-1}} \newline
-&= 2\frac{(1-\bar{\alpha}_{t-1})\sqrt{1-\beta_{t}}x_{t} + \beta_{t}\sqrt{\bar{\alpha}_{t-1}}x_{0}}{\beta_{t}(1-\bar{\alpha}_{t-1})} \newline
+&= \frac{2\sqrt{1-\beta_{t}}x_{t}}{\beta_{t}} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_{0}}{1-\bar{\alpha}_{t-1}} \\
+&= 2\frac{(1-\bar{\alpha}_{t-1})\sqrt{1-\beta_{t}}x_{t} + \beta_{t}\sqrt{\bar{\alpha}_{t-1}}x_{0}}{\beta_{t}(1-\bar{\alpha}_{t-1})} \\
 
-\Rightarrow \widetilde{\mu}_{t}(x_{t},x_{0}) &= \frac{((1-\bar{\alpha}_{t-1})\sqrt{1-\beta_{t}}x_{t} + \beta_{t}\sqrt{\bar{\alpha}_{t-1}}x_{0})\widetilde{\beta}_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})} \newline
+\Rightarrow \widetilde{\mu}_{t}(x_{t},x_{0}) &= \frac{((1-\bar{\alpha}_{t-1})\sqrt{1-\beta_{t}}x_{t} + \beta_{t}\sqrt{\bar{\alpha}_{t-1}}x_{0})\widetilde{\beta}_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})} \\
 
-&= \frac{\beta_{t}\sqrt{\bar{\alpha}_{t-1}}\widetilde{\beta}_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})}x_{0} +  \frac{(1-\bar{\alpha}_{t-1})\sqrt{1-\beta_{t}}\widetilde{\beta}_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})}x_{t}\newline
+&= \frac{\beta_{t}\sqrt{\bar{\alpha}_{t-1}}\widetilde{\beta}_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})}x_{0} +  \frac{(1-\bar{\alpha}_{t-1})\sqrt{1-\beta_{t}}\widetilde{\beta}_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})}x_{t}\\
 
-&= \frac{\beta_{t}\sqrt{\bar{\alpha}_{t-1}}(\color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t})}{\beta_{t}(1-\bar{\alpha}_{t-1})}x_{0} +  \frac{(1-\bar{\alpha}_{t-1})\sqrt{1-\beta_{t}}(\color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t})}{\beta_{t}(1-\bar{\alpha}_{t-1})}x_{t}\newline
+&= \frac{\beta_{t}\sqrt{\bar{\alpha}_{t-1}}(\color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t})}{\beta_{t}(1-\bar{\alpha}_{t-1})}x_{0} +  \frac{(1-\bar{\alpha}_{t-1})\sqrt{1-\beta_{t}}(\color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t})}{\beta_{t}(1-\bar{\alpha}_{t-1})}x_{t}\\
 
-&= \frac{\sqrt{\bar{\alpha}_{t-1}}}{1-\bar{\alpha}_{t-1}}\cdot \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} x_{0} + \frac{\sqrt{1-\beta_{t}}}{\beta_{t}} \cdot \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} x_{t} & \text{; $\alpha_{t}=1-\beta_{t}$} \newline
+&= \frac{\sqrt{\bar{\alpha}_{t-1}}}{1-\bar{\alpha}_{t-1}}\cdot \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} x_{0} + \frac{\sqrt{1-\beta_{t}}}{\beta_{t}} \cdot \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} x_{t} & \text{; $\alpha_{t}=1-\beta_{t}$} \\
 
-&= \color{green} \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}}x_{0} + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} & \text{; DDPM paper} \newline
-\end{aligned}  \newline
+&= \color{green} \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}}x_{0} + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} & \text{; DDPM paper} \\
+\end{aligned}  \\
 $$
 
 
@@ -942,10 +946,10 @@ $$q(x_{t} \mid x_{0})
 
 $$
 \begin{aligned}
-x_{t} &= \sqrt{\bar{\alpha}_{t}}x_{0} + \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t} \newline
+x_{t} &= \sqrt{\bar{\alpha}_{t}}x_{0} + \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t} \\
 
 \Rightarrow x_{0} &= \frac{1}{\sqrt{\bar{\alpha}_{t}}}(x_{t} - \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t})
-\end{aligned}  \newline
+\end{aligned}  \\
 $$
 
 
@@ -955,22 +959,22 @@ $$
 $$
 \begin{aligned}
 \widetilde{\mu}_{t}(x_{t},x_{0}) 
-&= \color{green} \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}}x_{0} + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} \newline
+&= \color{green} \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}}x_{0} + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} \\
 
-&= \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}}(\frac{1}{\sqrt{\bar{\alpha}_{t}}}(x_{t} - \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t})) + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} \newline
+&= \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}}(\frac{1}{\sqrt{\bar{\alpha}_{t}}}(x_{t} - \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t})) + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} \\
 
-&= \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}} \cdot \frac{1}{\sqrt{\bar{\alpha}_{t}}}(x_{t} - \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t}) + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} \newline
+&= \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}} \cdot \frac{1}{\sqrt{\bar{\alpha}_{t}}}(x_{t} - \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t}) + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} \\
 
-&= \frac{1}{\sqrt{\alpha_{t}}} \left[ \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}x_{t} + \frac{\alpha_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} - \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}(\sqrt{1 - \bar{\alpha}_{t}})}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}\bar{z}_{t}\right] & \text{; $\sqrt{\bar{\alpha}_{t}} = \sqrt{\alpha_{t}\bar{\alpha}_{t-1}}$}\newline
+&= \frac{1}{\sqrt{\alpha_{t}}} \left[ \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}x_{t} + \frac{\alpha_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} - \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}(\sqrt{1 - \bar{\alpha}_{t}})}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}\bar{z}_{t}\right] & \text{; $\sqrt{\bar{\alpha}_{t}} = \sqrt{\alpha_{t}\bar{\alpha}_{t-1}}$}\\
 
-&= \frac{1}{\sqrt{\alpha_{t}}} \left[ \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}x_{t} + \frac{\alpha_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} - \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}(\sqrt{1 - \bar{\alpha}_{t}})}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}\bar{z}_{t}\right] \newline
+&= \frac{1}{\sqrt{\alpha_{t}}} \left[ \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}x_{t} + \frac{\alpha_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} - \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}(\sqrt{1 - \bar{\alpha}_{t}})}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}\bar{z}_{t}\right] \\
 
-&= \frac{1}{\sqrt{\alpha_{t}}} \left[ \frac{\beta_{t} + \alpha_{t} - \alpha_{t}\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}x_{t} - \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}(\sqrt{1 - \bar{\alpha}_{t}})}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}\bar{z}_{t}\right] \newline
+&= \frac{1}{\sqrt{\alpha_{t}}} \left[ \frac{\beta_{t} + \alpha_{t} - \alpha_{t}\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}x_{t} - \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}(\sqrt{1 - \bar{\alpha}_{t}})}{(1-\bar{\alpha}_{t})\sqrt{\bar{\alpha}_{t-1}}}\bar{z}_{t}\right] \\
 
-&= \frac{1}{\sqrt{\alpha_{t}}} \left[ \frac{(1-\alpha_{t}) + \alpha_{t} - \alpha_{t}\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}x_{t} - \frac{\beta_{t}(\sqrt{1 - \bar{\alpha}_{t}})}{(1-\bar{\alpha}_{t})}\bar{z}_{t}\right] \newline
+&= \frac{1}{\sqrt{\alpha_{t}}} \left[ \frac{(1-\alpha_{t}) + \alpha_{t} - \alpha_{t}\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}x_{t} - \frac{\beta_{t}(\sqrt{1 - \bar{\alpha}_{t}})}{(1-\bar{\alpha}_{t})}\bar{z}_{t}\right] \\
 
-&= \color{Cyan} \frac{1}{\sqrt{\alpha_{t}}} (x_{t} - \frac{\beta_{t}}{\sqrt{1-\bar{\alpha}_{t}}}\bar{z}_{t} ) \newline
-\end{aligned}  \newline
+&= \color{Cyan} \frac{1}{\sqrt{\alpha_{t}}} (x_{t} - \frac{\beta_{t}}{\sqrt{1-\bar{\alpha}_{t}}}\bar{z}_{t} ) \\
+\end{aligned}  \\
 $$
 
 
@@ -992,9 +996,9 @@ DDPM paper 中对于方差的策略，直接使用逆向扩散过程推导的解
 $$
 \begin{aligned}
 \Sigma_{\theta}(x_{t}, t) 
-&= \widetilde{\beta}_{t} & \text{; reverse process variance} \newline
-&= \beta_{t} & \text{; forward process variance} \newline
-&= \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} & \text{; reverse process posterior variance} \newline
+&= \widetilde{\beta}_{t} & \text{; reverse process variance} \\
+&= \beta_{t} & \text{; forward process variance} \\
+&= \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} & \text{; reverse process posterior variance} \\
 \end{aligned}
 $$
 
@@ -1039,24 +1043,19 @@ $$\mathcal{L} = E_{x \sim q(x_{0})}[-\log{p_{\theta}(x_{0})}]$$
 $$
 \begin{aligned}
 \mathcal{L}
-&= -\log{p_{\theta}(x_{0})} \newline
-&\le -\log{p_{\theta}(x_{0})} + D_{KL}(q(x_{1:T} \mid x_{0}) || p_{\theta}(x_{1:T} \mid x_{0})) & \text{; No.2} \newline
-&= -\log{p_{\theta}(x_{0})} + E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{1:T} \mid x_{0})}}] & \text{; No.3} \newline
-&= -\log{p_{\theta}(x_{0})} + E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T}) / p_{\theta}(x_{0})}}] & \text{; No.4} \newline
-&= -\log{p_{\theta}(x_{0})} + E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} + \log{p_{\theta}(x_{0})}] & \text{; No.5} \newline
-&= -\log{p_{\theta}(x_{0})} + \log{p_{\theta}(x_{0})} + E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} ] & \text{; No.6} \newline
-&= E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} ] & \text{; No.7} \newline
+&= -\log{p_{\theta}(x_{0})} \\
+&\le -\log{p_{\theta}(x_{0})} + D_{KL}(q(x_{1:T} \mid x_{0}) || p_{\theta}(x_{1:T} \mid x_{0})) & \text{; No.2} \\
+&= -\log{p_{\theta}(x_{0})} + E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{1:T} \mid x_{0})}}] & \text{; No.3} \\
+&= -\log{p_{\theta}(x_{0})} + E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T}) / p_{\theta}(x_{0})}}] & \text{; No.4} \\
+&= -\log{p_{\theta}(x_{0})} + E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} + \log{p_{\theta}(x_{0})}] & \text{; No.5} \\
+&= -\log{p_{\theta}(x_{0})} + \log{p_{\theta}(x_{0})} + E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} ] & \text{; No.6} \\
+&= E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} ] & \text{; No.7} \\
 \end{aligned}
 $$
 
 
 **Note that：**
-
-- 第 2 行式子成立的理由: KL 散度的非负性
-- 第 3 行式子成立的理由: KL 散度的定义计算公式
-- 第 4 行式子成立的理由: 条件概率的定义计算公式
-- 第 5 行式子成立的理由: 对数函数的性质
-- 第 6 行式子成立的理由: $p_{\theta}(x_{0})$ 与求  $q(x_{1:T} \mid x_{0})$ 的期望无关
+> 第 2 行式子成立的理由: KL 散度的非负性 <br> 第 3 行式子成立的理由: KL 散度的定义计算公式 <br> 第 4 行式子成立的理由: 条件概率的定义计算公式 <br> 第 5 行式子成立的理由: 对数函数的性质 <br> 第 6 行式子成立的理由: $p_{\theta}(x_{0})$ 与求  $q(x_{1:T} \mid x_{0})$ 的期望无关 <br>
 
 对上式子两边取期望 $E_{q(x_{0})}$, 即为类似计算 VAE 中的变分下限 ([Evidence lower bound](https://en.wikipedia.org/wiki/Evidence_lower_bound))：
 
@@ -1064,9 +1063,9 @@ $$
 $$
 \begin{aligned}
 \mathcal{L}_{VLB} 
-&\ge E_{q(x_{0})}[-\log{p_{\theta}(x_{0})}] \newline
-&= E_{q(x_{0})}[E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} ]] \newline
-&= E_{q(x_{0:T})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} ] & \text{; DPM paper} \newline
+&\ge E_{q(x_{0})}[-\log{p_{\theta}(x_{0})}] \\
+&= E_{q(x_{0})}[E_{q(x_{1:T} \mid x_{0})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} ]] \\
+&= E_{q(x_{0:T})}[\log{\frac{q(x_{1:T} \mid x_{0})}{p_{\theta}(x_{0:T})}} ] & \text{; DPM paper} \\
 \end{aligned}
 $$
 
@@ -1077,27 +1076,26 @@ which has a lower bound provided by [Jense's inequality](https://en.wikipedia.or
 $$
 \begin{aligned}
 \mathcal{L} = L_\text{CE}
-&= \mathbb{E}_{q(x_{0})}[-\log{p_{\theta}(x_{0})}] \newline
-&= - \mathbb{E}_{q(\mathbf{x}_0)} [ \log\Big({ p_\theta(\mathbf{x}_0) \int p_\theta(\mathbf{x}_{1:T}) d\mathbf{x}_{1:T}}\Big)] & \text{; No.2} \newline
+&= \mathbb{E}_{q(x_{0})}[-\log{p_{\theta}(x_{0})}] \\
+&= - \mathbb{E}_{q(\mathbf{x}_0)} [ \log\Big({ p_\theta(\mathbf{x}_0) \int p_\theta(\mathbf{x}_{1:T}) d\mathbf{x}_{1:T}}\Big)] & \text{; No.2} \\
 
-&= - \mathbb{E}_{q(\mathbf{x}_0)} [ \log \Big( \int p_\theta(\mathbf{x}_{0:T}) d\mathbf{x}_{1:T} \Big) ] \newline
+&= - \mathbb{E}_{q(\mathbf{x}_0)} [ \log \Big( \int p_\theta(\mathbf{x}_{0:T}) d\mathbf{x}_{1:T} \Big) ] \\
 
-&= - \mathbb{E}_{q(\mathbf{x}_0)} [ \log \Big( \int q(\mathbf{x}_{1:T} \vert \mathbf{x}_0) \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T} \vert \mathbf{x}_{0})} d\mathbf{x}_{1:T} \Big) ] \newline
+&= - \mathbb{E}_{q(\mathbf{x}_0)} [ \log \Big( \int q(\mathbf{x}_{1:T} \vert \mathbf{x}_0) \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T} \vert \mathbf{x}_{0})} d\mathbf{x}_{1:T} \Big) ] \\
 
-&= - \mathbb{E}_{q(\mathbf{x}_0)} \log \Big( \mathbb{E}_{q(\mathbf{x}_{1:T} \vert \mathbf{x}_0)} \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T} \vert \mathbf{x}_{0})} \Big) \newline
+&= - \mathbb{E}_{q(\mathbf{x}_0)} \log \Big( \mathbb{E}_{q(\mathbf{x}_{1:T} \vert \mathbf{x}_0)} \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T} \vert \mathbf{x}_{0})} \Big) \\
 
-&\leq - \mathbb{E}_{q(\mathbf{x}_{0:T})} \log \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T} \vert \mathbf{x}_{0})} & \text{; Jense's inequality} \newline
+&\leq - \mathbb{E}_{q(\mathbf{x}_{0:T})} \log \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T} \vert \mathbf{x}_{0})} & \text{; Jense's inequality} \\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})}\Big[\log \frac{q(\mathbf{x}_{1:T} \vert \mathbf{x}_{0})}{p_\theta(\mathbf{x}_{0:T})} \Big] \newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})}\Big[\log \frac{q(\mathbf{x}_{1:T} \vert \mathbf{x}_{0})}{p_\theta(\mathbf{x}_{0:T})} \Big] \\
 
-&= \color{red} \mathcal{L}_{VLB} \newline
+&= \color{red} \mathcal{L}_{VLB} \\
 \end{aligned}
 $$
 
 
 **Note that：**
-
-- 第 2 行式子成立的理由: $p_{\theta}(x_{0})$ 与求  $q(x_{1:T} \mid x_{0})$ 的期望无关, 而且积分结果为 1
+> 第 2 行式子成立的理由: $p_{\theta}(x_{0})$ 与求  $q(x_{1:T} \mid x_{0})$ 的期望无关, 而且积分结果为 1 <br>
 
 进一步对 $\mathcal{L}_{VLB}$ 推导，根据 Improved DDPM paper 中的形式：
 
@@ -1105,39 +1103,33 @@ $$
 $$
 \begin{aligned}
 L_\text{VLB} 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ \log\frac{q(\mathbf{x}_{1:T}\vert\mathbf{x}_0)}{p_\theta(\mathbf{x}_{0:T})} \Big] \newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ \log\frac{q(\mathbf{x}_{1:T}\vert\mathbf{x}_0)}{p_\theta(\mathbf{x}_{0:T})} \Big] \\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ \log\frac{\prod_{t=1}^T q(\mathbf{x}_t\vert\mathbf{x}_{t-1})}{ p_\theta(\mathbf{x}_T) \prod_{t=1}^T p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t) } \Big] & \text{; No.2} \newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ \log\frac{\prod_{t=1}^T q(\mathbf{x}_t\vert\mathbf{x}_{t-1})}{ p_\theta(\mathbf{x}_T) \prod_{t=1}^T p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t) } \Big] & \text{; No.2} \\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=1}^T \log \frac{q(\mathbf{x}_t\vert\mathbf{x}_{t-1})}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} \Big] & \text{; No.3} \newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=1}^T \log \frac{q(\mathbf{x}_t\vert\mathbf{x}_{t-1})}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} \Big] & \text{; No.3} \\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \frac{q(\mathbf{x}_t\vert\mathbf{x}_{t-1})}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} + \log\frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.4}\newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \frac{q(\mathbf{x}_t\vert\mathbf{x}_{t-1})}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} + \log\frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.4}\\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \Big( \color{red}{ \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)}\cdot \frac{q(\mathbf{x}_t \vert \mathbf{x}_0)}{q(\mathbf{x}_{t-1}\vert\mathbf{x}_0)} } \Big ) + \log \frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.5}\newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \Big( \color{red}{ \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)}\cdot \frac{q(\mathbf{x}_t \vert \mathbf{x}_0)}{q(\mathbf{x}_{t-1}\vert\mathbf{x}_0)} } \Big ) + \log \frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.5}\\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} + \sum_{t=2}^T \log \frac{q(\mathbf{x}_t \vert \mathbf{x}_0)}{q(\mathbf{x}_{t-1} \vert \mathbf{x}_0)} + \log\frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.6}\newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} + \sum_{t=2}^T \log \frac{q(\mathbf{x}_t \vert \mathbf{x}_0)}{q(\mathbf{x}_{t-1} \vert \mathbf{x}_0)} + \log\frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.6}\\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} + \log \frac{\prod_{i=2}^{T} q(\mathbf{x}_{i} \vert \mathbf{x}_0)}{\prod_{i=2}^{T} q(\mathbf{x}_{i-1} \vert \mathbf{x}_0)} + \log\frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.7}\newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} + \log \frac{\prod_{i=2}^{T} q(\mathbf{x}_{i} \vert \mathbf{x}_0)}{\prod_{i=2}^{T} q(\mathbf{x}_{i-1} \vert \mathbf{x}_0)} + \log\frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.7}\\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} + \log\frac{q(\mathbf{x}_T \vert \mathbf{x}_0)}{q(\mathbf{x}_1 \vert \mathbf{x}_0)} + \log \frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.8}\newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ -\log p_\theta(\mathbf{x}_T) + \sum_{t=2}^T \log \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} + \log\frac{q(\mathbf{x}_T \vert \mathbf{x}_0)}{q(\mathbf{x}_1 \vert \mathbf{x}_0)} + \log \frac{q(\mathbf{x}_1 \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)} \Big] & \text{; No.8}\\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ \log\frac{q(\mathbf{x}_T \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_T)} + \sum_{t=2}^T \log \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} - \log p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1) \Big] & \text{; No.9} \newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ \log\frac{q(\mathbf{x}_T \vert \mathbf{x}_0)}{p_\theta(\mathbf{x}_T)} + \sum_{t=2}^T \log \frac{q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)}{p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t)} - \log p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1) \Big] & \text{; No.9} \\
 
-&=Exception || KL ? \newline
+&=Exception || KL ? \\
 
-&= \mathbb{E}_{q(\mathbf{x}_{0:T})} [\underbrace{D_\text{KL}(q(\mathbf{x}_T \vert \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_T))}_{L_T} + \sum_{t=2}^T \underbrace{D_\text{KL}(q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t))}_{L_{t-1}} \underbrace{- \log p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)}_{L_0} ] & \text{; No.10} \newline
+&= \mathbb{E}_{q(\mathbf{x}_{0:T})} [\underbrace{D_\text{KL}(q(\mathbf{x}_T \vert \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_T))}_{L_T} + \sum_{t=2}^T \underbrace{D_\text{KL}(q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t))}_{L_{t-1}} \underbrace{- \log p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)}_{L_0} ] & \text{; No.10} \\
 \end{aligned}
 $$
 
 
 **Note that：**
-
-- 第 2 行式子: convert Joint dist. into conditional dist. prod.
-- 第 3 行式子: 对数函数的性质
-- 第 5 行式子: reverse process formula for $x_{t}$ and $x_{0}$
-- 第 8 行式子: 对数函数性质 & 累乘形式下分子分母相同项消除
-- 第 9 行式子: 根据对数性质进行重新组合排列每一项
-- how and why line No.9 $\longrightarrow$ line No.10；也知答案，逆推过程，凑一个期望，即对数里面分子的一个积分
+> 第 2 行式子: convert Joint dist. into conditional dist. prod. <br> 第 3 行式子: 对数函数的性质 <br> 第 5 行式子: reverse process formula for $x_{t}$ and $x_{0}$ <br> 第 8 行式子: 对数函数性质 & 累乘形式下分子分母相同项消除 <br> 第 9 行式子: 根据对数性质进行重新组合排列每一项 <br> how and why line No.9 $\longrightarrow$ line No.10；也知答案，逆推过程，凑一个期望，即对数里面分子的一个积分 <br>
 
 **recall that: where the expectation **line No.9** is over a distribution $\bar{q}(x_{t-1})$ that is independent from the variable (namely $x_{t-1}$).** 
 
@@ -1148,13 +1140,13 @@ $$D_{\text{KL}}(q(x) || p(x)) = \mathbb{E}_{q(x)} [\log q(x) / p(x)]$$
 $$
 \begin{aligned}
 gereral_{line-9}
-&=\mathbb{E}_{q(x_{0:T})} \left[ \log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \newline
+&=\mathbb{E}_{q(x_{0:T})} \left[ \log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \\
 
-&=~ \mathbb{E}_{{\color{red}q(x_{t-1}|x_t, x_0)}{\color{green}q(x_t,x_0)q(x_{1:t-2,t+1:T}|x_{t-1},x_t,x_0)}} \left[\log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \newline
+&=~ \mathbb{E}_{{\color{red}q(x_{t-1}|x_t, x_0)}{\color{green}q(x_t,x_0)q(x_{1:t-2,t+1:T}|x_{t-1},x_t,x_0)}} \left[\log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \\
 
-&=~ \mathbb{E}_{{\color{green}\bar{q}(x_{t-1})}} \left[ \mathbb{E}_{{\color{red}q(x_{t-1}|x_t, x_0)}} \left[\log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \right]  \newline
+&=~ \mathbb{E}_{{\color{green}\bar{q}(x_{t-1})}} \left[ \mathbb{E}_{{\color{red}q(x_{t-1}|x_t, x_0)}} \left[\log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \right]  \\
 
-&=~ \mathbb{E}_{\bar{q}(x_{t-1})} \left[D_{\text{KL}}(q(x_{t-1}|x_t, x_0)|| p_\theta(x_{t-1}|x_t)) \right] \newline
+&=~ \mathbb{E}_{\bar{q}(x_{t-1})} \left[D_{\text{KL}}(q(x_{t-1}|x_t, x_0)|| p_\theta(x_{t-1}|x_t)) \right] \\
 
 &=~ D_{\text{KL}}(q(x_{t-1}|x_t, x_0)|| p_\theta(x_{t-1}|x_t))
 \end{aligned}
@@ -1168,9 +1160,9 @@ Let’s label each component in the variational lower bound loss separately:
 
 $$
 \begin{aligned}
-L_\text{VLB} &= L_T + L_{T-1} + \dots + L_0 \newline
-\text{where } L_T &= D_\text{KL}(q(\mathbf{x}_T \vert \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_T)) \newline
-L_t &= D_\text{KL}(q(\mathbf{x}_t \vert \mathbf{x}_{t+1}, \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_t \vert\mathbf{x}_{t+1})) \text{ for }1 \leq t \leq T-1 \newline
+L_\text{VLB} &= L_T + L_{T-1} + \dots + L_0 \\
+\text{where } L_T &= D_\text{KL}(q(\mathbf{x}_T \vert \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_T)) \\
+L_t &= D_\text{KL}(q(\mathbf{x}_t \vert \mathbf{x}_{t+1}, \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_t \vert\mathbf{x}_{t+1})) \text{ for }1 \leq t \leq T-1 \\
 L_0 &= - \log p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)
 \end{aligned}
 $$
@@ -1198,9 +1190,7 @@ $$
 
 
 $$
-\begin{align}
 \mathbf{x}_{i+1} \gets \mathbf{x}_i + \epsilon \nabla_\mathbf{x} \log p(\mathbf{x}) + \sqrt{2\epsilon}~ \mathbf{z}_i, \quad i=0,1,\cdots, K,
-\end{align}
 $$
 
 
@@ -1234,44 +1224,73 @@ $$
 </center>
 
 ```python
-# Training for Denoising Diffusion Probabilistic Models
-# source code from DDPM original github: 
-# github: https://github.com/hojonathanho/diffusion
-def train_fn(self, x, y):
-    B, H, W, C = x.shape
-    if self.randflip:
-        x = tf.image.random_flip_left_right(x)
-        assert x.shape == [B, H, W, C]
+# Pseudo-Code of forward process and training for DDPMs like PyTorch
+class GaussianDiffusionSampler(torch.nn.Module):
+    def __init__(self, model, beta_1, beta_T, T):
+        super(GaussianDiffusionSampler, self).__init__()
 
-    t = tf.random_uniform([B], 0, self.diffusion.num_timesteps, dtype=tf.int32)
-    losses = self.diffusion.p_losses(denoise_fn=
-        functools.partial(self._denoise, y=y, dropout=self.dropout), x_start=x, t=t)
+    # 计算任意时刻的 x_t 采样值，基于 x_0 和重参数化技巧
+    def q_x(x_0, t, alphas_bar_sqrt, one_minus_alphas_bar_sqrt):
+        noise = torch.randn_like(x_0)
+        alphas_t = alphas_bar_sqrt[t]
+        alphas_1_m_t = one_minus_alphas_bar_sqrt[t]
+        # 在 x[0] 的基础上添加噪声
+        return (alphas_t * x_0 + alphas_1_m_t * noise)
 
-    assert losses.shape == t.shape == [B]
-    return {'loss': tf.reduce_mean(losses)}
+    # 6. 训练优化的目标函数 最大化对数似然(最小化负对数似然)
+    def diffusion_loss_fn(model, x_0, alphas_bar_sqrt, one_minus_alphas_bar_sqrt, n_steps):
+        """ 对任意时刻t进行采样计算loss. """
+        batch_size = x_0.shape[0]
+        
+        #对一个 batchsize 样本生成随机的时刻 t
+        t = torch.randint(0, n_steps, size=(batch_size//2,))
+        t = torch.cat([t, n_steps-1-t], dim=0)
+        t = t.unsqueeze(-1)
+        
+        # x0 的系数
+        a = alphas_bar_sqrt[t]
+        # eps 的系数
+        aml = one_minus_alphas_bar_sqrt[t]
+        #生成随机噪音 eps
+        e = torch.randn_like(x_0)
 
-def samples_fn(self, dummy_noise, y):
-    return {'samples': 
-        self.diffusion.p_sample_loop(
-            denoise_fn=functools.partial(self._denoise, y=y, dropout=0),
-            shape=dummy_noise.shape.as_list(),
-            noise_fn=tf.random_normal)}
+        # 构造模型的输入
+        x = x_0 * a + e * aml
+        # 送入模型，得到t时刻的随机噪声预测值
+        output = NN_Model(x, t.squeeze(-1))
+
+        #与真实噪声一起计算误差，求平均值 ---> MSE loss
+        return (e - output).square().mean()
 ```
 
 ```python
-# Sampleing for Denoising Diffusion Probabilistic Models
-# source code from DDPM original github: 
-# github: https://github.com/hojonathanho/diffusion
-def samples_fn_denoising_trajectory(self, dummy_noise, y, repeat_noise_steps=0):
-    times, imgs = self.diffusion.p_sample_loop_trajectory(
-        denoise_fn=functools.partial(self._denoise, y=y, dropout=0),
-        shape=dummy_noise.shape.as_list(),
-        noise_fn=tf.random_normal,
-        repeat_noise_steps=repeat_noise_steps)
+# Pseudo-Code of forward process and training for DDPMs like PyTorch
 
-return {'samples': imgs[-1],
-    'denoising_trajectory_times': times,
-    'denoising_trajectory_images': imgs}
+# 逆向扩散过程的采样函数 (inference pahse)
+def p_sample_loop(model, shape, n_steps, betas, one_minus_alphas_bar_sqrt):
+    """ 从 x[T] 恢复 x[T-1]、x[T-2]|...x[0]. """
+    cur_x = torch.randn(shape)
+    x_seq = [cur_x]
+    for i in reversed(range(n_steps)):
+        cur_x = p_sample(model, cur_x, i ,betas, one_minus_alphas_bar_sqrt)
+        x_seq.append(cur_x)
+    return x_seq
+
+def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
+    """ 从 x[T] 采样 t 时刻的重构值. """
+    t = torch.tensor([t])
+    
+    coeff = betas[t] / one_minus_alphas_bar_sqrt[t]
+    
+    eps_theta = model(x, t)
+    
+    mean = (1 / (1 - betas[t]).sqrt()) * (x - (coeff * eps_theta))
+    
+    z = torch.randn_like(x)
+    sigma_t = betas[t].sqrt()
+    
+    sample = mean + sigma_t * z
+    return (sample)
 ```
 
 <center class="center">
@@ -1545,8 +1564,6 @@ Cited as:
 
 ----------------------------
 
-<div id="refer-17"></div>
-
 [17] Diederik P. Kingma, Max Welling, "Auto-Encoding Variational Bayes," ICLR'2014
 
 [Reparameterization Paper on ICLR'2014](https://openreview.net/forum?id=33X9fd2-9FyZd)
@@ -1554,8 +1571,6 @@ Cited as:
 &emsp;&emsp;[Reparameterization Code on GitHub](https://github.com/AntixK/PyTorch-VAE)
 
 ----------------------------
-
-<div id="refer-18"></div>
 
 [18] Robin Rombach, Andreas Blattmann, et al. "High-Resolution Image Synthesis with Latent Diffusion Models," CVPR'2022
 
