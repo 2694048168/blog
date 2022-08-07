@@ -24,7 +24,9 @@
 
 ## Magical Images 魔法式图像
 
-[DALLE 2: a new AI system that can create realistic images and art from a description in natural language](https://openai.com/dall-e-2/)
+> [DeepFake tech.](https://en.wikipedia.org/wiki/Deepfake)  a  portmanteau word of "deep learning" and "fake" since 2016.
+
+[DALLE 2](<https://openai.com/dall-e-2/> (Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, et al. "Hierarchical Text-Conditional Image Generation with CLIP Latents," OpenAI arXiv'2022)) : **a new AI system that can create realistic images and art from a description in natural language**
 
 <center class="half">
     <img src="./images/DALLE2_0.png", width="50%" /><img src="./images/DALLE2_1.png", width="50%" />
@@ -35,7 +37,7 @@
     padding: 2px;">Fig. 1. Some Samples from DELLE 2. (Image source from DALLE-2 paper, OpenAI)</div>
 </center>
 
-[Imagen: unprecedented photorealism x deep level of language understanding](https://imagen.research.google/)
+[Imagen](<https://imagen.research.google/> (Chitwan Saharia, William Chan, Saurabh Saxena, et al. "Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding," Google arXiv'2022)) : **unprecedented photorealism x deep level of language understanding**
 
 <center class="half">
     <img src="./images/Imagen_0.png", width="50%" /><img src="./images/Imagen_1.png", width="50%" />
@@ -45,6 +47,8 @@
     color: #999;
     padding: 2px;">Fig. 2. Some Samples from Imagen. (Image source from Imagen paper, Google)</div>
 </center>
+
+-------
 
 ## Image Generation Paradigm 图像生成研究范式
 
@@ -57,7 +61,7 @@
 - [Computer Vison: Models, Learning, and Inference 中英版本图书](https://item.jd.com/12218342.html)
 - [Awesome Diffusion Models](https://github.com/heejkoo/Awesome-Diffusion-Models)
 
-**各类生成模型对比**
+**Paradigm of Deep Generative Models**
 
 <center>
     <img style="border-radius: 0.3125em;
@@ -71,7 +75,11 @@
 </center>
 <!-- ![generative-overview](./Images/generative-overview.png) -->
 
-Diffusion Models 和其他生成模型最大的区别是它的 latent code(z) 和原图是同尺寸大小的，当然也有基于压缩的 Latent Diffusion Model &ensp;[CVPR'2022][<sup>[18]</sup>](#refer-18)
+**Quote from Yang Song (PhD, Stanford)**
+
+> Existing generative modeling techniques can largely be grouped into two categories based on how they represent probability distributions. <br> (1) likelihood-based models, which directly learn the distribution’s probability density (or mass) function via (approximate) maximum likelihood. Typical likelihood-based models include autoregressive models,  normalizing flow models, energy-based models (EBMs), and variational auto-encoders (VAEs). <br> (2) implicit generative  models, where the probability distribution is implicitly represented by a model of its sampling process. The most prominent example is generative adversarial networks (GANs), where new samples from the data distribution are synthesized by  transforming a random Gaussian vector with a neural network. <br> Likelihood-based models and implicit generative models, however, both have significant limitations. Likelihood-based models either require strong restrictions on the model  architecture to ensure a tractable normalizing constant for likelihood computation, or must rely on surrogate objectives to approximate maximum likelihood training. Implicit generative models, on the other hand, often require adversarial training, which is notoriously unstable and can lead to mode collapse.
+
+Unlike VAE or flow models, diffusion models are learned with a fixed procedure and the latent variable has high dimensionality (same as the original data). Diffusion Models 和其他生成模型最大的区别是它的 latent code(z) 和原图是同尺寸大小的; 当然也有基于压缩的 Latent Diffusion Model &ensp;[CVPR'2022](<https://openaccess.thecvf.com/content/CVPR2022/html/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.html> (Robin Rombach, Andreas Blattmann, et al. "High-Resolution Image Synthesis with Latent Diffusion Models," CVPR'2022))
 
 <center>
     <img style="border-radius: 0.3125em;
@@ -83,6 +91,8 @@ Diffusion Models 和其他生成模型最大的区别是它的 latent code(z) �
     color: #999;
     padding: 2px;">Fig. 4. The Landscape of Deep Generative Learning. (Image source from 2022-CVPR-Tutorial DDPMs slides)</div>
 </center>
+
+---------------------
 
 ## Elegant Mathematical 优雅的数学原理
 
@@ -300,7 +310,9 @@ p_{r}(x_{3},x_{2},x_{1})
 $$
 
 
-条件独立关系意味着对条件分布以一定的方式进行因子分解(并因此视为冗余)，这种冗余意味着可用更少量的参数来描述数据的概率分布，同时对含有大规模参数的模型更加易于处理。计算机视觉中常引入图模型来表示这种条件独立关系，如有向图模型(即贝叶斯网络)，链式模型(即马尔科夫链)和树模型。参考书籍 "Computer Vision: Models, Learning, and Inference".
+条件独立关系意味着对条件分布以一定的方式进行因子分解(并因此视为冗余)，这种冗余意味着可用更少量的参数来描述数据的概率分布，同时对含有大规模参数的模型更加易于处理。计算机视觉中常引入图模型来表示这种条件独立关系，如有向图模型(即贝叶斯网络)，链式模型(即马尔科夫链)和树模型。
+
+> Reference chapter-10 in the book: "Computer Vision: Models, Learning, and Inference".
 
 ### 7. 期望 Expectation
 
@@ -333,7 +345,7 @@ $$E\left [f\left [ x_{1},x_{2}, \dots, x_{k} \right ] \right ] =\sum_{i=1}^{k} \
 
 ### **8. 重参数技巧 Reparameterization Trick**
 
-如果从高斯分布中随机采样一个样本，这个过程不可微分的，即无法反传梯度的。通过**重参数 (reparameterization) 技巧**[<sup>[17]</sup>](#refer-17)来使其可微。最通常的做法是把这种随机性通过一个独立的随机变量 $\epsilon$ 进行转移。举个例子，如果要从高斯分布 $z\sim \mathcal{N}\left ( z;\mu_{\theta},\sigma^{2}_{\theta} I\right ) $ 中采样一个 z，可以写成:
+如果从高斯分布中随机采样一个样本，这个过程不可微分的，即无法反传梯度的。通过**重参数 (reparameterization) 技巧** &ensp;[VAE](<https://arxiv.org/abs/1312.6114> (Diederik P. Kingma, Max Welling, "Auto-Encoding Variational Bayes," ICLR'2014))来使其可微。最通常的做法是把这种随机性通过一个独立的随机变量 $\epsilon$ 进行转移。举个例子，如果要从高斯分布 $z\sim \mathcal{N}\left ( z;\mu_{\theta},\sigma^{2}_{\theta} I\right ) $ 中采样一个 z，可以写成:
 
 
 $$ z = \mu_{\theta} + \sigma_{\theta} \odot \epsilon , \epsilon \sim \mathcal{N}\left ( 0,I\right ) $$
@@ -400,7 +412,7 @@ $$
 
 **1. 拟合概率模型**
 
-Fitting probability models
+How to Fitting or Parameterization the probability models
 
 - **最大似然法 Maximum likelihood, ML**
 - **最大后验法 Maximum a posteriori, MAP**
@@ -487,7 +499,7 @@ which is exactly the calculation we originally prescribed:  we simply evaluate t
 
 > Information entropy; Entropy; Shannon entropy; Cross entropy; Relative entropy; Kullback–Leibler divergence ([KL-divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence))
 
-- 信息量：指用一个信息所需要的编码长度来定义，而一个信息的便阿门长度与其出现的概率呈负相关。
+- 信息量：指用一个信息所需要的编码长度来定义，而一个信息的编码长度与其出现的概率呈负相关。
 
 > 其实也就可以说一件事情发生概率很小的话，那么当其发生的时候所代表的信息量也更大
 
@@ -570,18 +582,53 @@ $$
 \begin{aligned}
 D_{KL}(p || q)
 &= \sum_{x}p(x)log(\frac{p(x)}{q(x)}) \\
-&= - \sum_{x}p(x)log(\frac{q(x)}{p(x)}) \\
-&= - \int_{-\infty}^{\infty} p(x)\mathrm{d}x log(\frac{q(x)}{p(x)}) \\
-&= - E_{x \sim p(x)}[log(\frac{q(x)}{p(x)})] \\
-&\le - log E_{x \sim p(x)}[\frac{q(x)}{p(x)}] \\
-&\ge log E_{x \sim p(x)}[\frac{q(x)}{p(x)}] \\
-&= log \sum_{x} p(x) \frac{q(x)}{p(x)} \\
-&= log \sum_{x} q(x) \\
-&= log(1) \\
+&= \sum_{x}p(x)log(\frac{q(x)}{p(x)}) \\
+&= \int_{-\infty}^{\infty} p(x)\mathrm{d}x \log(\frac{q(x)}{p(x)}) \\
+&= E_{x \sim p(x)}[log(\frac{q(x)}{p(x)})] \\
+&\ge \log E_{x \sim p(x)}[\frac{q(x)}{p(x)}] \\
+&= \log \sum_{x} p(x) \frac{q(x)}{p(x)} \\
+&= \log \sum_{x} q(x) \\
+&= \log(1) \\
 &= 0 \\
 \end{aligned}
 $$
 
+> KL-divergence between two gaussians is tractable, having closed-form formula. Let’s consider the case of single variable Gaussians:
+
+$$
+\begin{aligned}
+& D_{\text{KL}}(\mathcal{N}(\mu_1, \sigma_1^2) || \mathcal{N}(\mu_2, \sigma_2^2)) \\
+
+= & \int dx \left[\log \mathcal{N}(\mu_1, \sigma_1^2) - \log \mathcal{N}(\mu_2, \sigma_2^2)\right] \mathcal{N}(\mu_1, \sigma_1^2) \\
+
+= & \int dx  \left[ -\frac{1}{2} \log(2\pi) - \log \sigma_1 - \frac{1}{2} \left(\frac{x - \mu_1}{\sigma_1} \right)^2 \right. \\
+&\left. ~~~~~~~~~~~~+ \frac{1}{2} \log(2\pi) + \log \sigma_2 + \frac{1}{2} \left(\frac{x - \mu_2}{\sigma_2}\right)^2 \right] \\
+&~~~~~~~~~~~\times\frac{1}{\sqrt{2\pi\sigma_1}} \exp \left[ -\frac{1}{2}\left( \frac{x - \mu_1}{\sigma} \right)^2 \right] \\
+
+= & \mathbb{E}_{1}  \left[ \log \frac{\sigma_2}{\sigma_1} + \frac{1}{2} \left[ \left(\frac{x - \mu_2}{\sigma_2} \right)^2 - \left(\frac{x - \mu_1}{\sigma_1}\right)^2 \right] \right ] \\
+
+= & \log\frac{\sigma_2}{\sigma_1} + \frac{1}{2\sigma_2^2} \mathbb{E}_1 [({x - \mu_2})^2] - \frac{1}{2\color{green}\sigma_1^2} \color{green}\mathbb{E}_1 [({x - \mu_1})^2] \\
+
+= & \log\frac{\sigma_2}{\sigma_1} + \frac{1}{2\sigma_2^2} \mathbb{E}_1 [({x - \mu_2})^2] -  \frac{1}{2} \\
+
+= & \log\frac{\sigma_2}{\sigma_1} + \frac{1}{2\sigma_2^2} \mathbb{E}_1 [({x - \mu_1 + \mu_1 - \mu_2})^2] -  \frac{1}{2} \\
+
+= & \log\frac{\sigma_2}{\sigma_1} + \frac{1}{2\sigma_2^2} {\color{green}\mathbb{E}_1 [(x - \mu_1)^2} + 2(x-\mu_1)(\mu_1 - \mu_2) + (\mu_1 - \mu_2)^2] -  \frac{1}{2} \\
+
+= & \log\frac{\sigma_2}{\sigma_1} + \frac{{\color{green}\sigma_1^2} + (\mu_1 - \mu_2)^2}{2\sigma_2^2} -  \frac{1}{2} 
+\end{aligned}
+$$
+
+
+> More generally for multivariate Gaussians with dimension $d$:
+
+
+$$
+\begin{aligned}
+& D_{\text{KL}}(\mathcal{N}(\mu_1, \Sigma_1) || \mathcal{N}(\mu_2, \Sigma_2)) \\
+= & \frac{1}{2} \left[\log\frac{|\Sigma_2|}{|\Sigma_1|} -d + \mathrm{tr}\{\Sigma_2^{-1}\Sigma_1\}  + (\mu_2 - \mu_1)\Sigma_2^{-1}(\mu_2 - \mu_1) \right]
+\end{aligned}
+$$
 
 -------------------------------------
 
@@ -620,6 +667,10 @@ $$
 #### **Forward Diffusion Process**
 
 1. forward diffusion process
+
+<center>
+    <img src="./images/forward_process_diffusion.png" />
+</center>
 
 original data distribution: $x_{0} \sim q(x)$
 
@@ -778,9 +829,13 @@ $$
 
 因此前向扩散过程中的迭代步数是有一个有限的可解析的数值，$t \in (0, T) $ 进行采样得到具体的数值，the sample-step schedule is different, PDM and DDPM paper is uniform schedule(均匀采样); but IDDPM paper is simple importance sampling technique(基于 loss 进行重要性采样)
 
-> <span style="color:DarkOrange"> Note: Imporved diffusion Code Implementation with OpenAI. </span>
+> <span style="color:DarkOrange"> Note: Imporved diffusion Code Implementation with OpenAI. That is Awesome repo. </span>
 
 #### **Reverse Diffusion Process**
+
+<center>
+    <img src="./images/reverse_process_diffusion.png" />
+</center>
 
 如果说前向扩散过程 (forward process)是加噪的过程，那么逆向扩散过程 (reverse process) 就是 diffusion models 的去噪推断过程。如果能够逐步得到逆转后的分布，就可以从完全的标准高斯分布  还采样从而复原出原始分布。 Feller William 在 1949 年的文献中证明了如果 forward process $q(x_{t} \mid x_{t-1})$ 满足高斯分布且 $\beta_{t}$ 足够小，reverse process $q(x_{t-1} \mid x_{t})$ 仍然是一个高斯分布。然而这个逆向分布无法进行简单推断计算出解析式，因此使用深度学习模型 (Neural Networks, NN) 去预测或者拟合这样的一个逆向的分布。
 
@@ -990,7 +1045,7 @@ $$p_{\theta}(x_{t-1} \mid x_{t}) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_{t}, t), 
 $$\mu_{\theta}(x_{t},t) = \frac{1}{\sqrt{\alpha_{t}}} (x_{t} - \frac{\beta_{t}}{\sqrt{1-\bar{\alpha}_{t}}}{z}_{\theta}(x_{t}, t) )$$
 
 
-DDPM paper 中对于方差的策略，直接使用逆向扩散过程推导的解析结果 $\widetilde{\beta}_{t}$ , 而且实验结果显示使用前向过程的方差数值和使用逆向过程的后验方差数值，最终的实验结果近视；不需要训练的策略，如下式子：
+DDPM paper 中对于方差的策略，直接使用逆向扩散过程推导的解析结果 $\widetilde{\beta}_{t}$ 或者 $\beta_{t}$ , 而且实验结果显示使用前向过程的方差数值和使用逆向过程的后验方差数值，最终的实验结果近视；不需要训练的策略，如下式子：
 
 
 $$
@@ -1131,7 +1186,7 @@ $$
 **Note that：**
 > 第 2 行式子: convert Joint dist. into conditional dist. prod. <br> 第 3 行式子: 对数函数的性质 <br> 第 5 行式子: reverse process formula for $x_{t}$ and $x_{0}$ <br> 第 8 行式子: 对数函数性质 & 累乘形式下分子分母相同项消除 <br> 第 9 行式子: 根据对数性质进行重新组合排列每一项 <br> how and why line No.9 $\longrightarrow$ line No.10；也知答案，逆推过程，凑一个期望，即对数里面分子的一个积分 <br>
 
-**recall that: where the expectation **line No.9** is over a distribution $\bar{q}(x_{t-1})$ that is independent from the variable (namely $x_{t-1}$).** 
+**recall that: where the expectation <span style="color:red">line No.9</span> is over a distribution $\bar{q}(x_{t-1})$ that is independent from the variable (namely $x_{t-1}$).** 
 
 
 $$D_{\text{KL}}(q(x) || p(x)) = \mathbb{E}_{q(x)} [\log q(x) / p(x)]$$
@@ -1139,7 +1194,7 @@ $$D_{\text{KL}}(q(x) || p(x)) = \mathbb{E}_{q(x)} [\log q(x) / p(x)]$$
 
 $$
 \begin{aligned}
-gereral_{line-9}
+\mathcal{L}_{t}
 &=\mathbb{E}_{q(x_{0:T})} \left[ \log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \\
 
 &=~ \mathbb{E}_{{\color{red}q(x_{t-1}|x_t, x_0)}{\color{green}q(x_t,x_0)q(x_{1:t-2,t+1:T}|x_{t-1},x_t,x_0)}} \left[\log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \\
@@ -1169,6 +1224,12 @@ $$
 
 
 > Every KL term in $L_\text{VLB}$  (except for $L_0$) compares two Gaussian distributions and therefore they can be computed in [closed form](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions).  $L_T$ is constant and can be ignored during training because $q$ has no learnable parameters and $\mathbf{x}_T$ is a Gaussian noise. [Ho et al. 2020](https://arxiv.org/abs/2006.11239) models $L_0$ using a separate discrete decoder derived from $\mathcal{N}(\mathbf{x}_0; \boldsymbol{\mu}_\theta(\mathbf{x}_1, 1), \boldsymbol{\Sigma}_\theta(\mathbf{x}_1, 1))$ . (DDPM paper 中对逆向扩散过程中最后一步从噪声变为原始数据的处理)
+
+<center>
+    <img src="./images/decoder_diffusion.png" />
+</center>
+
+------------------
 
 **[Lilian Weng blog](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/#parameterization-of-l_t-for-training-loss)**
 
@@ -1321,23 +1382,14 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
 </center>
 <!-- ![DDPM Code](./Images/DDPM_Code.png) -->
 
-<center>
-    <img src="./images/UNet_architecture.png">
+<center class="half">
+    <img src="./images/UNet_architecture.png", width="50%" /><img src="./images/MHSA.png", width="50%" />
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 16. U-Net Architecture. (Image source from U-Net paper on MICCAI'2015)</div>
-</center>
-
-<center>
-    <img src="./images/MHSA.png">
-    <br>
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">Fig. 17. (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several
-attention layers running in parallel. (Image source from Transformer paper on NeurIPS'2017)</div>
+    padding: 2px;">Fig. 16. U-Net Architecture; Scaled Dot-Product Attention; Multi-Head Attention consists of several
+attention layers running in parallel. (Image source from U-Net paper on MICCAI'2015 and Transformer paper on NeurIPS'2017)</div>
 </center>
 
 
