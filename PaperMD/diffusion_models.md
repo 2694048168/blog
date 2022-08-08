@@ -345,7 +345,7 @@ $$E\left [f\left [ x_{1},x_{2}, \dots, x_{k} \right ] \right ] =\sum_{i=1}^{k} \
 
 ### **8. 重参数技巧 Reparameterization Trick**
 
-如果从高斯分布中随机采样一个样本，这个过程不可微分的，即无法反传梯度的。通过**重参数 (reparameterization) 技巧** &ensp;[VAE](<https://arxiv.org/abs/1312.6114> (Diederik P. Kingma, Max Welling, "Auto-Encoding Variational Bayes," ICLR'2014))来使其可微。最通常的做法是把这种随机性通过一个独立的随机变量 $\epsilon$ 进行转移。举个例子，如果要从高斯分布 $z\sim \mathcal{N}\left ( z;\mu_{\theta},\sigma^{2}_{\theta} I\right ) $ 中采样一个 z，可以写成:
+如果从高斯分布中随机采样一个样本，这个过程不可微分的，即无法反传梯度的。通过**重参数 (reparameterization) 技巧** &ensp;[VAE](<https://arxiv.org/abs/1312.6114> (Diederik P. Kingma, Max Welling, "Auto-Encoding Variational Bayes," ICLR'2014)) &ensp;来使其可微。最通常的做法是把这种随机性通过一个独立的随机变量 $\epsilon$ 进行转移。举个例子，如果要从高斯分布 $z\sim \mathcal{N}\left ( z;\mu_{\theta},\sigma^{2}_{\theta} I\right ) $ 中采样一个 z，可以写成:
 
 
 $$ z = \mu_{\theta} + \sigma_{\theta} \odot \epsilon , \epsilon \sim \mathcal{N}\left ( 0,I\right ) $$
@@ -1223,10 +1223,19 @@ L_0 &= - \log p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)
 $$
 
 
-> Every KL term in $L_\text{VLB}$  (except for $L_0$) compares two Gaussian distributions and therefore they can be computed in [closed form](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions).  $L_T$ is constant and can be ignored during training because $q$ has no learnable parameters and $\mathbf{x}_T$ is a Gaussian noise. [Ho et al. 2020](https://arxiv.org/abs/2006.11239) models $L_0$ using a separate discrete decoder derived from $\mathcal{N}(\mathbf{x}_0; \boldsymbol{\mu}_\theta(\mathbf{x}_1, 1), \boldsymbol{\Sigma}_\theta(\mathbf{x}_1, 1))$ . (DDPM paper 中对逆向扩散过程中最后一步从噪声变为原始数据的处理)
+> Every KL term in $L_\text{VLB}$  (except for $L_0$) compares two Gaussian distributions and therefore they can be computed in [closed form](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions).  $L_T$ is constant and can be ignored during training because $q$ has no learnable parameters and $\mathbf{x}_T$ is a Gaussian noise. [Ho et al. 2020](https://arxiv.org/abs/2006.11239) models $L_0$ using a separate discrete decoder derived from $\mathcal{N}(\mathbf{x}_0; \boldsymbol{\mu}_\theta(\mathbf{x}_1, 1), \boldsymbol{\Sigma}_\theta(\mathbf{x}_1, 1))$ . 
+
+> DDPM paper 中对逆向扩散过程中最后一步从噪声变为原始数据的处理; 图像生成中常用技巧，计算负对数似然，利用标准分布的累计分布的差分(差分的结果就是一个概率值的逼近 )来逼近或者模拟离散高斯分布。连续随机变量的概率密度函数 pdf(probability density function), 离散随机变量的概率质量函数 pmf(probability mass function), 累计分布函数 cdf(cumulative distribution function);
+
+> 为了便于概率的计算，引入 CDF 的概念; CDF 是概率密度函数的积分，能完整描述一个实随机变量X的概率分布。CDF 是 PDF 的(从负无穷到当前值的)积分，PDF 是 CDF 的导数; CDF 相当于其左侧的面积，也相当于小于该值的概率，负无穷的 CDF 值为０，正无穷的 CDF 值总为１.
 
 <center>
     <img src="./images/decoder_diffusion.png" />
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Fig. 10. Decoder of Reverse Diffusion Process for Image. (Image source from DDPM paper.)</div>
 </center>
 
 ------------------
@@ -1261,7 +1270,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 10. Annealed Langevin dynamics combine a sequence of Langevin chains with gradually decreasing noise scales. (Image source from Yang Song.)</div>
+    padding: 2px;">Fig. 11. Annealed Langevin dynamics combine a sequence of Langevin chains with gradually decreasing noise scales. (Image source from Yang Song.)</div>
 </center>
 
 <center class="half">
@@ -1270,7 +1279,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 11. Annealed Langevin dynamics for the Noise Conditional Score Network (NCSN) model trained on CelebA (left) and CIFAR-10 (right). We can start from unstructured noise, modify images according to the scores, and generate nice samples. The method achieved state-of-the-art Inception score on CIFAR-10 at its time. (Image source from Yang Song.)</div>
+    padding: 2px;">Fig. 12. Annealed Langevin dynamics for the Noise Conditional Score Network (NCSN) model trained on CelebA (left) and CIFAR-10 (right). We can start from unstructured noise, modify images according to the scores, and generate nice samples. The method achieved state-of-the-art Inception score on CIFAR-10 at its time. (Image source from Yang Song.)</div>
 </center>
 
 ## Code Implementation 代码实现
@@ -1281,7 +1290,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 12. The training and sampling algorithms in DDPM (Image source: DDPM NeurIPS'2020)</div>
+    padding: 2px;">Fig. 13. The training and sampling algorithms in DDPM (Image source: DDPM NeurIPS'2020)</div>
 </center>
 
 ```python
@@ -1360,7 +1369,7 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 13. The training and sampling algorithms in DDPM. (Image source: DPM ICML'2015)</div>
+    padding: 2px;">Fig. 14. The training and sampling algorithms in DDPM. (Image source: DPM ICML'2015)</div>
 </center>
 
 <center class="half">
@@ -1369,7 +1378,7 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 14. The S curve(left) and a two dimensions swiss roll(right) distribution from forward to reverse diffusion process.</div>
+    padding: 2px;">Fig. 15. The S curve(left) and a two dimensions swiss roll(right) distribution from forward to reverse diffusion process.</div>
 </center>
 
 <center>
@@ -1378,7 +1387,7 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 15. Code Diagram of DDPM and Improved DDPM for Diffusion Models.</div>
+    padding: 2px;">Fig. 16. Code Diagram of DDPM and Improved DDPM for Diffusion Models.</div>
 </center>
 <!-- ![DDPM Code](./Images/DDPM_Code.png) -->
 
@@ -1388,7 +1397,7 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">Fig. 16. U-Net Architecture; Scaled Dot-Product Attention; Multi-Head Attention consists of several
+    padding: 2px;">Fig. 17. U-Net Architecture; Scaled Dot-Product Attention; Multi-Head Attention consists of several
 attention layers running in parallel. (Image source from U-Net paper on MICCAI'2015 and Transformer paper on NeurIPS'2017)</div>
 </center>
 
@@ -1662,8 +1671,17 @@ Cited as:
 
 ----------------------------
 
-[23] Bahjat Kawar, Michael Elad, Stefano Ermon, Jiaming Song, "Denoising Diffusion Restoration Models," NeurIPS'2017
+[23] Bahjat Kawar, Michael Elad, Stefano Ermon, Jiaming Song, "Denoising Diffusion Restoration Models," ICLR'2022
 
 [DDRM Project on Website](https://ddrm-ml.github.io/)
+&emsp;&emsp;[DDRM Paper on ICLR'2022 Oral](https://openreview.net/forum?id=BExXihVOvWq)
 &emsp;&emsp;[DDRM Paper on arXiv'2022](https://arxiv.org/abs/2201.11793)
 &emsp;&emsp;[DDRM Original Code on GitHub](https://github.com/bahjat-kawar/ddrm)
+
+----------------------------
+
+[24] Diederik P. Kingma, Prafulla Dhariwal, "Glow: Generative Flow with Invertible 1x1 Convolutions," NeurIPS'2018
+
+[Glow Paper on NeuriPS'2018](https://papers.nips.cc/paper/2018/hash/d139db6a236200b21cc7f752979132d0-Abstract.html)
+&emsp;&emsp;[Glow Paper on arXiv'2018](https://arxiv.org/abs/1807.03039)
+&emsp;&emsp;[Glow Original Code on GitHub](https://github.com/openai/glow)
