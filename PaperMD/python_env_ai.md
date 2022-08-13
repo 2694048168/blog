@@ -76,6 +76,8 @@ pip config set global.index-url https://developer.aliyun.com/mirror/pypi/simple
 
 > VSCode for Python, 学习的时候或者编写脚本的时候推荐使用
 
+> JupyterLab for Python, 学习的时候或者做教学演示最佳推荐
+
 > VSCode 插件以及技巧推荐 : https://gitee.com/weili_yzzcq/linux_-os/tree/main/vscode
 
 > VSCode 插件以及技巧推荐 : https://github.com/2694048168/Linux_OS/tree/main/vscode

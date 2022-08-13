@@ -5,24 +5,34 @@
 &emsp;&emsp;[![](https://img.shields.io/badge/CPlusPlus-github-brightgreen)](https://github.com/2694048168/C-and-C-plus-plus)
 &emsp;&emsp;[![](https://img.shields.io/badge/Linux-github-brightgreen)](https://github.com/2694048168/Linux_OS)
 
-### [Diffusion Probability Models for Deep Generative, DDPMs](PaperMD/diffusion_models.md)
+
+----------------
+### [Denoising Diffusion Probability Models for Deep Generative, DDPMs](PaperMD/diffusion_models.md)
 
 <center class="half">
     <!-- <img src="./images/generative-overview.png", width="569", height="394" /> -->
     <!-- <img src="./images/generative-overview.png", width="50%", height="50%" /> -->
-    <img src="./images/DDPM.png", width="50%" /><img src="./images/generative-overview.png", width="50%" />
+    <!-- <img src="./images/DDPM.png", width="50%" /><img src="./images/generative-overview.png", width="50%" /> -->
+    <img src="./images/reverse_process_diffusion.png" />
+    <img src="./images/DDPM.png" />
 </center>
 
 ----------------
+### [Vision Transformer and Swin Transformer and Masked AutoEncoder](PaperMD/transformer.md)
 
-# Computer Vision and Deep Learning
+<center class="half">
+  <img src="./images/vit.png", width="50%" /><img src="./images/swin.png", width="50%" />
+</center>
 
-- [TensorFlow2 MNIST dataset](PaperMD/mnist_example.md)
-- [TensorFlow2 GTSRB dataset](PaperMD/street_sign_example.md)
-- [TensorFlow2 CIFAR dataset](PaperMD/cifar_dataset.md)
-- [PyTorch CIFAR dataset](PaperMD/cifar_dataset_pytorch.md)
+----------------
+### [Awesome Understanding of Convolution and Transpose Convolution](PaperMD/awesome_conv.md)
 
-# Learning TensorFlow 2.0
+<center>
+    <img src="./images/Convolution_Transpose.png" />
+</center>
+
+----------------
+# Learning TensorFlow2
 
 - [Tensor of TensorFlow](PaperMD/tensor_tensorflow.md)
 - [Compute Graph of TensorFlow](PaperMD/compute_graph_tensorflow.md)
@@ -41,6 +51,12 @@
 - [Train on GPU for TensorFlow](PaperMD/train_GPU_TF.md)
 - [Train on Multi-GPU for TensorFlow](PaperMD/train_GPUs_TF.md)
 - [Model Deployment for TensorFlow](PaperMD/model_deploy_TF.md)
+- [TensorFlow2 MNIST dataset](PaperMD/mnist_example.md)
+- [TensorFlow2 GTSRB dataset](PaperMD/street_sign_example.md)
+- [TensorFlow2 CIFAR dataset](PaperMD/cifar_dataset.md)
+- [TensorFlow2 Titanic dataset](PaperMD/titanic_dataset.md)
+- [TensorFlow2 IMDB dataset](PaperMD/imdb_dataset.md)
+- [TensorFlow2 Covid-19 dataset](PaperMD/covid_19.md)
 
 
 # Learning PyTorch
@@ -61,20 +77,15 @@
 - [Build Models for PyTorch](PaperMD/build_model_pytorch.md)
 - [Train Models for PyTorch](PaperMD/train_model_pytorch.md)
 - [Train Models on GPU for PyTorch](PaperMD/train_gpu_pytorch.md)
-
-
-# Python
-
-- [Python 环境配置](PaperMD/python_env_ai.md)
-- [TensorFlow2 环境测试](PaperMD/tf_env_test.md)
-- [TensorFlow2 Titanic dataset](PaperMD/titanic_dataset.md)
-- [TensorFlow2 IMDB dataset](PaperMD/imdb_dataset.md)
-- [TensorFlow2 Covid-19 dataset](PaperMD/covid_19.md)
-- [PyTorch 环境测试](PaperMD/pt_env_test.md)
+- [PyTorch CIFAR dataset](PaperMD/cifar_dataset_pytorch.md)
 - [PyTorch Titanic dataset](PaperMD/titanic_dataset_pytorch.md)
 - [PyTorch IMDB dataset](PaperMD/imdb_dataset_pytorch.md)
 - [PyToch Covid-19 dataset](PaperMD/covid_19_pytorch.md)
 
-# CPlusPlus
 
+# Python & CPlusPlus configure
+
+- [Python 环境配置](PaperMD/python_env_ai.md)
+- [TensorFlow2 环境测试](PaperMD/tf_env_test.md)
+- [PyTorch 环境测试](PaperMD/pt_env_test.md)
 - [C++ 环境配置](PaperMD/cpp_env_test.md)
