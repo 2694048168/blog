@@ -7,14 +7,34 @@
 
 
 ----------------
-### [Denoising Diffusion Probability Models for Deep Generative, DDPMs](PaperMD/diffusion_models.md)
+### [Image Generation via Diffusion Models and Scored-Matching and SDEs](PaperMD/diffusion_models.md)
 
 <center class="half">
     <!-- <img src="./images/generative-overview.png", width="569", height="394" /> -->
     <!-- <img src="./images/generative-overview.png", width="50%", height="50%" /> -->
     <!-- <img src="./images/DDPM.png", width="50%" /><img src="./images/generative-overview.png", width="50%" /> -->
-    <img src="./images/reverse_process_diffusion.png" />
-    <img src="./images/DDPM.png" />
+    <img src="./images/schematic.jpg", width="50%" /><img src="./images/DDPM.png", width="50%" />
+</center>
+
+----------------
+### [Graph Neural Networks and Non-Euclidean Convolution](PaperMD/gnn.md)
+
+<center class="half">
+  <img src="./images/gnn_1.png", width="50%" /><img src="./images/gnn_2.png", width="50%" />
+</center>
+
+----------------
+### [Principles of Parsimony and Self-Consistency for Intelligence](PaperMD/intellience.md)
+
+<center class="half">
+  <img src="./images/mayi_1.png", width="50%" /><img src="./images/mayi_7.png", width="50%" />
+</center>
+
+----------------
+### [Variational AutoEncoder and Conditional VAE and Flow-based](PaperMD/vae.md)
+
+<center class="center">
+  <img src="./images/Conditional_variational_autoencoder.png", width="70%" />
 </center>
 
 ----------------
@@ -25,10 +45,31 @@
 </center>
 
 ----------------
+### [Visual Interpretation of Deep Convolution Neural Networks](PaperMD/visual_interpretation.md)
+
+<center class="half">
+  <img src="./images/attention.jpg", width="70%" />
+</center>
+
+----------------
+### [Attention Mechanism in Deep Learning](PaperMD/attention.md)
+
+<center class="half">
+  <img src="./images/attention.jpg", width="60%" />
+</center>
+
+----------------
+### [Normalization Methods in Deep Learning](PaperMD/normalization.md)
+
+<center class="half">
+  <img src="./images/normalization_1.png", width="50%" /><img src="./images/normalization_2.png", width="50%" />
+</center>
+
+----------------
 ### [Awesome Understanding of Convolution and Transpose Convolution](PaperMD/awesome_conv.md)
 
 <center>
-    <img src="./images/Convolution_Transpose.png" />
+    <img src="./images/Convolution_Transpose.png", width="60%" />
 </center>
 
 ----------------

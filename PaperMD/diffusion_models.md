@@ -1,12 +1,23 @@
-# Image Generation via Diffusion Models 基于扩散模型的图像生成
+# Image Generation via Diffusion Models and Scored-Matching and SDEs
 
-- &ensp;<span style="color:MediumPurple">Title</span>: Image Generation via Diffusion Models
-- &ensp;<span style="color:Moccasin">Tags</span>: Generative Models; Diffusion Models; Probability Models;
+- &ensp;<span style="color:MediumPurple">Title</span>: Image Generation via Diffusion Models and Scored-Matching and SDEs
+- &ensp;<span style="color:Moccasin">Tags</span>: Generative Models; Denoising Diffusion Probability Models, DDPMs; Scored-Matching; Score-based Multi-level Noise Matching; Stochastic Differential Equations, SDEs;
 - &ensp;<span style="color:PaleVioletRed">Type</span>: Survey
 - &ensp;<span style="color:DarkSeaGreen">Author</span>: [Wei Li](https://2694048168.github.io/blog/#/) (weili_yzzcq@163.com)
-- &ensp;<span style="color:DarkMagenta">DateTime</span>: 2022-08
+- &ensp;<span style="color:DarkMagenta">Revision of DateTime</span>: 2022-08-06; 2022-08-13; 2022-08-29;
 
 > Deep Generative Learning: Learning to generate data
+
+## Overview of Diffusion Models and Scored-Matching Models and SDE Methods
+1. **Magical Incredible Images and some interesting demos**
+2. **Research Paradigm of Image Generation and Deep Generative Learning**
+3. **Mathematical deduction** 
+4. **Coding implementation and a toy demo**
+5. **Score and Naive Score-Based Models**
+6. **Noise Conditional Score Networks (NCSN)**
+7. **Stochastic Differential Equations (SDEs)**
+8. **Coding implementation and MNIST demo via SDEs**
+9. **Reference**
 
 <center>
     <img src="./images/Diffusion_Models_Slide.png" />
@@ -26,6 +37,10 @@
 
 > [DeepFake tech.](https://en.wikipedia.org/wiki/Deepfake)  a  portmanteau word of "deep learning" and "fake" since 2016.
 
+[Stable Diffusion Release](<https://stability.ai/blog/stable-diffusion-public-release> (Robin Rombach, Andreas Blattmann, Dominik Lorenz, et al. "High-Resolution Image Synthesis with Latent Diffusion Models," CPVR'2022 Oral)) : **Firstly the public release of stable diffusion for researchers and user**
+
+> Some magical and interesting demos on InternetWeb for Stable-Diffusion and Disco-Diffusion. You can Google search on Web and try it with creative and generate ideas (music/image).
+
 [DALLE 2](<https://openai.com/dall-e-2/> (Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, et al. "Hierarchical Text-Conditional Image Generation with CLIP Latents," OpenAI arXiv'2022)) : **a new AI system that can create realistic images and art from a description in natural language**
 
 <center class="half">
@@ -34,6 +49,7 @@
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 1. Some Samples from DELLE 2. (Image source from DALLE-2 paper, OpenAI)</div>
 </center>
 
@@ -45,6 +61,7 @@
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 2. Some Samples from Imagen. (Image source from Imagen paper, Google)</div>
 </center>
 
@@ -56,12 +73,17 @@
 
 - [Lilian Weng: What are Diffusion Models?](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 - [Yang Song: Generative Modeling by Estimating Gradients of the Data Distribution](https://yang-song.net/blog/2021/score/)
+- [Yang Song publication paper: Score-based and SDEs](https://yang-song.net/publications/)
 - [CVPR 2022 Tutorial: Denoising Diffusion-based Generative Modeling: Foundations and Applications](https://cvpr2022-tutorial-diffusion-models.github.io/)
 - [Diffusion Models for Deep Generative Learning](https://zaixiang.notion.site/Diffusion-Models-for-Deep-Generative-Learning-24ccc2e2a11e40699723b277a7ebdd64)
 - [Computer Vison: Models, Learning, and Inference 中英版本图书](https://item.jd.com/12218342.html)
 - [Awesome Diffusion Models](https://github.com/heejkoo/Awesome-Diffusion-Models)
 - [The Annotated Diffusion Model on Hugging Face](https://huggingface.co/blog/annotated-diffusion)
 - [IDDPM Code on GitHub from OpenAI](https://github.com/openai/improved-diffusion)
+- [Stable Diffusion Demo at Hugging Face](https://huggingface.co/spaces/stabilityai/stable-diffusion)
+- [Stable Diffusion rest at Hugging Face](https://huggingface.co/spaces/huggingface/diffuse-the-rest)
+- [Exponentially Weighted Average for Deep Neural Networks](https://medium.datadriveninvestor.com/exponentially-weighted-average-for-deep-neural-networks-39873b8230e9)
+- [Understanding “Exponential Moving Averages” in Data Science](https://medium.com/analytics-vidhya/understanding-exponential-moving-averages-e3f020d9d13b)
 
 **Paradigm of Deep Generative Models**
 
@@ -73,6 +95,7 @@
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 3. Overview of different types of generative models. (Image source from Lilian Weng blog, that the Applied AI Research Manager, OpenAI)</div>
 </center>
 <!-- ![generative-overview](./Images/generative-overview.png) -->
@@ -91,6 +114,7 @@ Unlike VAE or flow models, diffusion models are learned with a fixed procedure a
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 4. The Landscape of Deep Generative Learning. (Image source from 2022-CVPR-Tutorial DDPMs slides)</div>
 </center>
 
@@ -112,6 +136,7 @@ Unlike VAE or flow models, diffusion models are learned with a fixed procedure a
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 5. Visualization of PDF for discrete and continuous random variable. (Image source from the book, "Computer Vision: Models, Learning, and Inference")</div>
 </center>
 
@@ -342,6 +367,7 @@ $$E\left [f\left [ x_{1},x_{2}, \dots, x_{k} \right ] \right ] =\sum_{i=1}^{k} \
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 6.  Special cases of expectation. (Image source from the book, "Computer Vision: Models, Learning, and Inference")</div>
 </center>
 
@@ -583,8 +609,7 @@ $$
 $$
 \begin{aligned}
 D_{KL}(p || q)
-&= \sum_{x}p(x)log(\frac{p(x)}{q(x)}) \\
-&= \sum_{x}p(x)log(\frac{q(x)}{p(x)}) \\
+&= \sum_{x}p(x) \log (\frac{p(x)}{q(x)}) \\
 &= \int_{-\infty}^{\infty} p(x)\mathrm{d}x \log(\frac{q(x)}{p(x)}) \\
 &= E_{x \sim p(x)}[log(\frac{q(x)}{p(x)})] \\
 &\ge \log E_{x \sim p(x)}[\frac{q(x)}{p(x)}] \\
@@ -624,7 +649,6 @@ $$
 
 > More generally for multivariate Gaussians with dimension $d$:
 
-
 $$
 \begin{aligned}
 & D_{\text{KL}}(\mathcal{N}(\mu_1, \Sigma_1) || \mathcal{N}(\mu_2, \Sigma_2)) \\
@@ -644,6 +668,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 7. The Markov chain of forward (reverse) diffusion process of generating a sample by slowly adding (removing) noise. (Image source from DDPM'2020)</div>
 </center>
 <!-- ![generative-overview](./Images/DDPM.png) -->
@@ -654,6 +679,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 8. The S curve distribution from forward(left) to reverse(right) diffusion process.</div>
 </center>
 
@@ -663,6 +689,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 9. The two dimensions swiss roll distribution from forward(lefet) to reverse(right) diffusion process.</div>
 </center>
 
@@ -1231,12 +1258,15 @@ $$
 
 > 为了便于概率的计算，引入 CDF 的概念; CDF 是概率密度函数的积分，能完整描述一个实随机变量X的概率分布。CDF 是 PDF 的(从负无穷到当前值的)积分，PDF 是 CDF 的导数; CDF 相当于其左侧的面积，也相当于小于该值的概率，负无穷的 CDF 值为０，正无穷的 CDF 值总为１.
 
+> DeepMind 2016 引入的 PixelCNN and PixelRNN, 可以作为一个很好的 decoder; &ensp;[生成模型 PixelCNN and PixelCNN++](https://zhuanlan.zhihu.com/p/461693342); &ensp;[自回归模型 PixelCNN and PixelCNN++](https://zhuanlan.zhihu.com/p/415246165)
+
 <center>
     <img src="./images/decoder_diffusion.png" />
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 10. Decoder of Reverse Diffusion Process for Image. (Image source from DDPM paper.)</div>
 </center>
 
@@ -1272,6 +1302,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 11. Annealed Langevin dynamics combine a sequence of Langevin chains with gradually decreasing noise scales. (Image source from Yang Song.)</div>
 </center>
 
@@ -1281,6 +1312,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 12. Annealed Langevin dynamics for the Noise Conditional Score Network (NCSN) model trained on CelebA (left) and CIFAR-10 (right). We can start from unstructured noise, modify images according to the scores, and generate nice samples. The method achieved state-of-the-art Inception score on CIFAR-10 at its time. (Image source from Yang Song.)</div>
 </center>
 
@@ -1292,10 +1324,14 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 13. The training and sampling algorithms in DDPM (Image source: DDPM NeurIPS'2020)</div>
 </center>
 
 > [The Annotated Diffusion Model on Hugging Face](https://huggingface.co/blog/annotated-diffusion)
+
+<details>
+<summary> <span style="color:Teal">the example Source Code for DDPMs with PyTorch</span> </summary>
 
 ```python
 # Pseudo-Code of forward process and training for DDPMs like PyTorch
@@ -1367,12 +1403,15 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
     return (sample)
 ```
 
+</details>
+
 <center class="center">
     <img src="./images/DPM_fig.png">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 14. The training and sampling algorithms in DDPM. (Image source: DPM ICML'2015)</div>
 </center>
 
@@ -1382,6 +1421,7 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 15. The S curve(left) and a two dimensions swiss roll(right) distribution from forward to reverse diffusion process.</div>
 </center>
 
@@ -1391,6 +1431,7 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 16. Code Diagram of DDPM and Improved DDPM for Diffusion Models.</div>
 </center>
 <!-- ![DDPM Code](./Images/DDPM_Code.png) -->
@@ -1401,20 +1442,766 @@ def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
+    font-size:12px;
     padding: 2px;">Fig. 17. U-Net Architecture; Scaled Dot-Product Attention; Multi-Head Attention consists of several
 attention layers running in parallel. (Image source from U-Net paper on MICCAI'2015 and Transformer paper on NeurIPS'2017)</div>
 </center>
 
 
--------------
+## Score and Naive Score-Based Models
 
+### 1. Definition of Score
+
+&ensp;&ensp;&ensp;&ensp;Suppose our dataset consists of i.i.d. samples $\{ x_{i} \in R^{D} \}^{N}_{i=1}$ from an unknown data distribution $p_{data}(x)$ . We define the **score** of a probability density $p(x)$ to be $\nabla_{x} \log p(x)$ . The **score network** $s_{\theta} : R^{D} \to R^{D}$ is a neural network parameterized by $\theta$, which will be trained to approximate the score of $p_{data}(x)$ . The goal of generative modeling is to use the dataset to learn a model for generating new samples from $p_{data}(x)$ . The framework of score-based generative modeling has two ingredients: score matching and Langevin dynamics.
+
+### 2. Sampling via Langevin dynamics
+
+&ensp;&ensp;&ensp;&ensp;Langevin dynamics can produce samples from a probability density $p(x)$ using only the score function $\nabla_{x} \log p(x)$. Given a fixed step size $\epsilon > 0$, and an initial value $\tilde{x}_{0} \sim \pi (x)$ with $\pi$ being a prior distribution, the Langevin method recursively computes the follwing,
+
+$$\tilde{x}_{t} = \tilde{x}_{t-1} + \frac{\epsilon}{2} \nabla_{x} \log p(\tilde{x}_{t-1}) + \sqrt{\epsilon} z_{t}$$
+
+where $z_{t} \sim \mathcal{N}(0, I)$. The distribution of $\tilde{x}_{T}$ equals $p(x)$ when $\epsilon \to 0$ and $T \to \infty$, in which case $\tilde{x}_{T}$ becomes an exact sample from $p(x)$ under some regularity conditions. When $\epsilon > 0$ and $T < \infty$, a Metropolis-Hastings update is needed to correct the error of **Equation**, but it can often be ignored in practice. In this work, we assume this error is negligible when $\epsilon$ is small and $T$ is large.
+
+&ensp;&ensp;&ensp;&ensp;Note that sampling from **Equation** only requires the score function $\nabla_{x} \log p(x)$. Therefore, in order to obtain samples from $p_{data}(x)$, we can first train our score network such that $s_{\theta}(x) \approx \nabla_{x} \log p_{data}(x)$ and then approximately obtain samples with Langevin dynamics using $s_{\theta}(x)$. This is the key idea of our framework of score-based generative modeling.
+
+### 3. Score Matching and Denoising
+
+&ensp;&ensp;&ensp;&ensp;Score matching(ICML'2005) is originally designed for learning non-normalized statistical models based on i.i.d. samples from an unknown data distribution. Following, we repurpose it for score estimation. Using score matching, we can directly train a score network $s_{\theta}(x)$ to estimate $\nabla_{x} \log p_{data}(x)$ without training a model to estimate $p_{data}(x)$ first. Different from the typical usage of score matching, we opt not to use the gradient of an energy-based model as the score network to avoid extra computation due to higher-order gradients. The objective minimizes $\frac{1}{2} \mathbb{E}_{p_{data}}[ || s_{\theta}(x) - \nabla_{x} \log p_{data}(x) ||^{2}_{2} ]$, which can be shown equivalent to the following up to a constant,
+
+$$\mathbb{E}_{p_{data}} [ tr(\nabla_{x} s_{\theta}(x)) + \frac{1}{2} || s_{\theta}(x) ||^{2}_{2} ]$$
+
+where $\nabla_{x} s_{\theta}(x)$ denotes the Jacobian of $s_{\theta}(x)$. As shown in, under some regularity conditions
+the minimizer of Eq.(3) (denoted as $s_{\theta}∗(x)$ ) satisfies $s_{\theta}∗(x) = \nabla_{x} \log p_{data}(x)$ almost surely. In practice, the expectation over $p_{data}(x)$ in **Equation** can be quickly estimated using data samples. However, score matching is not scalable to deep networks and high dimensional data due to the computation of $ tr(\nabla_{x} s_{\theta}(x))$. Below we discuss two popular methods for large scale score matching.
+
+> 关键在于如何解决如此复杂的雅可比矩阵的运算 (convert intractable into tractable on compute)
+
+**Denoising score matching** &ensp;&ensp;Denoising score matching is a variant of score matching that completely circumvents $ tr(\nabla_{x} s_{\theta}(x))$. It first perturbs the data point $x$ with a pre-specified noise distribution $q_{\sigma}(\tilde{x} \mid x)$ and then employs score matching to estimate the score of the perturbed data distribution $q_{\sigma}(\tilde{x}x) \equiv \int q_{\sigma}(\tilde{x} \mid x) p_{data}(x) \mathrm{d}x $. The objective was proved equivalent to the following,
+
+$$\frac{1}{2} \mathbb{E}_{q_{\sigma}(\tilde{x} \mid x)} [ || s_{\theta}(\tilde{x}) - \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x} \mid x) ||^{2}_{2} ]$$
+
+As shown in, the optimal score network (denoted as  $s_{\theta}*(x)$) that minimizes **Equation** satisfies $s_{\theta}(x) = \nabla_{\tilde{x}} \log q_{\sigma}(x)$ almost surely. However, $s_{\theta}*(x) = \nabla_{\tilde{x}} \log q_{\sigma}(x) = \nabla_{\tilde{x}} \log p_{data}(x)$ is true only when the noise is small enought such that $q_{\sigma}(x) \approx p_{data}(x)$.
+
+> Score matching for score estimation: another method is **Sliced score matching**
+
+### 4. Challenges of Score Matching
+
+&ensp;&ensp;&ensp;&ensp;The scarcity of data in low density regions can cause difficulties for both score estimation with score matching and MCMC sampling with Langevin dynamics. 数据密度较低的区域(梯度计算)，分数估计不准确，导致郎之万采样结果就不准确。
+
+<center class="center">
+    <img src="./images/pitfalls.jpg" />
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    font-size:12px;
+    padding: 2px;">Fig. 18. Estimated scores are only accurate in high density regions. (Image source from Yang Song)</div>
+</center>
+
+## Noise Conditional Score Networks (NCSN)
+
+### 1. How to add nosing
+
+> 通过条件分数网络进行解决(这里的条件就是加噪声)，通过添加噪声后可以很好的进行分数估计(准确)。那么如何加噪呢？**进退两难**: how do we choose an appropriate noise scale for the perturbation process? Larger noise can obviously cover more low density regions for better score estimation, but it over-corrupts the data and alters it significantly from the original distribution. Smaller noise, on the other hand, causes less corruption of the original data distribution, but does not cover the low density regions as well as we would like. **折中方案**: we use multiple scales of noise perturbations simultaneously; that mean to say: 1)perturbing the data using various levels of noise; 2) simultaneously estimating scores corresponding to all noise levels by training only a single conditional score network. After training, when using Langevin dynamics to generate samples, we **initially** use scores corresponding to large noise, and **gradually anneal down** the noise level. (similar spirit as Diffusion Process) This helps smoothly transfer the benefits of large noise levels to low noise levels where the perturbed data are almost indistinguishable from the original ones. 
+
+<center class="center">
+    <img src="./images/single_noise.jpg" />
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    font-size:12px;
+    padding: 2px;">Fig. 19. Estimated scores are accurate everywhere for the noise-perturbed data distribution due to reduced low data density regions. (Image source from Yang Song)</div>
+</center>
+
+### 2. Definition of NCSN with Multi-Level noise
+
+> [NCSN paper by Yang Song](https://arxiv.org/pdf/1907.05600.pdf)
+
+<center class="center">
+    <img src="./images/multi_scale.jpg" />
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    font-size:12px;
+    padding: 2px;">Fig. 20. We apply multiple scales of Gaussian noise to perturb the data distribution (first row), and jointly estimate the score functions for all of them (second row). (Image source from Yang Song)</div>
+</center>
+
+### 3. Learning NCSN via multi-level noise score matching
+
+> $\sigma$ 加噪水平设置为等比数列比较好; 参数更新和学习时加上指数移动平均 (EMA) 更加稳定;
+
+### 4. NCSN inference via annealed Langevin dynamics
+
+<center class="center">
+    <img src="./images/annealed_Langevin_dynamics.png" />
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    font-size:12px;
+    padding: 2px;">Fig. 21. NCSN inference via annealed Langevin dynamics. (Image source from NCSN paper)</div>
+</center>
+
+
+## Stochastic Differential Equations (SDEs)
+
+> [Tutorial on Score-based Generative Modeling through SDEs on Colab](https://colab.research.google.com/drive/120kYYBOVa1i0TD85RjlEkFjaWDxSFUx3?usp=sharing#scrollTo=XCR6m0HjWGVV)
+
+### 1. Generalizing the number of noise scales to infinity
+
+As we already discussed, adding multiple noise scales is critical to the success of score-based generative models. **By generalizing the number of noise scales to infinity**, we obtain not only **higher quality samples**, but also, among others, **exact log-likelihood computation**, and **controllable generation for inverse problem solving**. 简而言之，将有限次的加噪推广到无限次(无穷次数)，这样更加一般化的扩散过程了，同时将这个一般化的扩散过程用一个 SDE 方程进行表示，同时求解更加方便。
+
+### 2. Perturbing Data via SDEs
+
+<center class="center">
+    <img src="./images/schematic.jpg" />
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    font-size:12px;
+    padding: 2px;">Fig. 22. Solving a reversetime SDE yields a score-based generative model. (Image source from Score-based SDEs paper)</div>
+</center>
+
+In order to generate samples with score-based models, we need to consider a [diffusion process](https://en.wikipedia.org/wiki/Diffusion_process) that corrupts data slowly into random noise. Scores will arise when we reverse this diffusion process for sample generation. (为了生成样本, 需要考虑一个随机扩散过程, 即不断加噪使得原始的数据分布变成一个具有良好性质的噪声分布的过程)
+
+A diffusion process is a [stochastic process](https://en.wikipedia.org/wiki/Stochastic_process#:~:text=A%20stochastic%20or%20random%20process%20can%20be%20defined%20as%20a,an%20element%20in%20the%20set.) similar to [Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion). Their paths are like the trajectory of a particle submerged in a flowing fluid, which moves randomly due to unpredictable collisions with other particles. Let $\{\mathbf{x}(t) \in \mathbb{R}^d \}_{t=0}^T$ be a diffusion process, indexed by the continuous time variable $t\in [0,T]$. A diffusion process is governed by a stochastic differential equation (SDE), in the following form ($\mathbf{x}(t)$ 是一个连续随机变量, 扩散过程表达为随机微分方程SDE; 布朗运动具有增量独立性、增量服从高斯分布、轨迹连续; SDE指的是微分方程中含有随机参数或随机过程或随机初始值或随机边界值, 此处 $w$ 随机性使得 SDE 成立, 常微分方程的随机化(布朗运动))
+
+$$d \mathbf{x} = \mathbf{f}(\mathbf{x}, t) d t + g(t) d \mathbf{w},$$
+
+where $\mathbf{f}(\cdot, t): \mathbb{R}^d \to \mathbb{R}^d$ is called the *drift coefficient*(漂移系数) of the SDE, $g(t) \in \mathbb{R}$ is called the *diffusion coefficient*, and $\mathbf{w}$ represents the standard Brownian motion. You can understand an SDE as a stochastic generalization to ordinary differential equations (ODEs). Particles moving according to an SDE not only follows the deterministic drift $\mathbf{f}(\mathbf{x}, t)$, but are also affected by the random noise coming from $g(t) d\mathbf{w}$. From now on, we use $p_t(\mathbf{x})$ to denote the distribution of $\mathbf{x}(t)$. 
+
+For score-based generative modeling, we will choose a diffusion process such that $\mathbf{x}(0) \sim p_0$, and $\mathbf{x}(T) \sim p_T$. Here $p_0$ is the data distribution where we have a dataset of i.i.d. samples, and $p_T$ is the prior distribution that has a tractable form and easy to sample from. The noise perturbation by the diffusion process is large enough to ensure $p_T$ does not depend on $p_0$. (此处 $p_{0}$ and $p_{T}$ 可视为 SDE 的两个边界情况)
+
+### 3. Reverseing the SDEs to Sample Generation
+
+By starting from a sample from the prior distribution $p_T$ and reversing the diffusion process, we will be able to obtain a sample from the data distribution $p_0$. Crucially, the reverse process is a diffusion process running backwards in time. It is given by the following reverse-time SDE
+
+$$d\mathbf{x} = [\mathbf{f}(\mathbf{x}, t) - g^2(t)\nabla_{\mathbf{x}}\log p_t(\mathbf{x})] dt + g(t) d\bar{\mathbf{w}},$$
+
+where $\bar{\mathbf{w}}$ is a Brownian motion in the reverse time direction, and $dt$ represents an infinitesimal negative time step. This reverse SDE can be computed once we know the drift and diffusion coefficients of the forward SDE, as well as the score of $p_t(\mathbf{x})$ for each $t\in[0, T]$.
+
+### 4. Estimating the reverse SDEs with denoising score matching
+
+<center class="center">
+    <img src="./images/sde_diffusion.png" />
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    font-size:12px;
+    padding: 2px;">Fig. 23. Overview of score-based generative modeling through SDEs. (Image source from Score-based SDEs paper ICLR'2021)</div>
+</center>
+
+Based on the above intuition, we can use the time-dependent score function $\nabla_\mathbf{x} \log p_t(\mathbf{x})$ to construct the reverse-time SDE, and then solve it numerically to obtain samples from $p_0$ using samples from a prior distribution $p_T$. We can train a time-dependent score-based model $s_\theta(\mathbf{x}, t)$ to approximate $\nabla_\mathbf{x} \log p_t(\mathbf{x})$, using the following weighted sum of [denoising score matching](http://www.iro.umontreal.ca/~vincentp/Publications/smdae_techreport.pdf) objectives.
+
+$$\min_\theta \mathbb{E}_{t\sim \mathcal{U}(0, T)} [\lambda(t) \mathbb{E}_{\mathbf{x}(0) \sim p_0(\mathbf{x})}\mathbf{E}_{\mathbf{x}(t) \sim p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0))}[ \|s_\theta(\mathbf{x}(t), t) - \nabla_{\mathbf{x}(t)}\log p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0))\|_2^2]],$$
+
+where $\mathcal{U}(0,T)$ is a uniform distribution over $[0, T]$, $p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0))$ denotes the transition probability from $\mathbf{x}(0)$ to $\mathbf{x}(t)$, and $\lambda(t) \in \mathbb{R}_{>0}$ denotes a positive weighting function. (均匀分布、转移概率、正数权重)
+
+In the objective, the expectation over $\mathbf{x}(0)$ can be estimated with empirical means over data samples from $p_0$. The expectation over $\mathbf{x}(t)$ can be estimated by sampling from $p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0))$, which is efficient when the drift coefficient $\mathbf{f}(\mathbf{x}, t)$ is affine (每个线性变换一定是仿射变换). The weight function $\lambda(t)$ is typically chosen to be inverse proportional to $\mathbb{E}[\|\nabla_{\mathbf{x}}\log p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0)) \|_2^2]$.
+
+### 5. Tricks and Tips for designing the Model Framework
+
+**Time-Dependent Score-Based Model** &ensp;&ensp;There are no restrictions on the network architecture of time-dependent score-based models, except that their output should have the same dimensionality as the input, and they should be conditioned on time.
+
+**Several useful tips on architecture choice**:
+- It usually performs well to use the [U-net](https://arxiv.org/abs/1505.04597) architecture as the backbone of the score network $s_\theta(\mathbf{x}, t)$,
+- We can incorporate the time information via [Gaussian random features](https://arxiv.org/abs/2006.10739). Specifically, we first sample $\omega \sim \mathcal{N}(\mathbf{0}, s^2\mathbf{I})$ which is subsequently fixed for the model (i.e., not learnable). For a time step $t$, the corresponding Gaussian random feature is defined as  
+
+$$[\sin(2\pi \omega t) ; \cos(2\pi \omega t)],$$
+
+where $[\vec{a} ; \vec{b}]$ denotes the concatenation of vector $\vec{a}$ and $\vec{b}$. This Gaussian random feature can be used as an encoding for time step $t$ so that the score network can condition on $t$ by incorporating this encoding. We will see this further in the code.
+
+- We can rescale the output of the U-net by $1/\sqrt{\mathbb{E}[\|\nabla_{\mathbf{x}}\log p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0)) \|_2^2]}$. This is because the optimal $s_\theta(\mathbf{x}(t), t)$ has an $\ell_2$-norm close to $\mathbb{E}[\|\nabla_{\mathbf{x}}\log p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0))]\|_2$, and the rescaling helps capture the norm of the true score. Recall that the training objective contains sums of the form
+
+$$\mathbf{E}_{\mathbf{x}(t) \sim p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0))}[ \|s_\theta(\mathbf{x}(t), t) - \nabla_{\mathbf{x}(t)}\log p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0))\|_2^2].$$
+
+Therefore, it is natural to expect that the optimal score model $s_\theta(\mathbf{x}, t) \approx \nabla_{\mathbf{x}(t)} \log p_{0t}(\mathbf{x}(t) \mid \mathbf{x}(0))$.
+
+- Use [exponential moving average](https://discuss.pytorch.org/t/how-to-apply-exponential-moving-average-decay-for-variables/10856/3) (EMA) of weights when sampling. This can greatly improve sample quality, but requires slightly longer training time, and requires more work in implementation. We do not include this in this tutorial, but highly recommend it when you employ score-based generative modeling to tackle more challenging real problems.
+
+
+## Coding implementation and MNIST demo via SDEs
+
+**the Core Point for Coding**
+- Training with Weighted Sum of Denoising Score Matching Objectives
+- Sampling with Numerical SDE Solvers
+- Sampling with Predictor-Corrector Methods
+- Sampling with Numerical ODE Solvers
+- Likelihood Computation (NLL)
+
+### Likelihood Computation
+
+A by-product of the probability flow ODE formulation is likelihood computation. Suppose we have a differentiable one-to-one mapping $\mathbf{h}$ that transforms a data sample $\mathbf{x} \sim p_0$ to a prior distribution $\mathbf{h}(\mathbf{x}) \sim p_T$. We can compute the likelihood of $p_0(\mathbf{x})$ via the following [change-of-variable formula](https://en.wikipedia.org/wiki/Probability_density_function#Function_of_random_variables_and_change_of_variables_in_the_probability_density_function)
+
+$$p_0(\mathbf{x}) = p_T(\mathbf{h}(\mathbf{x})) |\operatorname{det}(J_\mathbf{h}(\mathbf{x}))|,$$
+
+where $J_\mathbf{h}(\mathbf{x})$ represents the Jacobian of the mapping $\mathbf{h}$, and we assume it is efficient to evaluate the likelihood of the prior distribution $p_T$. 
+
+The trajectories of an ODE also define a one-to-one mapping from $\mathbf{x}(0)$ to $\mathbf{x}(T)$. For ODEs of the form
+
+$$d \mathbf{x} = \mathbf{f}(\mathbf{x}, t) dt,$$
+
+there exists an [instantaneous change-of-variable formula](https://arxiv.org/abs/1806.07366) that connects the probability of $p_0(\mathbf{x})$ and $p_1(\mathbf{x})$, given by
+
+$$p_0 (\mathbf{x}(0)) = e^{\int_0^1 \operatorname{div} \mathbf{f}(\mathbf{x}(t), t) d t} p_1(\mathbf{x}(1)),$$
+
+where $\operatorname{div}$ denotes the divergence function (trace of Jacobian). 
+
+In practice, this divergence function can be hard to evaluate for general vector-valued function $\mathbf{f}$, but we can use an unbiased estimator, named [Skilling-Hutchinson estimator](http://blog.shakirm.com/2015/09/machine-learning-trick-of-the-day-3-hutchinsons-trick/), to approximate the trace. Let $\boldsymbol \epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$. The Skilling-Hutchinson estimator is based on the fact that
+
+$$\operatorname{div} \mathbf{f}(\mathbf{x}) = \mathbb{E}_{\boldsymbol\epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})}[\boldsymbol\epsilon^\intercal  J_\mathbf{f}(\mathbf{x}) \boldsymbol\epsilon]. $$
+
+Therefore, we can simply sample a random vector $\boldsymbol \epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$, and then use $\boldsymbol \epsilon^\intercal J_\mathbf{f}(\mathbf{x}) \boldsymbol \epsilon$ to estimate the divergence of $\mathbf{f}(\mathbf{x})$. This estimator only requires computing the Jacobian-vector product $J_\mathbf{f}(\mathbf{x})\boldsymbol \epsilon$, which is typically efficient.
+
+As a result, for our probability flow ODE, we can compute the (log) data likelihood with the following
+
+$$\log p_0(\mathbf{x}(0)) = \log p_1(\mathbf{x}(1)) -\frac{1}{2}\int_0^1 \frac{d[\sigma^2(t)]}{dt} \operatorname{div} s_\theta(\mathbf{x}(t), t) dt. $$
+
+With the Skilling-Hutchinson estimator, we can compute the divergence via
+
+$$\operatorname{div} s_\theta(\mathbf{x}(t), t) = \mathbb{E}_{\boldsymbol\epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})}[\boldsymbol\epsilon^\intercal  J_{s_\theta}(\mathbf{x}(t), t) \boldsymbol\epsilon]. $$
+
+Afterwards, we can compute the integral with numerical integrators. This gives us an unbiased estimate to the true data likelihood, and we can make it more and more accurate when we run it multiple times and take the average. The numerical integrator requires $\mathbf{x}(t)$ as a function of $t$, which can be obtained by the probability flow ODE sampler.
+
+<details>
+<summary> <span style="color:Teal">the Source Code for Scored-based SDEs with PyTorch</span> </summary>
+
+```python
+#!/usr/bin/env python3
+# encoding: utf-8
+
+"""
+@Function: Yang Song et.al "Score-Based Generative Modeling through Stochastic Differential Equations," ICLR'2021
+@Python Version: 3.10.4
+@PyTorch Version: 1.12.1+cu113
+@Author: Wei Li (weili_yzzcq@163.com)
+@Date: 2022-08-29
+"""
+
+import time
+import math
+import functools
+from scipy import integrate
+from copy import deepcopy
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.utils.data.DataLoader as DataLoader
+import torchvision.transforms as transforms
+from torchvision.datasets import MNIST
+import tqdm
+import numpy as np
+
+
+"""Step 1. Define U-Net for Time-dependent Score-based Network"""
+# ---------------------------------------------------------------
+class TimeGaussianEncoding(nn.Module):
+    """对时间进行特定的傅里叶编码"""
+    def __init__(self, embed_dim, scale=30.):
+        super(TimeGaussianEncoding, self).__init__()
+        # Gaussian random sample weights during initialization;
+        # the weights are fixed during optimization and are not trainable.
+        self.weight = nn.Parameter(torch.randn(embed_dim // 2) * scale, requires_grad=False)
+
+    def forward(self, x):
+        x_proj = x[:, None] * self.weight[None, :] * 2 * math.pi
+        return torch.cat([torch.sin(x_proj), torch.cos(x_proj)], dim=-1)
+
+
+class Dense(nn.Module):
+    """"A fully connected layer that reshapes outputs to feature maps."""
+    def __init__(self, input_dim, output_dim):
+        super(Dense, self).__init__()
+        self.dense = nn.Linear(input_dim, output_dim)
+
+    def forward(self, x):
+        # 针对输出进行扩维度，在最后面增加两个维度
+        return self.dense(x)[..., None, None]
+
+
+class ScoreNet(nn.Module):
+    def __init__(self, marginal_prob_std, channels=[32, 64, 128, 256], embed_dim=256):
+        super(ScoreNet, self).__init__()
+        """Initialize a time-dependent score-based network.
+
+        Args:
+        marginal_prob_std: A function that takes time t and gives the standard deviation of the perturbation kernel p_{0t}(x(t) | x(0)).
+        channels: The number of channels for feature maps of each resolution.
+        embed_dim: The dimensionality of Gaussian random feature embeddings.
+        """
+        self.marginal_prob_std = marginal_prob_std
+
+        # Gaussian random feature embedding layer for time
+        self.embed_time = nn.Sequential(
+            TimeGaussianEncoding(embed_dim=embed_dim),
+            nn.Linear(embed_dim, embed_dim),
+        )
+        # the swish activation function
+        self.act = lambda x: x * torch.sigmoid(x)
+
+        # Encoder of U-Net, 空间分辨率不断下采样, 通道维度不断增加
+        # ---------------------------------------------------------------------------------------
+        self.conv_1 = nn.Conv2d(1, channels[0], kernel_size=3, stride=1, padding=0, bias=False)
+        self.dense_1 = Dense(embed_dim, channels[0])
+        self.group_norm_1 = nn.GroupNorm(4, num_channels=channels[0])
+        
+        self.conv_2 = nn.Conv2d(channels[0], channels[1], kernel_size=3, stride=2, padding=0, bias=False) # to skip conection
+        self.dense_2 = Dense(embed_dim, channels[1])
+        self.group_norm_2 = nn.GroupNorm(32, num_channels=channels[1])
+        
+        self.conv_3 = nn.Conv2d(channels[1], channels[2], kernel_size=3, stride=2, padding=0, bias=False) # to skip conection
+        self.dense_3 = Dense(embed_dim, channels[2])
+        self.group_norm_3 = nn.GroupNorm(32, num_channels=channels[2])
+        
+        self.conv_4 = nn.Conv2d(channels[2], channels[3], kernel_size=3, stride=2, padding=0, bias=False)
+        self.dense_4 = Dense(embed_dim, channels[3])
+        self.group_norm_4 = nn.GroupNorm(32, num_channels=channels[3])
+        # ---------------------------------------------------------------------------------------
+
+        # Decoder of U-Net, 空间分辨率不断上采样, 通道维度不断减少, skip connections from encoder
+        # ---------------------------------------------------------------------------------------
+        self.trans_conv_4 = nn.ConvTranspose2d(channels[3], channels[2], kernel_size=3, stride=2, padding=0, output_padding=0, bias=False)
+        self.dense_5 = Dense(embed_dim, channels[2])
+        self.trans_group_norm_4 = nn.GroupNorm(32, num_channels=channels[2])
+        
+        # skip connection from Encoder
+        self.trans_conv_3 = nn.ConvTranspose2d(channels[2]+channels[2], channels[1], kernel_size=3, stride=2, padding=0, output_padding=1, bias=False)
+        self.dense_6 = Dense(embed_dim, channels[1])
+        self.trans_group_norm_3 = nn.GroupNorm(32, num_channels=channels[1])
+        
+        # skip connection from Encoder
+        self.trans_conv_2 = nn.ConvTranspose2d(channels[1]+channels[1], channels[0], kernel_size=3, stride=2, padding=0, output_padding=1, bias=False)
+        self.dense_7 = Dense(embed_dim, channels[0])
+        self.trans_group_norm_2 = nn.GroupNorm(32, num_channels=channels[0])
+        # ---------------------------------------------------------------------------------------
+        self.trans_conv_1 = nn.ConvTranspose2d(channels[0] + channels[0], 1, kernel_size=3,stride=1, padding=0, output_padding=0)
+
+    def module_params(self):
+        total_params = sum(p.numel() for p in self.parameters() if p.requires_grad)
+
+        print(f"the number of learnable parameter for this module: {total_params}")
+        print(f"the number of learnable parameter for this module: {total_params/1000.0:.4f}K")
+        print(f"the number of learnable parameter for this module: {total_params/1000000.0:.4f}M")
+        # 100,000,000 = 100,000K = 100M
+
+        return total_params
+
+    def forward(self, x, t):
+        start_time = time.time()
+
+        # x.shape: [B, C, H, W]
+        embed_time = self.act(self.embed_time(t))
+
+        # the forward process of U-Net Encoder
+        head_1 = self.conv_1(x)
+        head_1 += self.dense_1(embed_time) # 注入时间
+        head_1 = self.group_norm_1(head_1)
+        head_1 = self.act(head_1)
+
+        head_2 = self.conv_2(head_1)
+        head_2 += self.dense_2(embed_time) # 注入时间
+        head_2 = self.group_norm_2(head_2)
+        head_2 = self.act(head_2)
+        
+        head_3 = self.conv_3(head_2)
+        head_3 += self.dense_3(embed_time) # 注入时间
+        head_3 = self.group_norm_3(head_3)
+        head_3 = self.act(head_3)
+
+        head_4 = self.conv_4(head_3)
+        head_4 += self.dense_4(embed_time) # 注入时间
+        head_4 = self.group_norm_4(head_4)
+        head_4 = self.act(head_4)
+        # ----------------------------------------------
+
+        # the forward process of U-Net Decoder
+        hidden = self.trans_conv_4(head_4)
+        hidden += self.dense_5(embed_time) # 注入时间
+        hidden = self.trans_group_norm_4(hidden)
+        hidden = self.act(hidden)
+
+        hidden = self.trans_conv_3(torch.cat([hidden, head_3], dim=1)) # skip connection
+        hidden += self.dense_6(embed_time) # 注入时间
+        hidden = self.trans_group_norm_3(hidden)
+        hidden = self.act(hidden)
+
+        hidden = self.trans_conv_2(torch.cat([hidden, head_2], dim=1)) # skip connection
+        hidden += self.dense_7(embed_time) # 注入时间
+        hidden = self.trans_group_norm_2(hidden)
+        hidden = self.act(hidden)
+
+        hidden = self.trans_conv_1(torch.cat([hidden, head_1], dim=1)) # skip connection
+        # Normalize output 进一步进行范数空间的约束
+        # 目的是希望预测的分数的二阶范数也逼近真实分数的二阶范数
+        x = hidden / self.marginal_prob_std(t)[:, None, None, None]
+
+        inference_time = time.time() - start_time
+        print(f"the forward inference time: {inference_time:.6f} seconds")
+
+        return x # shape:[B, C, H, W]
+
+
+"""Step 2. Define SDE and Denosing Score Matching Objective"""
+# ---------------------------------------------------------------
+def marginal_prob_std(t, sigma, device):
+    """计算任意时刻的扰动后条件高斯分布的标准差"""
+    t = torch.tensor(t, divice=device)
+    return torch.sqrt((sigma**(2 * t) - 1.) / 2. / math.log(sigma))
+
+def diffusion_coeff(t, sigma, device):
+    """计算任意时刻的扩散系数, SDE特定(没有漂移系数)"""
+    return torch.tensor(sigma**t, device=device)
+
+def loss_func(score_model, x, marginal_prob_std, eps=1e-5):
+    """The loss function for training score-based generative models.
+
+    Args:
+    score_model: A PyTorch model instance that represents a time-dependent score-based model.
+    x: A mini-batch of training data.
+    marginal_prob_std: A function that gives the standard deviation of the perturbation kernel.
+    eps: A tolerance value for numerical stability.
+    """
+    # 1. 从 [0.00001, 0.9999] 中随机生成 batch_size 数量的浮点数作为时刻 t
+    random_t = torch.rand(x.shape[0], device=x.device) * (1. - eps) + eps
+
+    # 2. 利用重参数技巧进行采样 
+    z = torch.randn_like(x)
+    std = marginal_prob_std(random_t)
+    perturbed_x = x + z * std[:, None, None, None]
+
+    # 3. 将当前的加噪样本和时间送入 score model 预测分数
+    score = score_model(perturbed_x, random_t)
+
+    # 4. 计算 score matching loss
+    loss = torch.mean(torch.sum((score * std[:, None, None, None] + z)**2, dim=(1, 2, 3)))
+    return loss
+
+
+class ExponentialMovingAverage(nn.Module): # EMA trick
+    def __init__(self, model, decay=0.9999, device=None):
+        super(ExponentialMovingAverage, self).__init__()
+        # make a copy of the model for acculating moving average of weights
+        self.modeules = deepcopy(model)
+        self.modeules.eval()
+        self.deacy = decay
+        self.device = device # perform  EMA on different device from model if set
+        if self.device is not None:
+            self.modeules.to(device=device)
+    
+    def _update(self, model, update_func):
+        with torch.no_grad():
+            for ema_v, model_v in zip(self.modeules.state_dict().values(), model.state_dict().values()):
+                if self.device is not None:
+                    model_v = model_v.to(device=self.device)
+                ema_v.copy_(update_func(ema_v, model_v))
+
+    def update_func(self, model):
+        self._update(model, update_func=lambda e, m: self.decay * e + (1. - self.decay) * m)
+
+    def set(self, model):
+        self._update(model, update_func=lambda e, m: m)
+
+
+# Sampling from the ScoreModel
+# -------------------------------
+# 1. 基于随机微分方程数值解法来生成样本数据
+# 2. 融合欧拉数值求解 + 郎之万动力学采样 ---> predictor-corrector
+# 3. 基于伴随常微分方程的数值计算来生成样本数据
+
+
+"""sample 1. the Euler-Maruyama approach"""
+def Euler_Maruyama_sampler(score_model, marginal_prob_std, diffusion_coeff, 
+                        batch_size=64, num_steps=500, device='cuda', eps=1e-3):
+    """Generate samples from score-based models with the Euler-Maruyama solver.
+
+    Args:
+    score_model: A PyTorch model that represents the time-dependent score-based model.
+    marginal_prob_std: A function that gives the standard deviation of the perturbation kernel.
+    diffusion_coeff: A function that gives the diffusion coefficient of the SDE.
+    batch_size: The number of samplers to generate by calling this function once.
+    num_steps: The number of sampling steps. Equivalent to the number of discretized time steps.
+    device: 'cuda' for running on GPUs, and 'cpu' for running on CPUs.
+    eps: The smallest time step for numerical stability.
+
+    Returns:
+    Samples.    
+    """
+    # step 1. 定义初始时间 1 和先验分布的随机样本
+    t = torch.ones(batch_size, device=device)
+    init_x = torch.randn(batch_size, 1, 28, 28, device=device) * marginal_prob_std(t)[:, None, None, None]
+
+    # step 2. 定义采样的逆时间网络和每一步的时间步长
+    time_steps = torch.linspace(1., eps, num_steps, device=device)
+    step_size = time_steps[0] - time_steps[1]
+
+    # step 3. 根据欧拉采样算法求解 reverse time SDE
+    x = init_x
+    with torch.no_grad():
+        for time_step in tqdm.tqdm(time_steps):      
+            batch_time_step = torch.ones(batch_size, device=device) * time_step
+            g = diffusion_coeff(batch_time_step)
+            mean_x = x + (g**2)[:, None, None, None] * score_model(x, batch_time_step) * step_size
+            x = mean_x + torch.sqrt(step_size) * g[:, None, None, None] * torch.randn_like(x)      
+
+    # Do not include any noise in the last sampling step.
+    # step 4. 取最后一步的期望值作为生成的样本
+    return mean_x
+
+
+"""sample 2. predictor-corrector"""
+def pc_sampler(score_model, marginal_prob_std, diffusion_coeff, batch_size=64, 
+            num_steps=500, snr=0.16, device='cuda', eps=1e-3):
+    """Generate samples from score-based models with Predictor-Corrector method.
+
+    Args:
+    score_model: A PyTorch model that represents the time-dependent score-based model.
+    marginal_prob_std: A function that gives the standard deviation
+        of the perturbation kernel.
+    diffusion_coeff: A function that gives the diffusion coefficient of the SDE.
+    batch_size: The number of samplers to generate by calling this function once.
+    num_steps: The number of sampling steps. Equivalent to the number of discretized time steps.    
+    device: 'cuda' for running on GPUs, and 'cpu' for running on CPUs.
+    eps: The smallest time step for numerical stability.
+
+    Returns: 
+    Samples.
+    """
+    # step 1. 定义初始时间 1 和先验分布的随机样本
+    t = torch.ones(batch_size, device=device)
+    init_x = torch.randn(batch_size, 1, 28, 28, device=device) * marginal_prob_std(t)[:, None, None, None]
+    
+    # step 2. 定义采样的逆时间网络和每一步的时间步长
+    time_steps = np.linspace(1., eps, num_steps)
+    step_size = time_steps[0] - time_steps[1]
+
+    # step 3. 重复交替进行 P & C 采样方式
+    x = init_x
+    with torch.no_grad():
+        for time_step in tqdm.tqdm(time_steps):      
+            batch_time_step = torch.ones(batch_size, device=device) * time_step
+            # Corrector step (Langevin MCMC)
+            grad = score_model(x, batch_time_step)
+            grad_norm = torch.norm(grad.reshape(grad.shape[0], -1), dim=-1).mean()
+            noise_norm = np.sqrt(np.prod(x.shape[1:]))
+            langevin_step_size = 2 * (snr * noise_norm / grad_norm)**2
+            print(f"Langevin step size: {langevin_step_size}")
+
+            for _ in range(10): # hard-code for Langevin 迭代采样次数
+                x = x + langevin_step_size * grad + torch.sqrt(2 * langevin_step_size) * torch.randn_like(x)     
+                grad = score_model(x, batch_time_step)
+                grad_norm = torch.norm(grad.reshape(grad.shape[0], -1), dim=-1).mean()
+                noise_norm = np.sqrt(np.prod(x.shape[1:]))
+                langevin_step_size = 2 * (snr * noise_norm / grad_norm)**2
+                print(f"Langevin step size: {langevin_step_size}")
+
+            # Predictor step (Euler-Maruyama)
+            g = diffusion_coeff(batch_time_step)
+            x_mean = x + (g**2)[:, None, None, None] * score_model(x, batch_time_step) * step_size
+            x = x_mean + torch.sqrt(g**2 * step_size)[:, None, None, None] * torch.randn_like(x)      
+
+    # The last step does not include any noise
+    # step 4. 取最后一步的欧拉求解的期望值作为生成的样本
+    return x_mean
+
+
+"""3. 基于伴随常微分方程的数值计算来生成样本数据"""
+def ode_sampler(score_model, marginal_prob_std, diffusion_coeff, batch_size=64, 
+            atol=1e-5, rtol=1e-5, device='cuda', z=None, eps=1e-3):
+    """Generate samples from score-based models with black-box ODE solvers.
+
+    Args:
+    score_model: A PyTorch model that represents the time-dependent score-based model.
+    marginal_prob_std: A function that returns the standard deviation 
+        of the perturbation kernel.
+    diffusion_coeff: A function that returns the diffusion coefficient of the SDE.
+    batch_size: The number of samplers to generate by calling this function once.
+    atol: Tolerance of absolute errors.
+    rtol: Tolerance of relative errors.
+    device: 'cuda' for running on GPUs, and 'cpu' for running on CPUs.
+    z: The latent code that governs the final sample. If None, we start from p_1;
+        otherwise, we start from the given z.
+    eps: The smallest time step for numerical stability.
+    """
+    t = torch.ones(batch_size, device=device)
+    # Create the latent code
+    if z is None:
+        init_x = torch.randn(batch_size, 1, 28, 28, device=device) * marginal_prob_std(t)[:, None, None, None]
+    else:
+        init_x = z
+
+    shape = init_x.shape
+
+    def score_eval_wrapper(sample, time_steps):
+        """A wrapper of the score-based model for use by the ODE solver."""
+        sample = torch.tensor(sample, device=device, dtype=torch.float32).reshape(shape)
+        time_steps = torch.tensor(time_steps, device=device, dtype=torch.float32).reshape((sample.shape[0], ))    
+        with torch.no_grad():    
+            score = score_model(sample, time_steps)
+        return score.cpu().numpy().reshape((-1,)).astype(np.float64)
+
+    def ode_func(t, x):        
+        """The ODE function for use by the ODE solver."""
+        time_steps = np.ones((shape[0],)) * t    
+        g = diffusion_coeff(torch.tensor(t)).cpu().numpy()
+        return  -0.5 * (g**2) * score_eval_wrapper(x, time_steps)
+
+    # Run the black-box ODE solver.
+    res = integrate.solve_ivp(ode_func, (1., eps), init_x.reshape(-1).cpu().numpy(), rtol=rtol, atol=atol, method='RK45')  
+    print(f"Number of function evaluations: {res.nfev}")
+    x = torch.tensor(res.y[:, -1], device=device).reshape(shape)
+
+    return x
+
+
+# ----------------------------------------
+def prior_likelihood(z, sigma):
+    """The likelihood of a Gaussian distribution with mean zero and standard deviation sigma."""
+    shape = z.shape
+    N = np.prod(shape[1:])
+    return -N / 2. * torch.log(2*np.pi*sigma**2) - torch.sum(z**2, dim=(1,2,3)) / (2 * sigma**2)
+
+def ode_likelihood(x, score_model, marginal_prob_std, diffusion_coeff, batch_size=64, device='cuda', eps=1e-5):
+    """Compute the likelihood with probability flow ODE.
+
+    Args:
+    x: Input data.
+    score_model: A PyTorch model representing the score-based model.
+    marginal_prob_std: A function that gives the standard deviation of the 
+        perturbation kernel.
+    diffusion_coeff: A function that gives the diffusion coefficient of the 
+        forward SDE.
+    batch_size: The batch size. Equals to the leading dimension of `x`.
+    device: 'cuda' for evaluation on GPUs, and 'cpu' for evaluation on CPUs.
+    eps: A `float` number. The smallest time step for numerical stability.
+
+    Returns:
+    z: The latent code for `x`.
+    bpd: The log-likelihoods in bits/dim.
+    """
+
+    # Draw the random Gaussian sample for Skilling-Hutchinson's estimator.
+    epsilon = torch.randn_like(x)
+        
+    def divergence_eval(sample, time_steps, epsilon):      
+        """Compute the divergence of the score-based model with Skilling-Hutchinson."""
+        with torch.enable_grad():
+            sample.requires_grad_(True)
+            score_e = torch.sum(score_model(sample, time_steps) * epsilon)
+            grad_score_e = torch.autograd.grad(score_e, sample)[0]
+        return torch.sum(grad_score_e * epsilon, dim=(1, 2, 3))    
+
+    shape = x.shape
+
+    def score_eval_wrapper(sample, time_steps):
+        """A wrapper for evaluating the score-based model for the black-box ODE solver."""
+        sample = torch.tensor(sample, device=device, dtype=torch.float32).reshape(shape)
+        time_steps = torch.tensor(time_steps, device=device, dtype=torch.float32).reshape((sample.shape[0], ))    
+        with torch.no_grad():    
+            score = score_model(sample, time_steps)
+        return score.cpu().numpy().reshape((-1,)).astype(np.float64)
+
+    def divergence_eval_wrapper(sample, time_steps):
+        """A wrapper for evaluating the divergence of score for the black-box ODE solver."""
+        with torch.no_grad():
+            # Obtain x(t) by solving the probability flow ODE.
+            sample = torch.tensor(sample, device=device, dtype=torch.float32).reshape(shape)
+            time_steps = torch.tensor(time_steps, device=device, dtype=torch.float32).reshape((sample.shape[0], ))    
+            # Compute likelihood.
+            div = divergence_eval(sample, time_steps, epsilon)
+            return div.cpu().numpy().reshape((-1,)).astype(np.float64)
+
+    def ode_func(t, x):
+        """The ODE function for the black-box solver."""
+        time_steps = np.ones((shape[0],)) * t    
+        sample = x[:-shape[0]]
+        logp = x[-shape[0]:]
+        g = diffusion_coeff(torch.tensor(t)).cpu().numpy()
+        sample_grad = -0.5 * g**2 * score_eval_wrapper(sample, time_steps)
+        logp_grad = -0.5 * g**2 * divergence_eval_wrapper(sample, time_steps)
+        return np.concatenate([sample_grad, logp_grad], axis=0)
+
+    init = np.concatenate([x.cpu().numpy().reshape((-1,)), np.zeros((shape[0],))], axis=0)
+    # Black-box ODE solver
+    res = integrate.solve_ivp(ode_func, (eps, 1.), init, rtol=1e-5, atol=1e-5, method='RK45')  
+    zp = torch.tensor(res.y[:, -1], device=device)
+    z = zp[:-shape[0]].reshape(shape)
+    delta_logp = zp[-shape[0]:].reshape(shape[0])
+    sigma_max = marginal_prob_std(1.)
+    prior_logp = prior_likelihood(z, sigma_max)
+    bpd = -(prior_logp + delta_logp) / np.log(2)
+    N = np.prod(shape[1:])
+    bpd = bpd / N + 8.
+    return z, bpd
+
+
+# --------------------------
+if __name__ == "__main__":
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    sigma = 25.0
+    marginal_prob_std_func = functools.partial(marginal_prob_std, sigma=sigma, device=device)
+    diffusion_coeff_func = functools.partial(diffusion_coeff, sigma=sigma, device=device)
+
+    # Traing the Score Model
+    score_model = ScoreNet(marginal_prob_std=marginal_prob_std_func)
+    score_model = score_model.to(device=device)
+
+    num_epochs = 50
+    batch_size = 32
+    learning_rate = 1e-4
+
+    dataset = MNIST('.', train=True, transform=transforms.ToTensor(), download=True)
+    data_loder = DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=0)
+
+    optimizer = torch.optim.Adam(score_model.parameters(), lr=learning_rate)
+    tqdm_epoch = tqdm.tqdm(range(num_epochs))
+    ema = ExponentialMovingAverage(score_model)
+
+    for epoch in tqdm_epoch:
+        avg_loss = 0.
+        num_items = 0
+        for x, y in data_loder:
+            x = x.to(device)
+            loss = loss_func(score_model, x, marginal_prob_std_func)
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+            ema._update(score_model)
+            avg_loss += loss.item() * x.shape[0]
+            num_items += x.shape[0]
+    print(f'Average ScoreMatching Loss: {avg_loss / num_items:6.f}')
+    torch.save(score_model.state_dict(), f"score_model_{epoch}_ckpt.pth")
+    # ----------------------------------------------------------------------
+
+    # Sampling from the ScoreModel
+    # -------------------------------
+    # 1. 基于随机微分方程数值解法来生成样本数据
+    # 2. 融合欧拉数值求解 + 郎之万动力学采样 ---> predictor-corrector
+    # 3. 基于伴随常微分方程的数值计算来生成样本数据
+    # 4. 利用 ODE 计算负对数似然
+```
+
+</details>
+
+
+### Connection of Diffusion Models, Score Matching and SDEs
+- 可以认为扩散模型和基于分数匹配的方法都是基于随机微分方程生成模型的两种特殊情况
+- 或者认为可以用 SDEs 方法对 Diffusion-based and Score-based 进行统一
+- Diffusion-based 主要从**变分下界**对模型进行优化求解
+- Score-based 主要从**分数匹配**对模型进行优化求解
+
+
+-------------
 Cited as:
 ```shell
-@article{WeiLi2022DDPMs,
-  title   = Image Generation via Diffusion Models,
+@article{WeiLi2022DDPM-ScoredMatching-SDE,
+  title   = Image Generation via Diffusion Models and Scored-Matching and SDEs,
   author  = Wei Li,
   journal = https://2694048168.github.io/blog/,
-  year    = 2022,
+  year    = 2022-09,
   url     = https://2694048168.github.io/blog/#/PaperMD/diffusion_models
 }
 ```
@@ -1641,7 +2428,12 @@ Cited as:
 
 [Paper on CVPR'2022](https://openaccess.thecvf.com/content/CVPR2022/html/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.html)
 &emsp;&emsp;[Paper on arXiv'2022](https://arxiv.org/abs/2112.10752)
+&emsp;&emsp;[Paper Project](https://ommer-lab.com/research/latent-diffusion-models/)
 &emsp;&emsp;[Paper Original Code on GitHub](https://github.com/compvis/latent-diffusion)
+&emsp;&emsp;[Stable Diffusion Project](https://github.com/CompVis/stable-diffusion)
+&emsp;&emsp;[Stable Diffusion Release](https://stability.ai/blog/stable-diffusion-public-release)
+&emsp;&emsp;[Stable Diffusion Release for researchers](https://stability.ai/blog/stable-diffusion-announcement)
+&emsp;&emsp;[Stable Diffusion on Hugging Face](https://huggingface.co/CompVis)
 
 ----------------------------
 
@@ -1689,3 +2481,53 @@ Cited as:
 [Glow Paper on NeuriPS'2018](https://papers.nips.cc/paper/2018/hash/d139db6a236200b21cc7f752979132d0-Abstract.html)
 &emsp;&emsp;[Glow Paper on arXiv'2018](https://arxiv.org/abs/1807.03039)
 &emsp;&emsp;[Glow Original Code on GitHub](https://github.com/openai/glow)
+
+----------------------------
+
+[25] Aaron van den Oord, Nal Kalchbrenner, Oriol Vinyals, Lasse Espeholt, Alex Graves, Koray Kavukcuoglu, "Conditional Image Generation with PixelCNN Decoders," NeurIPS'2016
+
+[PixelCNN Paper on NeuriPS'2016](https://proceedings.neurips.cc/paper/2016/hash/b1301141feffabac455e1f90a7de2054-Abstract.html)
+&emsp;&emsp;[PixelCNN Paper on arXiv'2016](https://arxiv.org/abs/1606.05328)
+&emsp;&emsp;[Implementation Code](https://paperswithcode.com/paper/conditional-image-generation-with-pixelcnn)
+
+----------------------------
+
+[26] Tim Salimans, Andrej Karpathy, Xi Chen, Diederik P. Kingma, "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications," 2017 from OpenAI
+
+[PixelCNN++ Paper on arXiv'2017](https://arxiv.org/abs/1701.05517)
+&emsp;&emsp;[PixelCNN++ Original Code](https://github.com/openai/pixel-cnn)
+&emsp;&emsp;[Implementation Code](https://paperswithcode.com/paper/pixelcnn-improving-the-pixelcnn-with)
+
+----------------------------
+
+[27] Yang Song, Jascha Sohl-Dickstein, Diederik P. Kingma, Abhishek Kumar, Stefano Ermon, and Ben Poole, "Score-Based Generative Modeling through Stochastic Differential Equations," ICLR'2021
+
+[Oral and Outstanding Paper Award on ICLR'2021](https://openreview.net/forum?id=PxTIG12RRHS)
+&emsp;&emsp;[paper at arXiv'2021](https://arxiv.org/abs/2011.13456)
+&emsp;&emsp;[Original Code](https://github.com/yang-song/score_sde)
+
+----------------------------
+
+[28] Yang Song, and Stefano Ermon, "Improved Techniques for Training Score-Based Generative Models," NeurIPS'2020
+
+[Paper on NeurIPS'2020](https://proceedings.neurips.cc/paper/2020/hash/92c3b916311a5517d9290576e3ea37ad-Abstract.html)
+&emsp;&emsp;[paper at arXiv'2020](https://arxiv.org/abs/2006.09011)
+&emsp;&emsp;[Original Code](https://github.com/ermongroup/ncsnv2)
+
+----------------------------
+
+[29] Yang Song, and Stefano Ermon, "Generative Modeling by Estimating Gradients of the Data Distribution," NeurIPS'2019
+
+[Oral top-5% Paper on NeurIPS'2019](https://proceedings.neurips.cc/paper/2019/hash/3001ef257407d5a371a96dcd947c7d93-Abstract.html)
+&emsp;&emsp;[Oral top-5% Paper on Openreview](https://openreview.net/forum?id=B1lcYrBgLH)
+&emsp;&emsp;[paper at arXiv'2019](https://arxiv.org/abs/1907.05600)
+&emsp;&emsp;[Original Code](https://github.com/ermongroup/ncsn)
+
+----------------------------
+
+[30] Matthew Tancik, Pratul P. Srinivasan, Ben Mildenhall, Sara Fridovich-Keil, Nithin Raghavan, Utkarsh Singhal, Ravi Ramamoorthi, Jonathan T. Barron, Ren Ng, "Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains," NeurIPS'2020
+
+[spotlight Paper at NeurIPS'2020](https://proceedings.neurips.cc/paper/2020/hash/55053683268957697aa39fba6f231c68-Abstract.html)
+&emsp;&emsp;[paper project](https://bmild.github.io/fourfeat/)
+&emsp;&emsp;[paper at arXiv'2020](https://arxiv.org/abs/2006.10739)
+&emsp;&emsp;[Original Code](https://github.com/tancik/fourier-feature-networks)
