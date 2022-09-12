@@ -630,30 +630,9 @@ $$
 
 > KL-divergence between two gaussians is tractable, having closed-form formula. Let’s consider the case of single variable Gaussians:
 
-$$
-\begin{aligned}
-& D_{\text{KL}}(\mathcal{N}(\mu_1, \sigma_1^2) || \mathcal{N}(\mu_2, \sigma_2^2)) \\
-
-= & \int dx \left[\log \mathcal{N}(\mu_1, \sigma_1^2) - \log \mathcal{N}(\mu_2, \sigma_2^2)\right] \mathcal{N}(\mu_1, \sigma_1^2) \\
-
-= & \int dx  \left[ -\frac{1}{2} \log(2\pi) - \log \sigma_1 - \frac{1}{2} \left(\frac{x - \mu_1}{\sigma_1} \right)^2 \right. \\
-&\left. ~~~~~~~~~~~~+ \frac{1}{2} \log(2\pi) + \log \sigma_2 + \frac{1}{2} \left(\frac{x - \mu_2}{\sigma_2}\right)^2 \right] \\
-&~~~~~~~~~~~\times\frac{1}{\sqrt{2\pi\sigma_1}} \exp \left[ -\frac{1}{2}\left( \frac{x - \mu_1}{\sigma} \right)^2 \right] \\
-
-= & \mathbb{E}_{1}  \left[ \log \frac{\sigma_2}{\sigma_1} + \frac{1}{2} \left[ \left(\frac{x - \mu_2}{\sigma_2} \right)^2 - \left(\frac{x - \mu_1}{\sigma_1}\right)^2 \right] \right ] \\
-
-= & \log\frac{\sigma_2}{\sigma_1} + \frac{1}{2\sigma_2^2} \mathbb{E}_1 [({x - \mu_2})^2] - \frac{1}{2\color{green}\sigma_1^2} \color{green}\mathbb{E}_1 [({x - \mu_1})^2] \\
-
-= & \log\frac{\sigma_2}{\sigma_1} + \frac{1}{2\sigma_2^2} \mathbb{E}_1 [({x - \mu_2})^2] -  \frac{1}{2} \\
-
-= & \log\frac{\sigma_2}{\sigma_1} + \frac{1}{2\sigma_2^2} \mathbb{E}_1 [({x - \mu_1 + \mu_1 - \mu_2})^2] -  \frac{1}{2} \\
-
-= & \log\frac{\sigma_2}{\sigma_1} + \frac{1}{2\sigma_2^2} {\color{green}\mathbb{E}_1 [(x - \mu_1)^2} + 2(x-\mu_1)(\mu_1 - \mu_2) + (\mu_1 - \mu_2)^2] -  \frac{1}{2} \\
-
-= & \log\frac{\sigma_2}{\sigma_1} + \frac{{\color{green}\sigma_1^2} + (\mu_1 - \mu_2)^2}{2\sigma_2^2} -  \frac{1}{2} 
-\end{aligned}
-$$
-
+<center class="half">
+    <img src="./images/gaussians_tractable.png" />
+</center>
 
 > More generally for multivariate Gaussians with dimension $d$:
 
@@ -711,9 +690,7 @@ $$
 
 original data distribution: $x_{0} \sim q(x)$
 
-
 $$q(x_{t} \mid x_{t-1}) \sim \mathcal{N}(x_{t}; \sqrt{1 - \beta_{t}}x_{t-1}, \beta_{t}I)$$
-
 
 where $\beta_{t}$ denotes diffusion rate in DPM paper;  denotes variance(noise) schedule in DDPM and IDDPM papers; and then the add noise $\beta_{t} \in (0, 1)$ , ${t=1, 2, 3, \cdots, T}$ , $\beta_{1} < \beta_{2}<\beta_{3}\cdots<\beta_{T}$ ; and then can proof the reverse process is still gaussian disribution.
 
@@ -732,7 +709,6 @@ theoretically, $T \to \infty$ , $x_{T} \to \mathcal{N}(0, I)$ ,the Isotropic Gau
 > 不是简单的对噪声进行线性叠加，而是使用<span style="color:Crimson">**重参数技巧(Reparameterization Trick)**</span>进行仿射变换的方式添加噪声。
 
 如果要从高斯分布 $z\sim \mathcal{N}\left ( z;\mu_{\theta},\sigma^{2}_{\theta} I\right ) $ 中采样一个 $\bar{z}$，可以写成:
-
 
 $$ \bar{z} = \mu_{\theta} + \sigma_{\theta} \odot \epsilon , \epsilon \sim \mathcal{N}\left ( 0,I\right ) $$
 
@@ -762,7 +738,6 @@ of a Markov diffusion kernel.**" quote from DPM paper ICML'2015.)
 <!-- $$ x_{t} = \sqrt{\beta_{t}}z + \sqrt{1-\beta_{t}}x_{t-1} ; z \in \mathcal{N}(0, I) \tag{1}$$  -->
 $$ x_{t} = \sqrt{\beta_{t}}z + \sqrt{1-\beta_{t}}x_{t-1} ; z \in \mathcal{N}(0, I) $$ 
 
-
 令 $ \alpha_{t} = 1 - \beta_{t}$ , 则上式子可以化简为：
 
 
@@ -781,28 +756,19 @@ $$
 
 $$\sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} \sim \mathcal{N}(0, \alpha_{t}(1- \alpha_{t-1})I) ; z_{2} \in \mathcal{N}(0, I)$$
 
-
 $$\sqrt{1 - \alpha_{t}} z_{1} \sim \mathcal{N}(0, (1- \alpha_{t})I) ; z_{1} \in \mathcal{N}(0, I)$$
-
 
 $$ X \sim \mathcal{N}(\mu_{1}, \sigma_{1}^{2}); $$
 
-
 $$ Y \sim \mathcal{N}(\mu_{2}, \sigma_{2}^{2}); $$
-
 
 $$ aX + bY \sim \mathcal{N}(a\mu_{1} + b\mu_{2}, a^{2}\sigma_{1}^{2} + b^{2}\sigma_{2}^{2}); $$
 
-
 $$ \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} + \sqrt{1 - \alpha_{t}} z_{1} \sim \mathcal{N}(0, (\alpha_{t}(1- \alpha_{t-1}) + (1- \alpha_{t}))I); $$
-
 
 $$ \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} + \sqrt{1 - \alpha_{t}} z_{1} \sim \mathcal{N}(0, (\alpha_{t}- \alpha_{t}\alpha_{t-1} + 1- \alpha_{t})I); $$
 
-
 $$ \sqrt{\alpha_{t}(1 - \alpha_{t-1})}z_{2} + \sqrt{1 - \alpha_{t}} z_{1} \sim \mathcal{N}(0, (1- \alpha_{t}\alpha_{t-1})I); $$
-
-
 
 $$
 \begin{aligned}
@@ -817,18 +783,13 @@ $$
 \end{aligned}
 $$
 
-
 令 $ \bar{\alpha}_{t} = \prod_{i=1}^{T} \alpha_{i}$ , 则上式子可以化简为：
-
 
 $$x_{t} = \sqrt{\bar{\alpha}_{t}}x_{0} + \color{green}\sqrt{1 - \bar{\alpha}_{t}}\bar{z}_{t} ; \color{red}\bar{z}_{t} \in \mathcal{N}(0, I)$$
 
-
 $$q(x_{t} \mid x_{0}) = \mathcal{N}(\mathbf{x}_t; \sqrt{\bar{\alpha}_t} \mathbf{x}_0, (1 - \bar{\alpha}_t)\mathbf{I})$$
 
-
 故此总结一下前向扩散过程的概率分布满足一下式子：
-
 
 $$
 \begin{aligned}
@@ -838,7 +799,6 @@ q(x_{t} \mid x_{t-1})
 \end{aligned}
 $$
 
-
 $$
 \begin{aligned}
 q(x_{t} \mid x_{0})
@@ -847,11 +807,7 @@ q(x_{t} \mid x_{0})
 \end{aligned}
 $$
 
-
-
 这样根据前向扩散过程的要求，最终迭代 $T$ 次后，$x_{T}$ 变成一个标准高斯分布，则可以计算出迭代次数 $T$ 的具体数值(e.g. T=1000)：
-
-
 
 $$
 sub. to \left\{
@@ -861,8 +817,6 @@ sub. to \left\{
 \end{aligned}
 \right.
 $$
-
-
 
 因此前向扩散过程中的迭代步数是有一个有限的可解析的数值，$t \in (0, T) $ 进行采样得到具体的数值，the sample-step schedule is different, PDM and DDPM paper is uniform schedule(均匀采样); but IDDPM paper is simple importance sampling technique(基于 loss 进行重要性采样)
 
@@ -879,19 +833,13 @@ $$
 因此假设逆向过程的分布 $q(x_{t-1} \mid x_{t}) \sim \mathcal{N}(x_{t-1}; \mu_{\theta}(x_{t}, t), \Sigma_{\theta}(x_{t}, t))$ , 利用 NN 拟合 $\mu_{\theta}$ 和 $\Sigma_{\theta}$ , 均值和方差都是关于 $(x_{t}, t)$ 的仿射变换函数
 
 
-
 $$ q(x_{t-1} \mid x_{t}) = p_{\theta}(x_{t-1} \mid x_{t}) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_{t}, t), \Sigma_{\theta}(x_{t}, t)) $$
-
 
 and the joint probability dist. as follow:
 
-
 $$ p_{\theta}(X_{0:T}) = p(X_{T}) \prod_{t=1}^{T}(x_{t-1} \mid x_{t}) $$
 
-
 > <span style="color:green">虽然无法计算出 $q(x_{t-1} \mid x_{t})$ ,但是可以计算出逆向扩散过程的后验概率分布 $q(x_{t-1} \mid x_{t}, x_{0})$ . </span> 联合概率分布可以分解为条件概率分布的乘积形式
-
-
 
 $$
 \begin{aligned}
@@ -901,11 +849,7 @@ q(x_{t-1}, x_{t}, x_{0})
 \end{aligned}
 $$
 
-
-
 基于 diffusion process (forward or reverse) 都是马尔可夫过程 (Markov chain) ，在给定 $x_{0}$ 条件下，$x_{t-1}$ 和 $x_{t}$ 条件独立，则利用对称性，$q(x_{t-1}, x_{t}, x_{0})$ 联合概率分布有如下相同等式
-
-
 
 $$
 \begin{aligned}
@@ -915,9 +859,7 @@ q(x_{t-1}, x_{t}, x_{0})
 \end{aligned}
 $$
 
-
 那么逆向扩散过程的后验概率分布如下推导：
-
 
 $$
 \begin{aligned}
@@ -951,31 +893,21 @@ $$
 
 将高斯前向扩散过程带入后验分布式子中，可以化简如下：
 
-
 $$
 \begin{aligned}
 q(x_{t-1} \mid x_{t}, x_{0})
-
 &=\color{red} q(x_{t} \mid x_{t-1}) \frac{q(x_{t-1} \mid x_{0})}{q(x_{t} \mid x_{0})} \\
-
 &\sim \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}}x_{t-1}, \beta_{t}I) \frac{\mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I)}{\mathcal{N}(x_{t-1}; \sqrt{\bar{\alpha}_{t-1}}x_{0}, (1 - \bar{\alpha}_{t-1})I)} \\
-
 &\propto exp(-\frac{1}{2}[\color{green} \frac{(x_{t} - \sqrt{1-\beta_{t}}x_{t-1})^{2}}{\beta_{t}} + \frac{(x_{t-1} - \sqrt{\bar{\alpha}_{t-1}}x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{(x_{t} - \sqrt{\bar{\alpha}_{t}}x_{0})^{2}}{1-\bar{\alpha}_{t}}]) \\ 
-
 &\propto exp(\frac{x_{t}^{2} - 2\sqrt{1-\beta_{t}}x_{t-1}x_{t} + (1-\beta_{t})(x_{t-1})^{2}}{\beta_{t}} + \frac{x_{t-1}^{2} - 2\sqrt{\bar{\alpha}_{t-1}}x_{0}x_{t-1} + \bar{\alpha}_{t-1}(x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{x_{t}^{2} - 2\sqrt{\bar{\alpha}_{t}}x_{0}x_{t} + \bar{\alpha}_{t}(x_{0})^{2}}{1-\bar{\alpha}_{t}}) \\
-
 &\propto \frac{x_{t}^{2} - 2\sqrt{1-\beta_{t}}x_{t-1}x_{t} + (1-\beta_{t})(x_{t-1})^{2}}{\beta_{t}} + \frac{x_{t-1}^{2} - 2\sqrt{\bar{\alpha}_{t-1}}x_{0}x_{t-1} + \bar{\alpha}_{t-1}(x_{0})^{2}}{1-\bar{\alpha}_{t-1}} - \frac{x_{t}^{2} - 2\sqrt{\bar{\alpha}_{t}}x_{0}x_{t} + \bar{\alpha}_{t}(x_{0})^{2}}{1-\bar{\alpha}_{t}} \\
-
 &\propto (\frac{1-\beta_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}})x_{t-1}^{2} - (\frac{2\sqrt{1-\beta_{t}}x_{t}}{\beta_{t}} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_{0}}{1-\bar{\alpha}_{t-1}})x_{t-1} + C(x_{t}, x_{0}) \\
 \end{aligned} \\
 $$
 
 > from line 1 to line 2: 相同底数的幂函数相乘，指数相加即可; 将高斯函数写成指数表示的形式 <br> from line 2 to line 3: 将分子平方展开 <br> from line 3 to line 4: 以 $x_{t-1}$ 为变量进行合并 <br> from line 4 to line 5: 其中 $C$ 与 $x_{t-1}$ 无关的常量 <br>
 
-
 逆向扩散过程的后验概率分布依然满足高斯分布，假设服从以下分布：
-
-
 
 $$
 \begin{aligned}
@@ -986,29 +918,22 @@ q(x_{t-1} \mid x_{t}, x_{0})
 \end{aligned} \\
 $$
 
-
-
 根据以上关于 $q(x_{t-1} \mid x_{t}, x_{0})$ 的两个式子，可以计算出逆向扩散过程中的真实的均值和方差估计 (用于训练 NN 的监督 GT)：
-
-
 
 $$
 \begin{aligned}
 \frac{1}{\widetilde{\beta}_{t}}
-&= \frac{1-\beta_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}} \\
-&= \frac{(1-\beta_{t})(1-\bar{\alpha}_{t-1})+\beta_{t}}{\beta_{t}(1-\bar{\alpha}_{t-1})} \\
-
-\Rightarrow \widetilde{\beta}_{t} &= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{(1-\beta_{t})(1-\bar{\alpha}_{t-1})+\beta_{t}} \\
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}(1-\bar{\alpha}_{t-1})+\beta_{t}} & \text{; $\beta_{t}=1-\alpha_{t}$} \\ 
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\alpha_{t}\bar{\alpha}_{t-1}+\beta_{t}} \\ 
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\bar{\alpha}_{t}+\beta_{t}} \\ 
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\bar{\alpha}_{t}+(1-\alpha_{t})} \\ 
-&= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}} \\ 
-&= \color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} & \text{; DDPM paper} \\ 
-\end{aligned} \\
+&= \frac{1-\beta_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}}\\
+&= \frac{(1-\beta_{t}) (1-\bar{\alpha}_{t-1}) + \beta_{t} }{ \beta_{t}(1-\bar{\alpha}_{t-1}) }\\
+\Rightarrow \widetilde{\beta}_{t} &= \frac{\beta_{t}(1-\bar{\alpha}_{t-1})}{(1-\beta_{t})(1-\bar{\alpha}_{t-1}) + \beta_{t}}\\
+&= \frac{ \beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}(1-\bar{\alpha}_{t-1})+\beta_{t}} & \text{; $\beta_{t}=1-\alpha_{t}$}\\
+&= \frac{ \beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\alpha_{t}\bar{\alpha}_{t-1}+\beta_{t}}\\
+&= \frac{ \beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\bar{\alpha}_{t}+\beta_{t}}\\
+&= \frac{ \beta_{t}(1-\bar{\alpha}_{t-1})}{\alpha_{t}-\bar{\alpha}_{t}+(1-\alpha_{t})}\\
+&= \frac{ \beta_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}\\
+&= \color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} & \text{; DDPM paper}\\
+\end{aligned}
 $$
-
-
 
 $$
 \begin{aligned}
