@@ -4,7 +4,7 @@
 - &ensp;<span style="color:Moccasin">Tags</span>: Generative Models; Denoising Diffusion Probability Models, DDPMs; Scored-Matching; Score-based Multi-level Noise Matching; Stochastic Differential Equations, SDEs;
 - &ensp;<span style="color:PaleVioletRed">Type</span>: Survey
 - &ensp;<span style="color:DarkSeaGreen">Author</span>: [Wei Li](https://2694048168.github.io/blog/#/) (weili_yzzcq@163.com)
-- &ensp;<span style="color:DarkMagenta">Revision of DateTime</span>: 2022-08-06; 2022-08-13; 2022-08-29;
+- &ensp;<span style="color:DarkMagenta">Revision of DateTime</span>: 2022-08-06; 2022-08-13; 2022-08-29; 2022-09-05;
 
 > Deep Generative Learning: Learning to generate data
 
@@ -38,6 +38,16 @@
 > [DeepFake tech.](https://en.wikipedia.org/wiki/Deepfake)  a  portmanteau word of "deep learning" and "fake" since 2016.
 
 [Stable Diffusion Release](<https://stability.ai/blog/stable-diffusion-public-release> (Robin Rombach, Andreas Blattmann, Dominik Lorenz, et al. "High-Resolution Image Synthesis with Latent Diffusion Models," CPVR'2022 Oral)) : **Firstly the public release of stable diffusion for researchers and user**
+
+<center class="center">
+    <img src="./images/stable_diffusion.png" />
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    font-size:12px;
+    padding: 2px;">Fig. 0. We condition LDMs either via concatenation or by a more general cross-attention mechanism from High-Resolution Image Synthesis with Latent Diffusion Models paper. (Image source from stable diffusion paper, CVPR'2022)</div>
+</center>
 
 > Some magical and interesting demos on InternetWeb for Stable-Diffusion and Disco-Diffusion. You can Google search on Web and try it with creative and generate ideas (music/image).
 
@@ -456,10 +466,10 @@ $$
 \mathbf{\hat{\theta}}
 &=\underset{\theta}{argmax}[P_{r}(x_{1\cdots}I \mid \mathbf{\theta})] \\
 &=\underset{\theta}{argmax}[\prod_{i=1}^{I} P_{r}(x_{i} \mid \mathbf{\theta})] \\
-\\
-& \text{其中，$\underset{\theta}{argmax} f[\theta]$ 返回使得 $f[\theta]$ 最大化的 $\theta$ 数值} \\
 \end{aligned}
 $$
+
+其中，$\underset{\theta}{argmax} f[\theta]$ 返回使得 $f[\theta]$ 最大化的 $\theta$ 数值
 
 
 为了估计新的数据点 $x^{\ast}$ 的概率分布，其中计算 $x^{\ast}$ 属于拟合模型的概率，用最大似然拟合参数 $\mathbf{\hat{\theta}}$ 简单估计概率密度函数 $P_{r}(x^{\ast} \mid \mathbf{\hat{\theta}})$ 即可。
@@ -514,12 +524,10 @@ $$
 P_{r}(x^{\ast} \mid x_{1 \cdots I}) 
 &= \int P_{r}(x^{\ast} \mid \mathbf{\theta}) \delta[\mathbf{\theta} - \mathbf{\hat{\theta}}] \mathrm{d}\theta \\
 &= P_{r}(x^{\ast} \mid \mathbf{\theta}) \\
-& \text{where $\int \delta[\mathbf{\theta} - \mathbf{\hat{\theta}}] \mathrm{d}\theta = 1$}
 \end{aligned}
 $$
 
-
-which is exactly the calculation we originally prescribed:  we simply evaluate the probability of the data under the  model with the estimated parameters. 可以估计数据在参数模型下的概率。
+where $\int \delta[\mathbf{\theta} - \mathbf{\hat{\theta}}] \mathrm{d}\theta = 1$, which is exactly the calculation we originally prescribed:  we simply evaluate the probability of the data under the  model with the estimated parameters. 可以估计数据在参数模型下的概率。
 
 **2. 信息熵，交叉熵和KL散度**
 
@@ -2192,6 +2200,19 @@ if __name__ == "__main__":
 - 或者认为可以用 SDEs 方法对 Diffusion-based and Score-based 进行统一
 - Diffusion-based 主要从**变分下界**对模型进行优化求解
 - Score-based 主要从**分数匹配**对模型进行优化求解
+- DDPM(denoising diffusion probability model) and SMLD(score matching Langevin dynamics)
+- 扩散生成模型：贝叶斯概率分布角度建模 or 分数和郎之万采样角度建模
+- 对数据增加扰动为手段，通过神经网络对加噪后的数据进行建模并最终学到目标数据分布的过程
+- Denoising Score Matching with Langevin Dynamics
+    - 为了更高估计分数(低密度数据区域)，需要通过对数据增加不同量级的噪声
+    - 噪声量级有大有小，都是在原始数据上加噪，最终的分布趋向 $\mathcal{N}(0, \sigma^{2}I)$
+    - 利用分数匹配来训练 NCSN 网络，从而使得 NCSN 能够估计任意加噪后的分布的分数 $\nabla_{x} \log p(x)$
+    - 基于任意加噪分布的分数和退火郎之万采样，生成准确的符合原始数据分布的样本
+- Denoising Diffusion Probabilistic Model
+    - 通过离散马尔科夫链进行加噪过程的
+    - 加噪的量级在 $0 \sim 1$ 之间，并且 $\beta_{t}$ 逐渐增大，而且条件分布的均值也是缩放后的，缩放系数 $\sqrt{1 - \beta_{t}}$ 逐渐减少
+    - 训练过程是用高斯分布近似反推前向过程，训练的目标函数是对数似然的下界
+    - 如果训练的目标函数用分数来表示，那么分数匹配的 $loss$ 的系数其实和 SMLD 中的一致，都是在原始分布上加噪后的分布的方差，但是采样的公式和 Langevin Dynamics 不完全一样 (Yang Song Oral paper ICLR'2021)
 
 
 -------------
@@ -2426,11 +2447,11 @@ Cited as:
 
 [18] Robin Rombach, Andreas Blattmann, et al. "High-Resolution Image Synthesis with Latent Diffusion Models," CVPR'2022
 
-[Paper on CVPR'2022](https://openaccess.thecvf.com/content/CVPR2022/html/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.html)
+[Oral Paper on CVPR'2022](https://openaccess.thecvf.com/content/CVPR2022/html/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.html)
 &emsp;&emsp;[Paper on arXiv'2022](https://arxiv.org/abs/2112.10752)
 &emsp;&emsp;[Paper Project](https://ommer-lab.com/research/latent-diffusion-models/)
 &emsp;&emsp;[Paper Original Code on GitHub](https://github.com/compvis/latent-diffusion)
-&emsp;&emsp;[Stable Diffusion Project](https://github.com/CompVis/stable-diffusion)
+&emsp;&emsp;[Stable Diffusion Project](https://ommer-lab.com/research/latent-diffusion-models/)
 &emsp;&emsp;[Stable Diffusion Release](https://stability.ai/blog/stable-diffusion-public-release)
 &emsp;&emsp;[Stable Diffusion Release for researchers](https://stability.ai/blog/stable-diffusion-announcement)
 &emsp;&emsp;[Stable Diffusion on Hugging Face](https://huggingface.co/CompVis)
@@ -2531,3 +2552,17 @@ Cited as:
 &emsp;&emsp;[paper project](https://bmild.github.io/fourfeat/)
 &emsp;&emsp;[paper at arXiv'2020](https://arxiv.org/abs/2006.10739)
 &emsp;&emsp;[Original Code](https://github.com/tancik/fourier-feature-networks)
+
+----------------------------
+[31] Jonathan Ho, Tim Salimans, Alexey Gritsenko, William Chan, Mohammad Norouzi, David J. Fleet, "Video Diffusion Models," arXiv'2022 from Google Inc.
+
+[paper project](https://video-diffusion.github.io/)
+&emsp;&emsp;[paper at arXiv'2020](https://arxiv.org/abs/2204.03458)
+&emsp;&emsp;[Implemental Code](https://paperswithcode.com/paper/video-diffusion-models)
+
+----------------------------
+[32] Arpit Bansal, Eitan Borgnia, Hong-Min Chu, Jie S. Li, Hamid Kazemi, Furong Huang, Micah Goldblum, Jonas Geiping, Tom Goldstein, "Cold Diffusion: Inverting Arbitrary Image Transforms Without Noise," arXiv'2022
+
+[Cold Diffusion paper at arXiv'2022](https://arxiv.org/abs/2208.09392)
+&emsp;&emsp;[Paper Code](https://github.com/arpitbansal297/cold-diffusion-models)
+&emsp;&emsp;[Implementation Code](https://paperswithcode.com/paper/cold-diffusion-inverting-arbitrary-image)

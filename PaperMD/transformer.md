@@ -4,7 +4,7 @@
 - &ensp;<span style="color:Moccasin">Tags</span>: Transformer; ViT; Swin Transformer; MAE;
 - &ensp;<span style="color:PaleVioletRed">Type</span>: Survey
 - &ensp;<span style="color:DarkSeaGreen">Author</span>: [Wei Li](https://2694048168.github.io/blog/#/) (weili_yzzcq@163.com)
-- &ensp;<span style="color:DarkMagenta">DateTime</span>: 2022-08
+- &ensp;<span style="color:DarkMagenta">Revision of DateTime</span>: 2022-08-16; 2022-09-05;
 
 > Quote learning from 'deep_thoughts' uploader on bilibili.
 
@@ -26,6 +26,7 @@
     - 无先验假设或归纳偏置：数据量的要求与先验假设的程度成负相关关系(反比); Transformer 模型性能的上限很高, 减少对人类的归纳偏置知识的需求
     - 任意两个 Tokens 都可以建模关系：擅长远距离建模；自注意力机制复杂度与 Token 长度呈平方关系
     - 使用类型：Encoder only(BERT, 分类, 非流式任务); Decoder only(GPT系列, 自回归生成任务, 流式任务); Encoder-Decoder(机器翻译, 语音识别)
+    - 归纳偏置对模型缩放的影响; Inductive Bias Influence Scaling Model
 
 
 > [HuggingFace](https://huggingface.co/) <br> [HuggingFace Transformer](https://huggingface.co/docs/transformers/index) <br> [The Annotated Transformer from Harvard-NLP](https://nlp.seas.harvard.edu/2018/04/03/attention.html) <br> [Inductive bias](https://en.wikipedia.org/wiki/Inductive_reasoning) <br>  [Deductive bias](https://en.wikipedia.org/wiki/Deductive_reasoning) <br> 
@@ -860,3 +861,7 @@ if __name__ == "__main__":
 [MAE Paper on CVPR'2022](https://openaccess.thecvf.com/content/CVPR2022/html/He_Masked_Autoencoders_Are_Scalable_Vision_Learners_CVPR_2022_paper.html)
 &emsp;&emsp;[MAE Paper on arXiv'2021](https://arxiv.org/abs/2111.06377)
 &emsp;&emsp;[MAE Original Code on GitHub](https://github.com/facebookresearch/mae)
+
+[6] Yi Tay, Mostafa Dehghani, Samira Abnar, Hyung Won Chung, William Fedus, Jinfeng Rao, Sharan Narang, Vinh Q. Tran, Dani Yogatama, Donald Metzler, "Scaling Laws vs Model Architectures: How does Inductive Bias Influence Scaling?," arXiv'2022
+
+[Paper on arXiv'2021](https://arxiv.org/abs/2207.10551)

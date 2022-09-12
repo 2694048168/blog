@@ -17,6 +17,13 @@
 </center>
 
 ----------------
+### [Neural Radiance Fields (NeRF) technique](PaperMD/nerf.md)
+
+<center class="half">
+  <img src="./images/full_pipeline_dark_light.svg" />
+</center>
+
+----------------
 ### [Graph Neural Networks and Non-Euclidean Convolution](PaperMD/gnn.md)
 
 <center class="half">

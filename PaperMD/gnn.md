@@ -11,6 +11,7 @@
 - Convolution Operations
 - Data Information = Features + Structures(relationships)
 - Advantages of Graph Representation of images from ViG paper
+- [图神经网络的应用场景](https://mp.weixin.qq.com/s/C10Tl2SGgU6zN-7GKfrrzw)
 
 
 **Reference Source Linking**

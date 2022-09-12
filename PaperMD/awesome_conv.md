@@ -34,6 +34,7 @@
 - residual convolution operator fusion for inference
     - RepVGG paper on CVPR'2021
     - 卷积算子进行融合，提高推理效率
+    - Automatic Differentiation in Machine Learning
 
 ---------------------
 
@@ -539,3 +540,18 @@ all close equal of the output: True
 (SR_PyTorch)
 """
 ```
+
+
+### Reference
+----------------------------
+
+[1] Atilim Gunes Baydin, Barak A. Pearlmutter, Alexey Andreyevich Radul, Jeffrey Mark Siskind, "Automatic Differentiation in Machine Learning: a Survey," JMLR'2018
+
+[Paper on JMLR'2018](https://jmlr.org/papers/v18/17-468.html)
+
+[2] Xiaohan Ding, Xiangyu Zhang, Ningning Ma, Jungong Han, Guiguang Ding, Jian Sun, "RepVGG: Making VGG-style ConvNets Great Again," CVPR'2021
+
+[RepVGG Paper on CVPR'2021](https://openaccess.thecvf.com/content/CVPR2021/html/Ding_RepVGG_Making_VGG-Style_ConvNets_Great_Again_CVPR_2021_paper.html)
+&emsp;&emsp;[Paper on arXiv'2021](https://arxiv.org/abs/2101.03697)
+&emsp;&emsp;[Original Code on GitHub](https://github.com/DingXiaoH/RepVGG)
+&emsp;&emsp;[Implementation Code on GitHub](https://paperswithcode.com/paper/repvgg-making-vgg-style-convnets-great-again)

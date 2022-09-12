@@ -17,6 +17,7 @@
     - Flow 推导
 - **Generative GAN**
     - GAN 推导
+- **MCMC Algorithrm**
 
 
 <center class="center">
@@ -180,6 +181,199 @@ $$
 
 > [variational dequantizer](https://mtskw.com/posts/variational-dequantizer/)
 
+### Flow Generative
+
+
+### Generative GAN
+
+
+### MCMC Algorithm
+
+> [Markov Chain Monte Carlo, MCMC](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo) 马尔科夫链蒙特卡洛方法; <br> MCMC 是一组利用马尔科夫链从随机分布中取样的算法，生成的马氏链即是对于目标分布的近似估计。常见算法：Metropolis-Hastings 算法；Gibbs 取样算法；Hamiltonian Monte Carlo 算法；都是通过随机游走对目标分布进行采样。
+
+some **Python** packages for MCMC
+- [emcee](https://emcee.readthedocs.io/en/stable/)
+- [ParaMonte](https://www.cdslab.org/paramonte/notes/installation/python/)
+- [ParaMonte](https://en.wikipedia.org/wiki/PyMC)
+- [MCMC-刘建平](https://www.cnblogs.com/pinard/p/6625739.html)
+- [马尔可夫链蒙特卡洛方法](https://www.jiqizhixin.com/articles/2017-12-24-6)
+- [马尔可夫链蒙特卡罗算法 MCMC](https://zhuanlan.zhihu.com/p/37121528)
+
+
+**蒙特卡罗方法**
+&ensp;&ensp;&ensp;&ensp;蒙特卡罗是一个赌场的名称，统计学中蒙特卡罗方法是一种随机模拟的方法，这很像赌博场里面的扔骰子的过程。最早的蒙特卡罗方法都是为了求解一些不太好求解的求和或者积分问题, 难求解出 $f(x)$ 的原函数，那么这个积分比较难求解。
+
+$$ \theta = \int_{a}^{b} f(x) \mathrm{d}x $$
+$$ \theta = (b - a) f(x_{0}) ; x_{0} \sim [a, b] $$
+$$ \theta = \frac{b - a}{n} \sum_{i=0}^{n-1} f(x_{i}) ; x_{i} \sim [a, b]$$
+$$
+\begin{aligned}
+\theta
+&= \int_{a}^{b} f(x) \mathrm{d}x \\
+&= \int_{a}^{b} \frac{f(x)}{p(x)} p(x) \mathrm{d}x \\
+&\approx \frac{1}{n} \sum_{i=0}^{n-1} \frac{f(x_{i})}{p(x_{i})} \\
+\end{aligned}
+$$
+
+其中，简单的近似求解方法是在 $[a, b]$ 之间随机的采样一个点 $x_{0}$ , 然后用 $f(x_{0})$ 代表在 $[a, b]$ 区间上所有的 $f(x)$ 的值; 采样 $[a, b]$ 区间的 $n$ 个值：$x_{0}, x_{1}, ... x_{n−1}$ , 用它们的均值来代表 $[a, b]$ 区间上所有的 $f(x)$ 的值, 隐含假定 $x$ 在$[a, b]$ 之间是均匀分布的; 可以利用 $x$ 在 $[a, b]$ 的概率分布函数 $p(x)$, 进而更准确估计。这就是蒙特卡罗方法的一般形式，当然这里是连续函数形式的蒙特卡罗方法，但是在离散时一样成立。
+
+
+
+
+<details>
+<summary> <span style="color:Teal">MCMC Algorithm Example</span> </summary>
+
+```python
+import numpy as np
+from scipy.special import beta
+import scipy.stats
+
+class MCMC:
+    """Markov Chain Monte Carlo method class used by MCMC Algorithms functions (e.g. metropolis)
+
+    Used to initialize instances for MCMC Algorithm functions
+
+    Return an MCMC object
+
+    Parameters
+    ----------
+    dfunc : function
+        self-defined density function which take only one parameter (i.e. r.v. X)
+    chain : int, optional
+        the length of Markov Chain to be generated (default 5000)
+    theta_init : float, optional
+        initial value for the chain of θ (default 0.5)
+    jumpdist : scipy.stats.rv_continuous or scipy.stats.rv_discrete, optional
+        the distribution that proposed jump (Δθ) follows (default scipy.stats.norm(0,0.2))
+    space : list, optional
+        the accepted span of the parameter θ (default [-np.inf,np.inf])
+    burnin : int, optional
+        the length of the chain to be burned from the beginning (default 0)
+    seed : int or None, optional
+        random seed (default None)
+
+    Usage:
+    -----
+    >>> import metropolis
+    >>> density = lambda x: scipy.stats.gamma(2,loc=4,scale=5).pdf(x)
+    >>> d = metropolis.MCMC(density, chain = 10000, jumpdist=scipy.stats.norm(loc=0,scale=2), space = [0,np.inf])
+    >>> d
+    <metropolis.MCMC object ...>
+    """
+    def __init__(self, 
+                 dfunc, 
+                 chain=5000, 
+                 theta_init=0.5, 
+                 jumpdist=scipy.stats.norm(0,0.2), 
+                 space=[-np.inf,np.inf], 
+                 burnin=0, 
+                 seed=None) -> None:
+        self.dfunc = dfunc
+        self.chain = chain
+        self.theta_init = theta_init
+        self.jump = jumpdist
+        self.space = space
+        self.burnin = burnin
+        self.seed = seed
+
+    def metropolis(self, *arg, **kwarg):
+        """
+        function applying Metropolis Algorithm to MCMC objects
+
+        Parameters
+        ----------
+        dfunc : function, *arg, optional (update)
+            self-defined density function which take only one parameter (i.e. r.v. X)
+        chain : int, optional (update)
+            the length of Markov Chain to be generated
+        theta_init : float, optional (update)
+            initial value for the chain of θ (default 0.5)
+        jumpdist : scipy.stats.rv_continuous or scipy.stats.rv_discrete, optional (update)
+            the distribution that proposed jump (Δθ) follows (default scipy.stats.norm(0,0.2))
+        space : list, optional (update)
+            the accepted span of the parameter θ (default [-np.inf,np.inf])
+        burnin : int, optional (update)
+            the length of the chain to be burned from the beginning (default 0)
+        seed : int or None, optional (update)
+            random seed (default None)
+
+        Examples
+        --------
+        >>> import metropolis
+        >>> from scipy.special import beta
+        >>> density = lambda x: x**14 * (1-x)**6 / beta(15,7) # Beta(15,7) distribution density function
+        >>> d = metropolis.MCMC(density, space = [0,1], burnin = 5, seed = 72)
+        >>> result = d.metropolis(chain = 50, theta_init = 0.1)
+        >>> result
+        [0.8176960093922774, 0.6965658096789994, 0.7918980615882665, 0.7742394795862185, 0.7742394795862185, 0.6215414421599866, 0.6215414421599866, 0.6468248283946754, 0.7523307146724492, 0.7523307146724492, 0.7680822171469903, 0.6717376155310788, 0.6717376155310788, 0.8189878864825765, 0.7533257832372013, 0.7648206889254298, 0.7648206889254298, 0.7648206889254298, 0.7648206889254298, 0.7648206889254298, 0.7967947965010628, 0.707139903476412, 0.707139903476412, 0.707139903476412, 0.707139903476412, 0.7949590848197712, 0.48018105229278457, 0.48018105229278457, 0.6163978253871556, 0.6163978253871556, 0.6163978253871556, 0.6241841537823003, 0.6241841537823003, 0.6241841537823003, 0.6241841537823003, 0.6922332333961135, 0.8204027203103916, 0.7521267229207833, 0.7521267229207833, 0.808566620237602, 0.808566620237602, 0.6460288022318678, 0.5452360032045938, 0.5452360032045938, 0.5934357613729606]
+        """
+        # update attributes
+        for args in arg:
+            self.dfunc = args
+        
+        for kw, value in kwarg.items():
+            if kw == 'chain':
+                self.chain = value
+            elif kw == 'theta_init':
+                self.theta_init = value
+            elif kw == 'jumpdist':
+                self.jump = value
+            elif kw == 'space':
+                self.space = value
+            elif kw == 'burnin':
+                self.burnin = value
+            elif kw == 'seed':
+                self.seed = value
+            else:
+                raise Exception(f'keyword argument "{kw}" not supported',)
+
+        # check if dfunc callable
+        if not callable(self.dfunc):
+            raise Exception("dfunc must be a function. recreate the object with a valid density function")
+        
+        # Metropolis Algorithm
+        theta_cur = self.theta_init
+        theta_freq = [self.theta_init]
+        
+        rng = np.random.default_rng(self.seed)
+
+        while True:
+            Delta_theta = self.jump.rvs(random_state=rng)
+            theta_pro = theta_cur + Delta_theta
+
+            if theta_pro < self.space[0] or theta_pro > self.space[1]:
+                pmoving = 0
+            elif self.dfunc(theta_pro) == 0:
+                pmoving = 1
+            else:
+                pmoving = min(1,self.dfunc(theta_pro)/self.dfunc(theta_cur))
+            
+            # np.random.rand()
+            if scipy.stats.uniform().rvs(random_state=rng) <= pmoving:
+                theta_freq.append(theta_pro)
+                theta_cur = theta_pro
+            else:
+                theta_freq.append(theta_cur)
+
+            if len(theta_freq) >= self.chain:
+                break
+
+        return theta_freq[self.burnin:]
+
+
+# --------------------------
+if __name__ == "__main__":
+    # density = lambda x: x**14 * (1-x)**6 / beta(15, 7)
+    density = lambda x: scipy.stats.gamma(2, loc=4, scale=5).pdf(x)
+    d = MCMC(density, chain=10, jumpdist=scipy.stats.norm(loc=0, scale=2), space=[0, np.inf])
+    print(d)
+    result = d.metropolis(chain=100, seed=42)
+    print(result)
+```
+
+</details>
+
+
 
 ### Reference
 ----------------------------
@@ -221,3 +415,7 @@ $$
 [Normalizing Flows on ICML'2015](https://proceedings.mlr.press/v37/rezende15.html)
 &emsp;&emsp;[Normalizing Flows on arXiv'2015](https://arxiv.org/abs/1505.05770)
 &emsp;&emsp;[Normalizing Flows Implemented Code](https://paperswithcode.com/paper/variational-inference-with-normalizing-flows)
+
+[8] Dinghuai Zhang, Ricky T. Q. Chen, Nikolay Malkin, Yoshua Bengio, "Unifying Generative Models with GFlowNets," Accepted to ICML 2022 Beyond Bayes workshop
+
+[GFlowNets on arXiv'2022](https://arxiv.org/abs/2209.02606)
