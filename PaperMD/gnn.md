@@ -15,11 +15,16 @@
 
 
 **Reference Source Linking**
+- [GNN conference paper](https://github.com/naganandy/graph-based-deep-learning-literature)
 - [GNN paper list](https://github.com/thunlp/GNNPapers/blob/master/README.md)
+- [Graph Data Augmentation Papers](https://github.com/zhao-tong/graph-data-augmentation-papers)
 - [A Gentle Introduction to Graph Neural Networks](https://distill.pub/2021/gnn-intro/)
 - [Understanding Convolutions on Graphs](https://distill.pub/2021/understanding-gnns/)
 - [GNN on wikipedia](https://en.wikipedia.org/wiki/Graph_neural_network)
+- [Graph Convolutional Networks GCN](https://ai.plainenglish.io/graph-convolutional-networks-gcn-baf337d5cb6b)
 - [GNN tutorial slides on KDD'2022 and IJCAI'2022](https://graph-neural-networks.github.io/tutorial_ijcai22.html)
+- [PyG:Graph Neural Network Library for PyTorch](https://pytorch-geometric.readthedocs.io/en/latest/)
+- [DGL:Deep Grahp Library](https://www.dgl.ai/)
 
 
 ### Euclidean and non-Euclidean Domains
@@ -32,6 +37,9 @@
     - Image: object detection, object segmentation; 2-dimension tensor or matrix
     - Video: video understanding, object detection; 3-dimension tensor
 - Convolution: sharing parameters at each location
+    - (多维)欧氏空间
+    - 局部空间响应
+    - 卷积参数共享
 
 **Graph Convolutional Neural Networks**
 - Data embedding on irregular grids
@@ -146,6 +154,17 @@
 5. Additional statistical, causal or logical relationships among the so-abstracted discrete concepts can be further modeled parsimoniously as a compact and structured (say sparse) graph, with each node representing a subspace/category, e.g.,  (Bear et al., 2020). We believe such a graph can be  and should be learned via a closedloop transcription to ensure self- consistency. **Quote from Prof. Yi Ma paper**
 
 
+#### **Definition of Sign Convolution**
+
+$$ \int_{- \infty}^{\infty} f(\tau) g(x - \tau) \mathrm{d}\tau $$
+
+$$ y_{n} = x * w = \sum_{k=1}^{K} w_{k} x_{n - k} $$
+
+$$ f_{1}(t) \star f_{2}(t) = \mathcal{F}^{-1} [ F_{1}(\omega) \cdot F_{2}(\omega) ]$$
+
+
+
+
 ### Reference
 ----------------------------
 
@@ -168,6 +187,7 @@
 
 [GCN Paper on ICLR'2017](https://openreview.net/forum?id=SJU4ayYgl)
 &emsp;&emsp;[GCN Paper on arXiv'2017](https://arxiv.org/abs/1609.02907)
+&emsp;&emsp;[GCN Paper blog](http://tkipf.github.io/graph-convolutional-networks/)
 &emsp;&emsp;[GCN implementation code](https://paperswithcode.com/paper/semi-supervised-classification-with-graph)
 
 [5] Qimai Li, Zhichao Han, Xiao-Ming Wu, "Deeper Insights into Graph Convolutional Networks for Semi-Supervised Learning," AAAI'2018

@@ -4,7 +4,7 @@
 - &ensp;<span style="color:Moccasin">Tags</span>: Generative Models; Denoising Diffusion Probability Models, DDPMs; Scored-Matching; Score-based Multi-level Noise Matching; Stochastic Differential Equations, SDEs;
 - &ensp;<span style="color:PaleVioletRed">Type</span>: Survey
 - &ensp;<span style="color:DarkSeaGreen">Author</span>: [Wei Li](https://2694048168.github.io/blog/#/) (weili_yzzcq@163.com)
-- &ensp;<span style="color:DarkMagenta">Revision of DateTime</span>: 2022-08-06; 2022-08-13; 2022-08-29; 2022-09-05;
+- &ensp;<span style="color:DarkMagenta">Revision of DateTime</span>: 2022-08-06; 2022-08-13; 2022-08-29; 2022-09-16;
 
 > Deep Generative Learning: Learning to generate data
 
@@ -920,7 +920,12 @@ $$
 
 根据以上关于 $q(x_{t-1} \mid x_{t}, x_{0})$ 的两个式子，可以计算出逆向扩散过程中的真实的均值和方差估计 (用于训练 NN 的监督 GT)：
 
-$$
+<center>
+    <img src="./images/formula_1.png" />
+    <img src="./images/formula_2.png" />
+</center>
+
+<!-- $$
 \begin{aligned}
 \frac{1}{\widetilde{\beta}_{t}}
 &= \frac{1-\beta_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}}\\
@@ -933,8 +938,8 @@ $$
 &= \frac{ \beta_{t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}\\
 &= \color{red} \frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_{t}}\beta_{t} & \text{; DDPM paper}\\
 \end{aligned}
-$$
-
+$$ -->
+<!-- 
 $$
 \begin{aligned}
 \frac{2\widetilde{\mu}}{\widetilde{\beta}_{t}}
@@ -951,29 +956,26 @@ $$
 
 &= \color{green} \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}}x_{0} + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} & \text{; DDPM paper} \\
 \end{aligned}  \\
-$$
+$$ -->
 
 
 前向扩散过程中，任意时刻的 $x_{t}$ 与 $x_{0}$ 关系如下：
 
 
-$$q(x_{t} \mid x_{0})
-= \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I) \bar{z}_{t} $$
+$$q(x_{t} \mid x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{\alpha}_{t}}x_{0}, (1 - \bar{\alpha}_{t})I) \bar{z}_{t} $$
 
+$$x_{t} = \sqrt{\bar{\alpha}_{t}}x_{0} + \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t} $$
 
-$$
-\begin{aligned}
-x_{t} &= \sqrt{\bar{\alpha}_{t}}x_{0} + \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t} \\
-
-\Rightarrow x_{0} &= \frac{1}{\sqrt{\bar{\alpha}_{t}}}(x_{t} - \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t})
-\end{aligned}  \\
-$$
+$$\Rightarrow x_{0} = \frac{1}{\sqrt{\bar{\alpha}_{t}}}(x_{t} - \sqrt{1 - \bar{\alpha}_{t}} \bar{z}_{t}) $$
 
 
 将该关于 $x_{0}$ 的式子代入上式关于均值 $\widetilde{\mu}_{t}(x_{t},x_{0})$ 中可以推导如下：
 
+<center>
+    <img src="./images/formula_3.png" />
+</center>
 
-$$
+<!-- $$
 \begin{aligned}
 \widetilde{\mu}_{t}(x_{t},x_{0}) 
 &= \color{green} \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_{t}}{1-\bar{\alpha}_{t}}x_{0} + \frac{\sqrt{\alpha_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_{t}}x_{t} \\
@@ -992,7 +994,7 @@ $$
 
 &= \color{Cyan} \frac{1}{\sqrt{\alpha_{t}}} (x_{t} - \frac{\beta_{t}}{\sqrt{1-\bar{\alpha}_{t}}}\bar{z}_{t} ) \\
 \end{aligned}  \\
-$$
+$$ -->
 
 
 **Inference Phase of DDPM**
@@ -1089,8 +1091,11 @@ $$
 
 which has a lower bound provided by [Jense's inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality) ; 利用 Jense's inequality 将积分的凸函数的值与凸函数的积分联系起来，提供下限；计算期望对于连续变量而言就是计算积分；这样十分类似 VAE 中的推导形式, 从而可以优化交叉熵对目标分布进行学习：
 
+<center>
+    <img src="./images/formula_4.png" />
+</center>
 
-$$
+<!-- $$
 \begin{aligned}
 \mathcal{L} = L_\text{CE}
 &= \mathbb{E}_{q(x_{0})}[-\log{p_{\theta}(x_{0})}] \\
@@ -1108,7 +1113,7 @@ $$
 
 &= \color{red} \mathcal{L}_{VLB} \\
 \end{aligned}
-$$
+$$ -->
 
 
 **Note that：**
@@ -1116,8 +1121,11 @@ $$
 
 进一步对 $\mathcal{L}_{VLB}$ 推导，根据 Improved DDPM paper 中的形式：
 
+<center>
+    <img src="./images/formula_5.png" />
+</center>
 
-$$
+<!-- $$
 \begin{aligned}
 L_\text{VLB} 
 &= \mathbb{E}_{q(\mathbf{x}_{0:T})} \Big[ \log\frac{q(\mathbf{x}_{1:T}\vert\mathbf{x}_0)}{p_\theta(\mathbf{x}_{0:T})} \Big] \\
@@ -1142,7 +1150,7 @@ L_\text{VLB}
 
 &= \mathbb{E}_{q(\mathbf{x}_{0:T})} [\underbrace{D_\text{KL}(q(\mathbf{x}_T \vert \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_T))}_{L_T} + \sum_{t=2}^T \underbrace{D_\text{KL}(q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_{t-1} \vert\mathbf{x}_t))}_{L_{t-1}} \underbrace{- \log p_\theta(\mathbf{x}_0 \vert \mathbf{x}_1)}_{L_0} ] & \text{; No.10} \\
 \end{aligned}
-$$
+$$ -->
 
 
 **Note that：**
@@ -1151,10 +1159,13 @@ $$
 **recall that: where the expectation <span style="color:red">line No.9</span> is over a distribution $\bar{q}(x_{t-1})$ that is independent from the variable (namely $x_{t-1}$).** 
 
 
-$$D_{\text{KL}}(q(x) || p(x)) = \mathbb{E}_{q(x)} [\log q(x) / p(x)]$$
+$$D_{\text{KL}}(q(x) || p(x)) = \mathbb{E}_{q(x)} [\log \frac{q(x)}{p(x)} ]$$
 
+<center>
+    <img src="./images/formula_6.png" />
+</center>
 
-$$
+<!-- $$
 \begin{aligned}
 \mathcal{L}_{t}
 &=\mathbb{E}_{q(x_{0:T})} \left[ \log \frac{q(x_{t-1}|x_t, x_0)}{p_\theta(x_{t-1}|x_t)} \right] \\
@@ -1167,7 +1178,7 @@ $$
 
 &=~ D_{\text{KL}}(q(x_{t-1}|x_t, x_0)|| p_\theta(x_{t-1}|x_t))
 \end{aligned}
-$$
+$$ -->
 
 
 这样就得到了 Improved DDPM paper 的优化目标
@@ -2491,3 +2502,8 @@ Cited as:
 [Cold Diffusion paper at arXiv'2022](https://arxiv.org/abs/2208.09392)
 &emsp;&emsp;[Paper Code](https://github.com/arpitbansal297/cold-diffusion-models)
 &emsp;&emsp;[Implementation Code](https://paperswithcode.com/paper/cold-diffusion-inverting-arbitrary-image)
+
+----------------------------
+[33] Hanqun Cao, Cheng Tan, Zhangyang Gao, Guangyong Chen, Pheng-Ann Heng, Stan Z. Li, "A Survey on Generative Diffusion Model," arXiv'2022-09-06
+
+[Survey-Diffusion paper at arXiv'2022](https://arxiv.org/abs/2209.02646)

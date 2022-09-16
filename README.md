@@ -20,7 +20,7 @@
 ### [Neural Radiance Fields (NeRF) technique](PaperMD/nerf.md)
 
 <center class="half">
-  <img src="./images/full_pipeline_dark_light.svg" />
+  <img src="./images/full_pipeline_dark_light.svg", width="70%" />
 </center>
 
 ----------------
@@ -38,7 +38,7 @@
 </center>
 
 ----------------
-### [Variational AutoEncoder and Conditional VAE and Flow-based](PaperMD/vae.md)
+### [Variational AutoEncoder and and Flow-based and GANs](PaperMD/vae.md)
 
 <center class="center">
   <img src="./images/Conditional_variational_autoencoder.png", width="70%" />

@@ -1,6 +1,6 @@
-# Foundation and Application of the Variational AutoEncoder
+# Variational AutoEncoder and and Flow-based and GANs
 
-- &ensp;<span style="color:MediumPurple">Title</span>: Foundation and Application of the Variational AutoEncoder
+- &ensp;<span style="color:MediumPurple">Title</span>: Variational AutoEncoder and and Flow-based and GANs
 - &ensp;<span style="color:Moccasin">Tags</span>: VAE; Flow; Deep Generative Models;
 - &ensp;<span style="color:PaleVioletRed">Type</span>: Survey
 - &ensp;<span style="color:DarkSeaGreen">Author</span>: [Wei Li](https://2694048168.github.io/blog/#/) (weili_yzzcq@163.com)
@@ -200,7 +200,7 @@ some **Python** packages for MCMC
 - [马尔可夫链蒙特卡罗算法 MCMC](https://zhuanlan.zhihu.com/p/37121528)
 
 
-**蒙特卡罗方法**
+#### **蒙特卡罗方法**
 &ensp;&ensp;&ensp;&ensp;蒙特卡罗是一个赌场的名称，统计学中蒙特卡罗方法是一种随机模拟的方法，这很像赌博场里面的扔骰子的过程。最早的蒙特卡罗方法都是为了求解一些不太好求解的求和或者积分问题, 难求解出 $f(x)$ 的原函数，那么这个积分比较难求解。
 
 $$ \theta = \int_{a}^{b} f(x) \mathrm{d}x $$
@@ -217,7 +217,54 @@ $$
 
 其中，简单的近似求解方法是在 $[a, b]$ 之间随机的采样一个点 $x_{0}$ , 然后用 $f(x_{0})$ 代表在 $[a, b]$ 区间上所有的 $f(x)$ 的值; 采样 $[a, b]$ 区间的 $n$ 个值：$x_{0}, x_{1}, ... x_{n−1}$ , 用它们的均值来代表 $[a, b]$ 区间上所有的 $f(x)$ 的值, 隐含假定 $x$ 在$[a, b]$ 之间是均匀分布的; 可以利用 $x$ 在 $[a, b]$ 的概率分布函数 $p(x)$, 进而更准确估计。这就是蒙特卡罗方法的一般形式，当然这里是连续函数形式的蒙特卡罗方法，但是在离散时一样成立。
 
+**概率分布采样**
+&ensp;&ensp;&ensp;&ensp;关键在于获取 $x$ 的概率分布 $p(x)$ 或者得到基于其概率分布的采样样本集合; 对于均匀采样, 可以通过同余弦发生器生成伪随机数样本, 而对于常见(概率论中 $\Beta$ dist.; $Gamma$ dist. )的连续和离散分布可以通过均匀采样的样本进行转换计算获得。
 
+**接受-拒绝采样**
+&ensp;&ensp;&ensp;&ensp;对于复杂未知的分布, 无法进行样本的采样; 可以用一个已知的分布 $q(x)$ (如高斯分布)去采样, 然后按照一定规则拒绝某些样本, 以达到不断逼近期望分布 $p(x)$ 的目标, 其中 $q(x)$ 也称之为 proposal distribution. 采用过程如下图，设定一个方便采样的常用概率分布函数 $q(x)$，以及一个常量 $k$，使得 $p(x)$ 总在 $k q(x)$ 的下方; 首先，通过概率采样方法得到 $q(x)$ 的一个样本 $z_{0}$ ，然后，从均匀分布 $(0, k q(z_{0}))$ 中采样得到一个值 $u$ , 如果 $u$ 落在了上图中的灰色区域，则拒绝这次抽样，否则接受这个样本 $z_{0}$; 不断重复以上过程得到 $n$ 个接受的样本 $z_{0}, z_{1}, ... z_{n−1}$.
+
+<center class="center">
+    <img src="./images/proposal_dist.png" />
+</center>
+
+**存在的问题**
+- 对于一些二维分布 $p(x, y)$，有时候只能得到条件分布 $p(x|y)$ 和 $p(y|x)$ , 很难得到二维分布 $p(x,y)$ 一般形式，这时无法用接受-拒绝采样得到其样本集
+- 对于一些高维的复杂非常见分布 $p(x{1}, x_{2}, ..., x_{n})$，要找到一个合适的 $q(x)$ 和 $k$ 非常困难
+- 蒙特卡罗方法作为一个通用的采样模拟求和的方法，必须解决如何方便得到各种复杂概率分布的对应的采样样本集的问题
+- 马尔科夫链就是帮助找到这些复杂概率分布的对应的采样样本集的一个最佳方法
+
+#### **马尔科夫链**
+&ensp;&ensp;&ensp;&ensp;马尔科夫链假设某一时刻状态转移的概率只依赖于它的前一个状态; 时刻 $X_{t+1}$ 的状态的条件概率仅仅依赖于时刻 $X_{t}$; 既然某一时刻状态转移的概率只依赖于它的前一个状态，那么只要能求出系统中任意两个状态之间的转换概率，这个马尔科夫链的模型就确定了, 同时根据马尔科夫链可以写出对应的马尔科夫链模型的状态转移矩阵.
+
+$$ p(x_{t+1} | ... x_{t-2}, x_{t-1}, x_{t}) = p(x_{t}) $$
+
+**状态转移矩阵性质**
+- 马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与初始状态概率分布无关
+- 非常好的性质，也就是说，如果得到了这个稳定概率分布对应的马尔科夫链模型的状态转移矩阵，则可以用任意的概率分布样本开始，带入马尔科夫链模型的状态转移矩阵，这样经过一些序列的转换，最终就可以得到符合对应稳定概率分布的样本
+- 该性质对离散状态，连续状态都成立
+- 对于一个确定的状态转移矩阵 $P$，它的 $n$ 次幂 $P^{n}$ 在当 $n$ 大于一定的值的时候也可以发现是确定的
+- 可以查阅精准的数学语言描述
+- 根据马尔科夫链的良好性质，可以基于马尔科夫链进行采样，得到样本集合, 就可以计算蒙特卡洛模拟求和了
+
+**存在的问题**
+- 假定可以得到需要采样样本的平稳分布所对应的马尔科夫链状态转移矩阵，那么就可以用马尔科夫链采样得到需要的样本集，进而进行蒙特卡罗模拟
+- 一个重要的问题是，随意给定一个平稳分布 $π$, 如何得到它所对应的马尔科夫链状态转移矩阵 $P$
+- MCMC 采样通过迂回的方式解决了这个大问题
+
+#### **MCMC采样**
+- 一般情况下，目标平稳分布 $π(x)$ 和某一个马尔科夫链状态转移矩阵 $Q$ 不满足细致平稳条件
+- 引入一个 $α(i,j)$ 使细致平稳条件成立, 去等式成立的条件
+- MCMC的采样算法过程中最难和最关键的一步就是 **接受率**这个数值过低的问题
+- Metropolis-Hastings (M-H) 采样解决了 MCMC 算法中采样接受率过低的问题
+- M-H 采样已经可以很好的解决蒙特卡罗方法需要的任意概率分布的样本集的问题
+- 但 M-H 采样有两个缺点：
+    - 需要计算接受率，在高维时计算量大
+    - 并且由于接受率的原因导致算法收敛时间变长
+    - 有些高维数据，特征的条件概率分布好求，但是特征的联合分布不好求
+- 需要一个好的方法来改进 M-H 采样，这就是 Gibbs 采样
+- Gibbs 采样通过重新寻找合适的细致平稳条件
+    - 二维 Gibbs 采样
+    - 多维 Gibbs 采样
 
 
 <details>
@@ -373,6 +420,18 @@ if __name__ == "__main__":
 
 </details>
 
+
+-------------
+Cited as:
+```shell
+@article{WeiLi2022VAE-Flow-GAN,
+  title   = Variational AutoEncoder and and Flow-based and GANs,
+  author  = Wei Li,
+  journal = https://2694048168.github.io/blog/,
+  year    = 2022-09,
+  url     = https://2694048168.github.io/blog/#/PaperMD/vae
+}
+```
 
 
 ### Reference
