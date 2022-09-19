@@ -88,6 +88,7 @@
 - [Diffusion Models for Deep Generative Learning](https://zaixiang.notion.site/Diffusion-Models-for-Deep-Generative-Learning-24ccc2e2a11e40699723b277a7ebdd64)
 - [Computer Vison: Models, Learning, and Inference 中英版本图书](https://item.jd.com/12218342.html)
 - [Awesome Diffusion Models](https://github.com/heejkoo/Awesome-Diffusion-Models)
+- [Awesome Diffusion Papers](https://github.com/YangLing0818/Diffusion-Models-Papers-Survey-Taxonomy)
 - [The Annotated Diffusion Model on Hugging Face](https://huggingface.co/blog/annotated-diffusion)
 - [IDDPM Code on GitHub from OpenAI](https://github.com/openai/improved-diffusion)
 - [Stable Diffusion Demo at Hugging Face](https://huggingface.co/spaces/stabilityai/stable-diffusion)
