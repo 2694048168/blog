@@ -2507,3 +2507,8 @@ Cited as:
 [33] Hanqun Cao, Cheng Tan, Zhangyang Gao, Guangyong Chen, Pheng-Ann Heng, Stan Z. Li, "A Survey on Generative Diffusion Model," arXiv'2022-09-06
 
 [Survey-Diffusion paper at arXiv'2022](https://arxiv.org/abs/2209.02646)
+
+----------------------------
+[34] Ling Yang, Zhilong Zhang, Shenda Hong, Runsheng Xu, Yue Zhao, Yingxia Shao, Wentao Zhang, Ming-Hsuan Yang, Bin Cui, "Diffusion Models: A Comprehensive Survey of Methods and Applications," arXiv'2022-09
+
+[Comprehensive Survey-Diffusion arXiv'2022](https://arxiv.org/abs/2209.00796)
