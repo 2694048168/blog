@@ -11,7 +11,6 @@
 - Convolution Operations
 - Data Information = Features + Structures(relationships)
 - Advantages of Graph Representation of images from ViG paper
-- [图神经网络的应用场景](https://mp.weixin.qq.com/s/C10Tl2SGgU6zN-7GKfrrzw)
 
 
 **Reference Source Linking**
@@ -25,6 +24,7 @@
 - [GNN tutorial slides on KDD'2022 and IJCAI'2022](https://graph-neural-networks.github.io/tutorial_ijcai22.html)
 - [PyG:Graph Neural Network Library for PyTorch](https://pytorch-geometric.readthedocs.io/en/latest/)
 - [DGL:Deep Grahp Library](https://www.dgl.ai/)
+- [图神经网络的应用场景](https://mp.weixin.qq.com/s/C10Tl2SGgU6zN-7GKfrrzw)
 
 
 ### Euclidean and non-Euclidean Domains

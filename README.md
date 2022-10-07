@@ -17,10 +17,17 @@
 </center>
 
 ----------------
+### [YOLO algorithm for Object Detecture](PaperMD/YOLO_algorithm.md)
+
+<center class="half">
+  <img src="./images/YOLOv1.png", width="50%" />
+</center>
+
+----------------
 ### [Neural Radiance Fields (NeRF) technique](PaperMD/nerf.md)
 
 <center class="half">
-  <img src="./images/full_pipeline_dark_light.svg", width="70%" />
+  <img src="./images/full_pipeline_dark_light.svg", width="50%" />
 </center>
 
 ----------------
@@ -41,7 +48,7 @@
 ### [Variational AutoEncoder and and Flow-based and GANs](PaperMD/vae.md)
 
 <center class="center">
-  <img src="./images/Conditional_variational_autoencoder.png", width="70%" />
+  <img src="./images/Conditional_variational_autoencoder.png", width="50%" />
 </center>
 
 ----------------
@@ -55,14 +62,14 @@
 ### [Visual Interpretation of Deep Convolution Neural Networks](PaperMD/visual_interpretation.md)
 
 <center class="half">
-  <img src="./images/attention.jpg", width="70%" />
+  <img src="./images/grad_cam.webp", width="50%" />
 </center>
 
 ----------------
 ### [Attention Mechanism in Deep Learning](PaperMD/attention.md)
 
 <center class="half">
-  <img src="./images/attention.jpg", width="60%" />
+  <img src="./images/attention.jpg", width="50%" />
 </center>
 
 ----------------
@@ -76,7 +83,7 @@
 ### [Awesome Understanding of Convolution and Transpose Convolution](PaperMD/awesome_conv.md)
 
 <center>
-    <img src="./images/Convolution_Transpose.png", width="60%" />
+    <img src="./images/Convolution_Transpose.png", width="50%" />
 </center>
 
 ----------------

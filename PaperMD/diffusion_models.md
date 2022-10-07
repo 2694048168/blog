@@ -2513,3 +2513,8 @@ Cited as:
 [34] Ling Yang, Zhilong Zhang, Shenda Hong, Runsheng Xu, Yue Zhao, Yingxia Shao, Wentao Zhang, Ming-Hsuan Yang, Bin Cui, "Diffusion Models: A Comprehensive Survey of Methods and Applications," arXiv'2022-09
 
 [Comprehensive Survey-Diffusion arXiv'2022](https://arxiv.org/abs/2209.00796)
+
+----------------------------
+[35] Florinel-Alin Croitoru, Vlad Hondru, Radu Tudor Ionescu, Mubarak Shah, "Diffusion Models in Vision: A Survey," arXiv'2022-09
+
+[Diffusion Vision arXiv'2022](https://arxiv.org/abs/2209.04747v1)

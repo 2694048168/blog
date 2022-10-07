@@ -20,11 +20,14 @@
 </center>
 
 
-## **Overview**
+## **Overview and Source**
 - Introduction to the Neural Radiance Fields, NeRF
 - Foundation of the NeRF technique
 - Application of the NeRF technique
 - [Awesome NeRF paper list](https://github.com/yenchenlin/awesome-NeRF)
+- [Neural Fields in Computer Vision CVPR'2022 Toturial](https://neuralfields.cs.brown.edu/cvpr22)
+- [Neural Fields in Computer Vision CVPR'2022 Toturial bilibili vedio](https://www.bilibili.com/video/BV1he411u7rS/)
+- [Neural Fields CVPR'2022 paper](http://blog.leanote.com/post/wuvin/CVPR2022-NeRF)
 
 
 
