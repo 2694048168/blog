@@ -71,7 +71,7 @@
     - Limitations: hardly be applied to non-Euclidean domains
         - The number of neighbors is **unfixed** and the neighbors are **unordered**
         - It is difficult to execute the bilinear interpolation
-        - Ordered permutation and Equal dimension in Euclidean 
+        - Ordered permutation and Equal dimension in Euclidean
         - versus Unordered permutation and Unequal dimension in non-Euclidean
 - Convolution Operations on non-Euclidean
     - Graph convolution: Spectral Convolution and Spatial Convolution
@@ -255,3 +255,12 @@ $$ f_{1}(t) \star f_{2}(t) = \mathcal{F}^{-1} [ F_{1}(\omega) \cdot F_{2}(\omega
 
 [Paper on arXiv'2022](https://arxiv.org/abs/2201.04532)
 &emsp;&emsp;[Original code](https://github.com/diagnijmegen/spgnn)
+
+[17] Chenqing Hua, Guillaume Rabusseau, Jian Tang, "High-Order Pooling for Graph Neural Networks with Tensor Decomposition," NeurIPS'2022
+
+[Paper on NeurIPS'2022 on openreview](https://openreview.net/forum?id=N7-EIciq3R)
+&emsp;&emsp;[Paper on arXiv'2022](https://arxiv.org/abs/2205.11691)
+
+[18] Yi-Chien Lin, Bingyi Zhang, Viktor Prasanna, "HP-GNN: Generating High Throughput GNN Training Implementation on CPU-FPGA Heterogeneous Platform," FPGA'2022
+
+[Paper on arXiv'2022](https://arxiv.org/abs/2112.11684)

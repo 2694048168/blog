@@ -7,84 +7,40 @@
 
 
 ----------------
-### [Image Generation via Diffusion Models and Scored-Matching and SDEs](PaperMD/diffusion_models.md)
+# Artificial Intelligence and Computer Vision
 
-<center class="half">
-    <!-- <img src="./images/generative-overview.png", width="569", height="394" /> -->
-    <!-- <img src="./images/generative-overview.png", width="50%", height="50%" /> -->
-    <!-- <img src="./images/DDPM.png", width="50%" /><img src="./images/generative-overview.png", width="50%" /> -->
-    <img src="./images/schematic.jpg", width="50%" /><img src="./images/DDPM.png", width="50%" />
-</center>
+- [Image Generation via Diffusion Models and Scored-Matching and SDEs](PaperMD/diffusion_models.md)
+- [Graph Neural Networks and Non-Euclidean Convolution](PaperMD/gnn.md)
+- [Principles of Parsimony and Self-Consistency for Intelligence](PaperMD/intellience.md)
+- [Vision Transformer and Swin Transformer and Masked AutoEncoder](PaperMD/transformer.md)
+- [Attention Mechanism in Deep Learning](PaperMD/attention.md)
+- [YOLO algorithm for Object Detecture](PaperMD/YOLO_algorithm.md)
+- [Normalization Methods in Deep Learning](PaperMD/normalization.md)
+- [Visual Interpretation of Deep Convolution Neural Networks](PaperMD/visual_interpretation.md)
+- [Awesome Understanding of Convolution and Transpose Convolution](PaperMD/awesome_conv.md)
+- [Image Quality Assessment, IQA](PaperMD/image_quality_assessment.md)
 
-----------------
-### [YOLO algorithm for Object Detecture](PaperMD/YOLO_algorithm.md)
-
-<center class="half">
-  <img src="./images/YOLOv1.png", width="50%" />
-</center>
 
 ----------------
-### [Neural Radiance Fields (NeRF) technique](PaperMD/nerf.md)
+# Deep Generative Learning
 
-<center class="half">
-  <img src="./images/full_pipeline_dark_light.svg", width="50%" />
-</center>
+- [Variational AutoEncoder and and Flow-based and GANs](PaperMD/vae.md)
 
-----------------
-### [Graph Neural Networks and Non-Euclidean Convolution](PaperMD/gnn.md)
+- AutoEncoder
+- Variable AutoEncoder
+- GANs
+- Diffusion
+- Socred-based
+- Normalizing Flows
 
-<center class="half">
-  <img src="./images/gnn_1.png", width="50%" /><img src="./images/gnn_2.png", width="50%" />
-</center>
-
-----------------
-### [Principles of Parsimony and Self-Consistency for Intelligence](PaperMD/intellience.md)
-
-<center class="half">
-  <img src="./images/mayi_1.png", width="50%" /><img src="./images/mayi_7.png", width="50%" />
-</center>
 
 ----------------
-### [Variational AutoEncoder and and Flow-based and GANs](PaperMD/vae.md)
+# 三维重建 3D Reconstruction
 
-<center class="center">
-  <img src="./images/Conditional_variational_autoencoder.png", width="50%" />
-</center>
+- [相机的标定](PaperMD/camera_calibration.md)
+- [神经辐射场 Neural Radiance Fields (NeRF) technique](PaperMD/nerf.md)
+- [Project connect colmap and instant-ngp](PaperMD/colmap_ngp.md)
 
-----------------
-### [Vision Transformer and Swin Transformer and Masked AutoEncoder](PaperMD/transformer.md)
-
-<center class="half">
-  <img src="./images/vit.png", width="50%" /><img src="./images/swin.png", width="50%" />
-</center>
-
-----------------
-### [Visual Interpretation of Deep Convolution Neural Networks](PaperMD/visual_interpretation.md)
-
-<center class="half">
-  <img src="./images/grad_cam.webp", width="50%" />
-</center>
-
-----------------
-### [Attention Mechanism in Deep Learning](PaperMD/attention.md)
-
-<center class="half">
-  <img src="./images/attention.jpg", width="50%" />
-</center>
-
-----------------
-### [Normalization Methods in Deep Learning](PaperMD/normalization.md)
-
-<center class="half">
-  <img src="./images/normalization_1.png", width="50%" /><img src="./images/normalization_2.png", width="50%" />
-</center>
-
-----------------
-### [Awesome Understanding of Convolution and Transpose Convolution](PaperMD/awesome_conv.md)
-
-<center>
-    <img src="./images/Convolution_Transpose.png", width="50%" />
-</center>
 
 ----------------
 # Learning TensorFlow2

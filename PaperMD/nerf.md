@@ -1,7 +1,7 @@
 # Neural Radiance Fields (NeRF) technique
 
 - &ensp;<span style="color:MediumPurple">Title</span>: Neural Radiance Fields (NeRF) technique
-- &ensp;<span style="color:Moccasin">Tags</span>: NeRF; 神经辐射场; 3D重建; View Synthesis; 视角合成;
+- &ensp;<span style="color:Moccasin">Tags</span>: NeRF; View Synthesis; 3D Reconstruction; Neural Rendering;
 - &ensp;<span style="color:PaleVioletRed">Type</span>: Mini-Survey
 - &ensp;<span style="color:DarkSeaGreen">Author</span>: [Wei Li](https://2694048168.github.io/blog/#/) (weili_yzzcq@163.com)
 - &ensp;<span style="color:DarkMagenta">Revision of DateTime</span>: 2022-09-05;
@@ -28,6 +28,21 @@
 - [Neural Fields in Computer Vision CVPR'2022 Toturial](https://neuralfields.cs.brown.edu/cvpr22)
 - [Neural Fields in Computer Vision CVPR'2022 Toturial bilibili vedio](https://www.bilibili.com/video/BV1he411u7rS/)
 - [Neural Fields CVPR'2022 paper](http://blog.leanote.com/post/wuvin/CVPR2022-NeRF)
+
+
+**基于 NeRF 的三维内容生成**
+1. why 3D content creation from images
+    - what are 3D contents
+    - rendering and inverse rendering
+    - 3 key factors in inverse rendering
+2. why NeRF is a big thing
+    - break NeRF into 3 components
+    - take-home messages from NeRF
+    - unbounded scene and anti-aliasing
+3. editable 2D contents
+    - relinghting, material re-touching
+    - stylized apprearance
+    - other editings
 
 
 
@@ -89,3 +104,72 @@
 &emsp;&emsp;[AutoRF Paper on arXiv'2022](https://arxiv.org/abs/2204.03593)
 &emsp;&emsp;[Paper Project and Code](https://sirwyver.github.io/AutoRF/)
 &emsp;&emsp;[Reference Code](https://github.com/google/nerfies)
+
+[9] Yuan-Chen Guo, Di Kang, Linchao Bao, Yu He, Song-Hai Zhang, "NeRFReN: Neural Radiance Fields With Reflections," CVPR'2022
+
+[NeRFReN Paper on CVPR'2022](https://openaccess.thecvf.com/content/CVPR2022/html/Guo_NeRFReN_Neural_Radiance_Fields_With_Reflections_CVPR_2022_paper.html)
+&emsp;&emsp;[NeRFReN Paper on arXiv'2022](https://arxiv.org/abs/2111.15234)
+&emsp;&emsp;[Paper Project](https://bennyguo.github.io/nerfren/)
+&emsp;&emsp;[Code](https://github.com/bennyguo/nerfren)
+
+[10] Chung-Yi Weng, Brian Curless, Pratul P. Srinivasan, Jonathan T. Barron, Ira Kemelmacher-Shlizerman, "HumanNeRF:Free-viewpoint Rendering of Moving People from Monocular Video," CVPR'2022 Oral
+
+[HumanNeRF Paper on CVPR'2022 Oral](https://openaccess.thecvf.com/content/CVPR2022/html/Weng_HumanNeRF_Free-Viewpoint_Rendering_of_Moving_People_From_Monocular_Video_CVPR_2022_paper.html)
+&emsp;&emsp;[HumanNeRF Paper on arXiv'2022](https://arxiv.org/abs/2201.04127)
+&emsp;&emsp;[Paper Project](https://grail.cs.washington.edu/projects/humannerf/)
+&emsp;&emsp;[Code](https://github.com/chungyiweng/humannerf)
+
+[11] Yudong Guo, Keyu Chen, Sen Liang, Yong-Jin Liu, Hujun Bao, Juyong Zhang, "AD-NeRF: Audio Driven Neural Radiance Fields for Talking Head Synthesis," ICCV'2021
+
+[AD-NeRF Paper on ICCV'2021](https://openaccess.thecvf.com/content/ICCV2021/html/Guo_AD-NeRF_Audio_Driven_Neural_Radiance_Fields_for_Talking_Head_Synthesis_ICCV_2021_paper.html)
+&emsp;&emsp;[AD-NeRF Paper on arXiv'2021](https://arxiv.org/abs/2103.11078)
+&emsp;&emsp;[Paper Project](https://yudongguo.github.io/ADNeRF/)
+&emsp;&emsp;[Code](https://github.com/YudongGuo/AD-NeRF)
+
+[12] Xingjian Zhen, Zihang Meng, Rudrasis Chakraborty, Vikas Singh, "On the Versatile Uses of Partial Distance Correlation in Deep Learning," ECCV'2022
+
+[Paper on ECCV'2022 Best Paper Award](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3213_ECCV_2022_paper.php)
+&emsp;&emsp;[Paper on arXiv'2022](https://arxiv.org/abs/2207.09684)
+&emsp;&emsp;[Paper Project](https://zhenxingjian.github.io/DC_webpage/)
+&emsp;&emsp;[Code](https://github.com/zhenxingjian/partial_distance_correlation)
+
+[13] Yunzhi Lin, Thomas Müller, and Jonathan Tremblay et al. "Parallel Inversion of Neural Radiance Fields for Robust Pose Estimation," NVIDIA Corporation'2022
+
+[Paper on arXiv'2022](https://arxiv.org/abs/2210.10108)
+&emsp;&emsp;[Paper Project](https://pnerfp.github.io/)
+
+[14] Ben Poole, Ajay Jain, Jonathan T. Barron, Ben Mildenhall, "DreamFusion: Text-to-3D using 2D Diffusion," Google Research'2022
+
+[DreamFusion paper arXiv'2022](https://arxiv.org/abs/2209.14988)
+&emsp;&emsp;[Project page](https://dreamfusion3d.github.io/)
+&emsp;&emsp;[Reference Code](https://github.com/ashawkey/stable-dreamfusion)
+
+[15] Daniel Watson, William Chan, Ricardo Martin-Brualla, Jonathan Ho, Andrea Tagliasacchi, Mohammad Norouzi, "Novel View Synthesis with Diffusion Models," Google Research'2022
+
+[paper arXiv'2022](https://arxiv.org/abs/2210.04628)
+&emsp;&emsp;[Project page](https://3d-diffusion.github.io/)
+
+[16] Tao Hu, Shu Liu, Yilun Chen, Tiancheng Shen, Jiaya Jia, "EfficientNeRF: Efficient Neural Radiance Fields," CVPR'2022
+
+[EfficientNeRF paper CVPR'2022](https://openaccess.thecvf.com/content/CVPR2022/html/Hu_EfficientNeRF__Efficient_Neural_Radiance_Fields_CVPR_2022_paper.html)
+&emsp;&emsp;[EfficientNeRF paper arXiv'2022](https://arxiv.org/abs/2206.00878)
+&emsp;&emsp;[Code](https://github.com/dvlab-research/EfficientNeRF)
+
+[17] Ali Tourani, Hriday Bavle, Jose Luis Sanchez-Lopez, Holger Voos, "Visual SLAM: What are the Current Trends and What to Expect?," arXiv'2022
+
+[paper arXiv'2022](https://arxiv.org/abs/2210.10491)
+&emsp;&emsp;[reference SLAM blog](https://mp.weixin.qq.com/s/CV68ZfFHCJJnKsngxfGpxg)
+
+[18] Yongwei Chen, Rui Chen, Jiabao Lei, Yabin Zhang, Kui Jia, "TANGO: Text-driven Photorealistic and Robust 3D Stylization via Lighting Decomposition," NeurIPS'2022
+
+[TANGO paper NeurIPS'2022 on openreview](https://openreview.net/forum?id=zbuq101sCNV)
+&emsp;&emsp;[TANGO paper arXiv'2022](https://arxiv.org/abs/2210.11277)
+&emsp;&emsp;[Project page](https://cyw-3d.github.io/tango/)
+&emsp;&emsp;[code](https://github.com/Gorilla-Lab-SCUT/tango)
+
+[19] Andreas Kurz, Thomas Neff, Zhaoyang Lv, Michael Zollhöfer, Markus Steinberger, "AdaNeRF: Adaptive Sampling for Real-time Rendering of Neural Radiance Fields," ECCV'2022
+
+[AdaNeRF paper ECCV'2022](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/6513_ECCV_2022_paper.php)
+&emsp;&emsp;[paper arXiv'2022](https://arxiv.org/abs/2207.10312)
+&emsp;&emsp;[Project page](https://thomasneff.github.io/adanerf/)
+&emsp;&emsp;[code](https://github.com/thomasneff/AdaNeRF)
