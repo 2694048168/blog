@@ -2579,3 +2579,9 @@ Cited as:
 &emsp;&emsp;[DPM-Solver++ paper arXiv'2022](https://arxiv.org/abs/2211.01095)
 &emsp;&emsp;[Code](https://github.com/luchengthu/dpm-solver)
 &emsp;&emsp;[Demo on Huggingface](https://huggingface.co/spaces/LuChengTHU/dpmsolver_sdm)
+
+----------------------------
+[44] Chen-Hsuan Lin, Jun Gao, Luming Tang, Towaki Takikawa, Xiaohui Zeng, Xun Huang, Karsten Kreis, Sanja Fidler, Ming-Yu Liu, Tsung-Yi Lin, "Magic3D: High-Resolution Text-to-3D Content Creation," NVIDIA'2022
+
+[Magic3D paper arXiv'2022](https://arxiv.org/abs/2211.10440)
+&emsp;&emsp;[Project](https://deepimagination.cc/Magic3D/)

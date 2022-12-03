@@ -1,4 +1,19 @@
 
+/* 项目文章 */
+.project{
+    float:left;
+    height:50%;
+}
+.project_image{
+    float:left;
+    width:34%;
+}
+.project_info{
+    float:right;
+    width:65%;
+}
+
+
 /* 置顶插件 */
 .to-top {
     display: none;

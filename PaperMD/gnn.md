@@ -25,6 +25,7 @@
 - [PyG:Graph Neural Network Library for PyTorch](https://pytorch-geometric.readthedocs.io/en/latest/)
 - [DGL:Deep Grahp Library](https://www.dgl.ai/)
 - [图神经网络的应用场景](https://mp.weixin.qq.com/s/C10Tl2SGgU6zN-7GKfrrzw)
+- [图神经网络的理解](https://towardsdatascience.com/understanding-graph-convolutional-networks-for-node-classification-a2bfdb7aba7b)
 
 
 ### Euclidean and non-Euclidean Domains
@@ -264,3 +265,15 @@ $$ f_{1}(t) \star f_{2}(t) = \mathcal{F}^{-1} [ F_{1}(\omega) \cdot F_{2}(\omega
 [18] Yi-Chien Lin, Bingyi Zhang, Viktor Prasanna, "HP-GNN: Generating High Throughput GNN Training Implementation on CPU-FPGA Heterogeneous Platform," FPGA'2022
 
 [Paper on arXiv'2022](https://arxiv.org/abs/2112.11684)
+
+[19] Shangchen Zhou, Jiawei Zhang, Wangmeng Zuo, Chen Change Loy, "Cross-Scale Internal Graph Neural Network for Image Super-Resolution," NeurIPS'2020
+
+[IGNN Paper on NeurIPS'2020](https://papers.nips.cc/paper/2020/hash/23ad3e314e2a2b43b4c720507cec0723-Abstract.html)
+&emsp;&emsp;[Paper on arXiv'2020](https://arxiv.org/abs/2006.16673)
+&emsp;&emsp;[Code](https://github.com/sczhou/IGNN)
+
+[20] Chong Mou, Jian Zhang, Zhuoyuan Wu, "Dynamic Attentive Graph Learning for Image Restoration," ICCV'2021
+
+[DAGL Paper on ICCV'2021](https://openaccess.thecvf.com/content/ICCV2021/html/Mou_Dynamic_Attentive_Graph_Learning_for_Image_Restoration_ICCV_2021_paper.html)
+&emsp;&emsp;[Paper on arXiv'2021](https://arxiv.org/abs/2109.06620)
+&emsp;&emsp;[Code](https://github.com/jianzhangcs/dagl)

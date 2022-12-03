@@ -173,3 +173,8 @@
 &emsp;&emsp;[paper arXiv'2022](https://arxiv.org/abs/2207.10312)
 &emsp;&emsp;[Project page](https://thomasneff.github.io/adanerf/)
 &emsp;&emsp;[code](https://github.com/thomasneff/AdaNeRF)
+
+[20] Chen-Hsuan Lin, Jun Gao, Luming Tang, Towaki Takikawa, Xiaohui Zeng, Xun Huang, Karsten Kreis, Sanja Fidler, Ming-Yu Liu, Tsung-Yi Lin, "Magic3D: High-Resolution Text-to-3D Content Creation," NVIDIA'2022
+
+[Magic3D paper arXiv'2022](https://arxiv.org/abs/2211.10440)
+&emsp;&emsp;[Project](https://deepimagination.cc/Magic3D/)

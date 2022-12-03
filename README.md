@@ -5,6 +5,48 @@
 &emsp;&emsp;[![](https://img.shields.io/badge/CPlusPlus-github-brightgreen)](https://github.com/2694048168/C-and-C-plus-plus)
 &emsp;&emsp;[![](https://img.shields.io/badge/Linux-github-brightgreen)](https://github.com/2694048168/Linux_OS)
 
+<div class="project">
+<div class="project_image"><img src="images/schematic.jpg" width="100%" /></div>
+<div class="project_info">
+<h3> <b>Diffusion:</b> Image Generation via Diffusion Models and Scored-Matching and SDEs </h3>
+<p>
+    <a href="https://2694048168.github.io/blog/">Wei Li<sup>*✝</a>&nbsp;&nbsp;
+    <!-- * 一般表示通信作者,  ✝ 一般表示相同的贡献, 然后作者排名按照贡献降序排列(第一作者)-->
+    <a href="https://2694048168.github.io/blog/#/PaperMD/diffusion_models.md">[Project Link]</a>
+</p>
+<!-- <p style="color: #EF7F27;">European Conference on Computer Vision <b>(ECCV 2022 Oral Presentation)</b></p> -->
+<!-- <p>
+    <a href="https://caizhongang.github.io/projects/HuMMan/">[Project]</a>&nbsp;
+    <a href="https://arxiv.org/abs/2204.11823">[arXiv]</a>&nbsp;
+    <a href="https://caizhongang.github.io/projects/HuMMan/">[Dataset]</a>&nbsp;
+    <a href="https://github.com/open-mmlab/mmhuman3d">[Code]</a>&nbsp;
+    <a href="https://www.youtube.com/watch?v=Q_lxIrV3UgE">[Demo]</a>&nbsp;
+</p> -->
+</div>
+</div><br>
+
+<div class="project">
+<div class="project_image"><img src="images/gnn_2.png" width="100%" /></div>
+<div class="project_info">
+<h3> <b>GNNs:</b> Graph Neural Networks and Non-Euclidean Convolution </h3>
+<p>
+    <a href="https://2694048168.github.io/blog/">Wei Li<sup>*✝</a>&nbsp;&nbsp;
+    <a href="https://2694048168.github.io/blog/#/PaperMD/gnn.md">[Project Link]</a>
+</p>
+</div>
+</div><br>
+
+<div class="project">
+<div class="project_image"><img src="images/group_conv.png" width="100%" /></div>
+<div class="project_info">
+<h3> <b>CNNs:</b> Awesome Understanding of Convolution and Transpose Convolution </h3>
+<p>
+    <a href="https://2694048168.github.io/blog/">Wei Li<sup>*✝</a>&nbsp;&nbsp;
+    <a href="https://2694048168.github.io/blog/#/PaperMD/awesome_conv.md">[Project Link]</a>
+</p>
+</div>
+</div><br>
+
 
 ----------------
 # Artificial Intelligence and Computer Vision
