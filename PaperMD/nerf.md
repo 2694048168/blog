@@ -178,3 +178,29 @@
 
 [Magic3D paper arXiv'2022](https://arxiv.org/abs/2211.10440)
 &emsp;&emsp;[Project](https://deepimagination.cc/Magic3D/)
+
+[21] Thomas Müller, Alex Evans, Christoph Schied, Alexander Keller, "Instant Neural Graphics Primitives with a Multiresolution Hash Encoding," SIGGRAPH'2022 Best Paper
+
+[Instant-NGP SIGGRAPH'2022](https://nvlabs.github.io/instant-ngp/assets/mueller2022instant.pdf)
+&emsp;&emsp;[arXiv](https://arxiv.org/abs/2201.05989)
+&emsp;&emsp;[Project](https://nvlabs.github.io/instant-ngp/)
+&emsp;&emsp;[Code](https://github.com/NVlabs/instant-ngp)
+
+[22] Anpei Chen, Zexiang Xu, Andreas Geiger, Jingyi Yu, Hao Su, "TensoRF: Tensorial Radiance Fields," ECCV'2022
+
+[TensorRF ECCV'2022](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3555_ECCV_2022_paper.php)
+&emsp;&emsp;[arXiv](https://arxiv.org/abs/2203.09517)
+&emsp;&emsp;[Project](https://apchenstu.github.io/TensoRF/)
+&emsp;&emsp;[Code](https://github.com/apchenstu/TensoRF)
+
+[23] Chen Wang, Xian Wu, Yuan-Chen Guo, Song-Hai Zhang, Yu-Wing Tai, Shi-Min Hu, "NeRF-SR: High-Quality Neural Radiance Fields using Supersampling," ACMMM'2022
+
+[NeRF-SR ACMMM'2022](https://dl.acm.org/doi/abs/10.1145/3503161.3547808)
+&emsp;&emsp;[arXiv](https://arxiv.org/abs/2112.01759)
+&emsp;&emsp;[Project](https://cwchenwang.github.io/NeRF-SR/)
+&emsp;&emsp;[Code](https://github.com/cwchenwang/NeRF-SR)
+
+[24] Jian Zhang, Yuanqing Zhang, Huan Fu, Xiaowei Zhou, Bowen Cai, Jinchi Huang, Rongfei Jia, Binqiang Zhao, Xing Tang, "Ray Priors through Reprojection: Improving Neural Radiance Fields for Novel View Extrapolation," CVPR'2022
+
+[RapNeRF CVPR'2022](https://openaccess.thecvf.com/content/CVPR2022/html/Zhang_Ray_Priors_Through_Reprojection_Improving_Neural_Radiance_Fields_for_Novel_CVPR_2022_paper.html)
+&emsp;&emsp;[arXiv](https://arxiv.org/abs/2205.05922)

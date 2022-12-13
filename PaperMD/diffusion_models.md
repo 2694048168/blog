@@ -2572,7 +2572,7 @@ Cited as:
 &emsp;&emsp;[太乙 Stable Diffusion 中英双语版本](https://huggingface.co/IDEA-CCNL/Taiyi-Stable-Diffusion-1B-Chinese-EN-v0.1)
 
 ----------------------------
-[43] Junjie Wang, Yuxiang Zhang, Lin Zhang et al. "DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps," NeurIPS'2022 Oral
+[43] Cheng Lu, Yuhao Zhou, Fan Bao, Jianfei Chen, Chongxuan Li, Jun Zhu, "DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps," NeurIPS'2022 Oral
 
 [Oral paper NeurIPS'2022 on Openreview](https://openreview.net/forum?id=2uAaGwlP_V)
 &emsp;&emsp;[DPM-Solver paper arXiv'2022](https://arxiv.org/abs/2206.00927)
@@ -2581,7 +2581,12 @@ Cited as:
 &emsp;&emsp;[Demo on Huggingface](https://huggingface.co/spaces/LuChengTHU/dpmsolver_sdm)
 
 ----------------------------
-[44] Chen-Hsuan Lin, Jun Gao, Luming Tang, Towaki Takikawa, Xiaohui Zeng, Xun Huang, Karsten Kreis, Sanja Fidler, Ming-Yu Liu, Tsung-Yi Lin, "Magic3D: High-Resolution Text-to-3D Content Creation," NVIDIA'2022
+[44] Cheng Lu, Yuhao Zhou, Fan Bao, Jianfei Chen, Chongxuan Li, Jun Zhu, "DPM-Solver++: Fast Solver for Guided Sampling of Diffusion Probabilistic Models," arXiv'2022-12
+
+[DPM-Solver++ arXiv'2022](https://arxiv.org/abs/2211.01095)
+
+----------------------------
+[45] Chen-Hsuan Lin, Jun Gao, Luming Tang, Towaki Takikawa, Xiaohui Zeng, Xun Huang, Karsten Kreis, Sanja Fidler, Ming-Yu Liu, Tsung-Yi Lin, "Magic3D: High-Resolution Text-to-3D Content Creation," NVIDIA'2022
 
 [Magic3D paper arXiv'2022](https://arxiv.org/abs/2211.10440)
 &emsp;&emsp;[Project](https://deepimagination.cc/Magic3D/)

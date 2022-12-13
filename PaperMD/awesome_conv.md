@@ -122,7 +122,7 @@ def matrix_multiplication_conv2d(input, kernel, bias=0, stride=1, padding=0):
 
     input_h, input_w = input.shape
     kernel_h, kernel_w = kernel.shape
-    
+
     output_h = (math.floor((input_h - kernel_h) / stride) + 1) # 卷积输出的 H
     output_w = (math.floor((input_w - kernel_w) / stride) + 1) # 卷积输出的 W
     output = torch.zeros(output_h, output_w) # 初始化卷积结果
@@ -140,14 +140,14 @@ def matrix_multiplication_conv2d_full(input, kernel, bias=None, stride=1, paddin
     # input and kernel is 4D tensor
     if padding > 0:
         # check the PyTorch API for torch.nn.functional.pad()
-        # W-dim(up,down); H-dim(up,dowm); channel-dim(up,down); batch-dim(up,down); 
+        # W-dim(up,down); H-dim(up,dowm); channel-dim(up,down); batch-dim(up,down);
         input = F.pad(input, (padding, padding, padding, padding, 0, 0, 0, 0))
 
     batch_size, in_channels, input_h, input_w = input.shape
     out_channels, in_channels, kernel_h, kernel_w = kernel.shape
     if bias is None:
         bias = torch.zeros(out_channels)
-    
+
     output_h = (math.floor((input_h - kernel_h) / stride) + 1) # 卷积输出的 H
     output_w = (math.floor((input_w - kernel_w) / stride) + 1) # 卷积输出的 W
     output = torch.zeros(batch_size, out_channels, output_h, output_w) # 初始化卷积结果
@@ -224,7 +224,7 @@ def matrix_multiplication_conv2d_flatten(input, kernel, bias=0, stride=1, paddin
 
     input_h, input_w = input.shape
     kernel_h, kernel_w = kernel.shape
-    
+
     output_h = (math.floor((input_h - kernel_h) / stride) + 1) # 卷积输出的 H
     output_w = (math.floor((input_w - kernel_w) / stride) + 1) # 卷积输出的 W
     output = torch.zeros(output_h, output_w) # 初始化卷积结果
@@ -239,7 +239,7 @@ def matrix_multiplication_conv2d_flatten(input, kernel, bias=0, stride=1, paddin
             region_vector = torch.flatten(region_window)
             region_matrix[row_idx] = region_vector
             row_idx += 1
-    
+
     output_matrix = region_matrix @ kernel_matrix # shape: [output_h*output_w, 1]
     output = output_matrix.reshape((output_h, output_w)) + bias
 
@@ -279,7 +279,7 @@ def get_kernel_matrix(kernel, input_size):
     kernel_h, kernel_w = kernel.shape
     input_h, input_w = input_size
     num_out_feat_map = (input_h - kernel_h + 1) * (input_w - kernel_w + 1)
-    
+
     # 初始化结果矩阵 [输出特征图元素个数，输入特征图元素个数]
     result = torch.zeros((num_out_feat_map, input_h*input_w))
 
@@ -370,7 +370,7 @@ import torch.nn.functional as F
 def matrix_multiplication_conv2d_final(input, kernel, bias=None, stride=1, padding=0, dilation=1, groups=1):
     # input and kernel is 4D tensor
     if padding > 0:
-        # W-dim(up,down); H-dim(up,dowm); channel-dim(up,down); batch-dim(up,down); 
+        # W-dim(up,down); H-dim(up,dowm); channel-dim(up,down); batch-dim(up,down);
         input = F.pad(input, (padding, padding, padding, padding, 0, 0, 0, 0))
 
     batch_size, in_channels, input_h, input_w = input.shape
@@ -466,7 +466,7 @@ if __name__ == "__main__":
     print(f"the time of origin ResNet: {time.time() - start_time_1}")
     print(f"the shape of output: {result_1.shape}")
     # ----------------------------------------------------------------------------
-    
+
     # ----------------------------------------------------------------------------
     # case 2: convert pointwise and identity into 3*3 convolution
     # [2, 2, 1, 1] ---> [2, 2, 3, 3]
@@ -509,7 +509,7 @@ if __name__ == "__main__":
     # ----------------------------------------------------------------------------
 
 """
-$ python rep_vgg.py 
+$ python rep_vgg.py
 the time of origin ResNet: 0.001994609832763672
 the shape of output: torch.Size([1, 2, 64, 64])
 the shape of output: torch.Size([1, 2, 64, 64])
@@ -517,25 +517,25 @@ all close equal of the output: True
 the time of fusion operators: 0.0
 the shape of output: torch.Size([1, 2, 64, 64])
 all close equal of the output: True
-(SR_PyTorch) 
+(SR_PyTorch)
 WeiLi@LAPTOP-UG2EDDHM MINGW64 /d/GitRepository/blog (main)
-$ python rep_vgg.py 
+$ python rep_vgg.py
 the time of origin ResNet: 0.002012014389038086
-the shape of output: torch.Size([1, 2, 64, 64])    
-the shape of output: torch.Size([1, 2, 64, 64])    
+the shape of output: torch.Size([1, 2, 64, 64])
+the shape of output: torch.Size([1, 2, 64, 64])
 all close equal of the output: True
 the time of fusion operators: 0.0009970664978027344
-the shape of output: torch.Size([1, 2, 64, 64])    
+the shape of output: torch.Size([1, 2, 64, 64])
 all close equal of the output: True
-(SR_PyTorch) 
+(SR_PyTorch)
 WeiLi@LAPTOP-UG2EDDHM MINGW64 /d/GitRepository/blog (main)
-$ python rep_vgg.py 
+$ python rep_vgg.py
 the time of origin ResNet: 0.0019936561584472656
-the shape of output: torch.Size([1, 2, 64, 64])   
-the shape of output: torch.Size([1, 2, 64, 64])   
+the shape of output: torch.Size([1, 2, 64, 64])
+the shape of output: torch.Size([1, 2, 64, 64])
 all close equal of the output: True
 the time of fusion operators: 0.000997304916381836
-the shape of output: torch.Size([1, 2, 64, 64])   
+the shape of output: torch.Size([1, 2, 64, 64])
 all close equal of the output: True
 (SR_PyTorch)
 """
@@ -555,3 +555,7 @@ all close equal of the output: True
 &emsp;&emsp;[Paper on arXiv'2021](https://arxiv.org/abs/2101.03697)
 &emsp;&emsp;[Original Code on GitHub](https://github.com/DingXiaoH/RepVGG)
 &emsp;&emsp;[Implementation Code on GitHub](https://paperswithcode.com/paper/repvgg-making-vgg-style-convnets-great-again)
+
+[3] Xiangxiang Chu, Liang Li, Bo Zhang, "Make RepVGG Greater Again: A Quantization-aware Approach," arXiv'2022-12
+
+[arXiv'2022-12](https://arxiv.org/abs/2212.01593)
