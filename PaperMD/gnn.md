@@ -168,112 +168,94 @@ $$ f_{1}(t) \star f_{2}(t) = \mathcal{F}^{-1} [ F_{1}(\omega) \cdot F_{2}(\omega
 
 ### Reference
 ----------------------------
-
-[1] Kai Han, Yunhe Wang, Jianyuan Guo, Yehui Tang, Enhua Wu, "Vision GNN: An Image is Worth Graph of Nodes," arXiv'2022,Tech. Report Huawei Noah
-
-[ViG Paper on arXiv'2022](https://arxiv.org/abs/2206.00272)
+[1] Kai Han, Yunhe Wang, Jianyuan Guo, Yehui Tang, Enhua Wu, "Vision GNN: An Image is Worth Graph of Nodes," Tech. Report Huawei Noah on NeurIPS'2022 </br>
+[ViG Paper on NeurIPS'2022](https://arxiv.org/abs/2206.00272)
+&emsp;&emsp;[ViG review on OpenReview](https://openreview.net/forum?id=htM1WJZVB2I)
+&emsp;&emsp;[ViG Paper on arXiv'2022](https://arxiv.org/abs/2206.00272)
 &emsp;&emsp;[ViG code](https://github.com/huawei-noah/CV-backbones)
 &emsp;&emsp;[ViG code](https://github.com/huawei-noah/efficient-ai-backbones)
 
-[2] Yi Ma, Doris Tsao, Heung-Yeung Shum, "On the Principles of Parsimony and Self-Consistency for the Emergence of Intelligence," arXiv'2022
+[2] Yi Ma, Doris Tsao, Heung-Yeung Shum, "On the Principles of Parsimony and Self-Consistency for the Emergence of Intelligence," FITEE'2022 </br>
+[Principles Paper on FITEE'2022](https://link.springer.com/article/10.1631/FITEE.2200297)
+&emsp;&emsp;[Principles Paper on arXiv'2022](https://arxiv.org/abs/2207.04630)
 
-[Principles Paper on arXiv'2022](https://arxiv.org/abs/2207.04630)
-
-[3] Ladislav Rampášek, Mikhail Galkin, Vijay Prakash Dwivedi, Anh Tuan Luu, Guy Wolf, Dominique Beaini, "Recipe for a General, Powerful, Scalable Graph Transformer," arXiv'2022
-
+[3] Ladislav Rampášek, Mikhail Galkin, Vijay Prakash Dwivedi, Anh Tuan Luu, Guy Wolf, Dominique Beaini, "Recipe for a General, Powerful, Scalable Graph Transformer," arXiv'2022 </br>
 [GraphGPS Paper on arXiv'2022](https://arxiv.org/abs/2206.00272)
 &emsp;&emsp;[GraphGPS code](https://github.com/rampasek/GraphGPS)
 
-[4] Thomas N. Kipf, Max Welling, "Semi-Supervised Classification with Graph Convolutional Networks," ICLR'2017
-
+[4] Thomas N. Kipf, Max Welling, "Semi-Supervised Classification with Graph Convolutional Networks," ICLR'2017 </br>
 [GCN Paper on ICLR'2017](https://openreview.net/forum?id=SJU4ayYgl)
 &emsp;&emsp;[GCN Paper on arXiv'2017](https://arxiv.org/abs/1609.02907)
 &emsp;&emsp;[GCN Paper blog](http://tkipf.github.io/graph-convolutional-networks/)
 &emsp;&emsp;[GCN implementation code](https://paperswithcode.com/paper/semi-supervised-classification-with-graph)
 
-[5] Qimai Li, Zhichao Han, Xiao-Ming Wu, "Deeper Insights into Graph Convolutional Networks for Semi-Supervised Learning," AAAI'2018
-
+[5] Qimai Li, Zhichao Han, Xiao-Ming Wu, "Deeper Insights into Graph Convolutional Networks for Semi-Supervised Learning," AAAI'2018 </br>
 [Deeper GCN on AAAI'2018 Oral](https://ojs.aaai.org/index.php/AAAI/article/view/11604)
 &emsp;&emsp;[Deeper GCN on arXiv'2018](https://arxiv.org/abs/1801.07606)
 &emsp;&emsp;[Deeper GCN implementation code](https://paperswithcode.com/paper/deeper-insights-into-graph-convolutional)
 
-[6] Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, Yoshua Bengio, "Graph Attention Networks," ICLR'2018
-
+[6] Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, Yoshua Bengio, "Graph Attention Networks," ICLR'2018 </br>
 [GAT Paper on ICLR'2018](https://openreview.net/forum?id=rJXMpikCZ)
 &emsp;&emsp;[GAT Paper on arXiv'2018](https://arxiv.org/abs/1710.10903)
 &emsp;&emsp;[GAT code](https://github.com/PetarV-/GAT)
 &emsp;&emsp;[GAT implementation code](https://paperswithcode.com/paper/graph-attention-networks)
 
-[7] Shangchen Zhou, Jiawei Zhang, Wangmeng Zuo, Chen Change Loy, "Cross-Scale Internal Graph Neural Network for Image Super-Resolution," NeurIPS'2020
-
+[7] Shangchen Zhou, Jiawei Zhang, Wangmeng Zuo, Chen Change Loy, "Cross-Scale Internal Graph Neural Network for Image Super-Resolution," NeurIPS'2020 </br>
 [IGNN Paper on NeurIPS'2020](https://proceedings.neurips.cc/paper/2020/hash/23ad3e314e2a2b43b4c720507cec0723-Abstract.html)
 &emsp;&emsp;[IGNN on arXiv'2020](https://arxiv.org/abs/2006.16673)
 &emsp;&emsp;[IGNN code](https://github.com/sczhou/IGNN)
 
-[8] Riccardo de Lutio, Alexander Becker, Stefano D'Aronco, Stefania Russo, Jan D. Wegner, Konrad Schindler, "Learning Graph Regularisation for Guided Super-Resolution," CVPR'2022
-
+[8] Riccardo de Lutio, Alexander Becker, Stefano D'Aronco, Stefania Russo, Jan D. Wegner, Konrad Schindler, "Learning Graph Regularisation for Guided Super-Resolution," CVPR'2022 </br>
 [Paper on CVPR'2022](https://openaccess.thecvf.com/content/CVPR2022/html/de_Lutio_Learning_Graph_Regularisation_for_Guided_Super-Resolution_CVPR_2022_paper.html)
 &emsp;&emsp;[paper on arXiv'2022](https://arxiv.org/abs/2203.14297)
 &emsp;&emsp;[paper code](https://github.com/prs-eth/graph-super-resolution)
 
-[9] Zipeng Liu, Yang Wang, Jürgen Bernard, Tamara Munzner, "Visualizing Graph Neural Networks with CorGIE: Corresponding a Graph to Its Embedding," TVCG'2022
-
+[9] Zipeng Liu, Yang Wang, Jürgen Bernard, Tamara Munzner, "Visualizing Graph Neural Networks with CorGIE: Corresponding a Graph to Its Embedding," TVCG'2022 </br>
 [Paper on TVCG'2022](https://www.computer.org/csdl/journal/tg/2022/06/09705082/1AIIcR14E4o)
 &emsp;&emsp;[paper on arXiv'2022](https://arxiv.org/abs/2106.12839)
 &emsp;&emsp;[paper code](https://github.com/zipengliu/CorGIE)
 
-[10] Mingqi Yang, Yanming Shen, Rui Li, Heng Qi, Qiang Zhang, Baocai Yin, "A New Perspective on the Effects of Spectrum in Graph Neural Networks," ICML'2022
-
+[10] Mingqi Yang, Yanming Shen, Rui Li, Heng Qi, Qiang Zhang, Baocai Yin, "A New Perspective on the Effects of Spectrum in Graph Neural Networks," ICML'2022 </br>
 [Paper on ICML'2022](https://proceedings.mlr.press/v162/yang22n.html)
 &emsp;&emsp;[paper on arXiv'2022](https://arxiv.org/abs/2112.07160)
 &emsp;&emsp;[paper code](https://github.com/qslim/gnn-spectrum)
 
-[11] Dan Xu, Xavier Alameda-Pineda, Wanli Ouyang, Elisa Ricci, Xiaogang Wang, Nicu Sebe, "Probabilistic Graph Attention Network with Conditional Kernels for Pixel-Wise Prediction," accepted at TPAMI'2020 and published at TPAMI'2022
-
+[11] Dan Xu, Xavier Alameda-Pineda, Wanli Ouyang, Elisa Ricci, Xiaogang Wang, Nicu Sebe, "Probabilistic Graph Attention Network with Conditional Kernels for Pixel-Wise Prediction," accepted at TPAMI'2020 and published at TPAMI'2022 </br>
 [Paper on TPAMI'2020](https://ieeexplore.ieee.org/document/9290049)
 &emsp;&emsp;[paper on arXiv'2022](https://arxiv.org/abs/2101.02843)
 
-[12] Pál András Papp, Roger Wattenhofer, "A Theoretical Comparison of Graph Neural Network Extensions," ICML'2022
-
+[12] Pál András Papp, Roger Wattenhofer, "A Theoretical Comparison of Graph Neural Network Extensions," ICML'2022 </br>
 [Paper on ICML'2022](https://proceedings.mlr.press/v162/papp22a.html)
 &emsp;&emsp;[paper on arXiv'2022](https://arxiv.org/abs/2201.12884)
 
-[13] Asiri Wijesinghe, Qing Wang, "A New Perspective on 'How Graph Neural Networks Go Beyond Weisfeiler-Lehman?'," ICLR'2022
-
+[13] Asiri Wijesinghe, Qing Wang, "A New Perspective on 'How Graph Neural Networks Go Beyond Weisfeiler-Lehman?'," ICLR'2022 </br>
 [Paper on ICLR'2022 Oral](https://iclr.cc/virtual/2022/oral/6437)
 &emsp;&emsp;[Paper Poster at ICLR'2022](https://graphlabanu.github.io/website/downloads/ICLR2022_Poster.pdf)
 
-[14] Yao Li, Xueyang Fu, Zheng-Jun Zha, "Cross-Patch Graph Convolutional Network for Image Denoising," ICCV'2021
-
+[14] Yao Li, Xueyang Fu, Zheng-Jun Zha, "Cross-Patch Graph Convolutional Network for Image Denoising," ICCV'2021 </br>
 [Paper on ICCV'2021](https://openaccess.thecvf.com/content/ICCV2021/html/Li_Cross-Patch_Graph_Convolutional_Network_for_Image_Denoising_ICCV_2021_paper.html)
 
-[15] Jianlong Chang, Jie Gu, Lingfeng Wang, GAOFENG MENG, SHIMING XIANG, Chunhong Pan, "Structure-Aware Convolutional Neural Networks," NeurIPS'2018
-
+[15] Jianlong Chang, Jie Gu, Lingfeng Wang, GAOFENG MENG, SHIMING XIANG, Chunhong Pan, "Structure-Aware Convolutional Neural Networks," NeurIPS'2018 </br>
 [Structure-Aware Paper on NeurIPS'2018](https://papers.nips.cc/paper/2018/hash/182be0c5cdcd5072bb1864cdee4d3d6e-Abstract.html)
 &emsp;&emsp;[Original code](https://github.com/vector-1127/SACNNs)
 
-[16] Weiyi Xie, Colin Jacobs, Jean-Paul Charbonnier, Bram van Ginneken, "Structure and position-aware graph neural network for airway labeling," arXiv'2022
-
+[16] Weiyi Xie, Colin Jacobs, Jean-Paul Charbonnier, Bram van Ginneken, "Structure and position-aware graph neural network for airway labeling," arXiv'2022 </br>
 [Paper on arXiv'2022](https://arxiv.org/abs/2201.04532)
 &emsp;&emsp;[Original code](https://github.com/diagnijmegen/spgnn)
 
-[17] Chenqing Hua, Guillaume Rabusseau, Jian Tang, "High-Order Pooling for Graph Neural Networks with Tensor Decomposition," NeurIPS'2022
-
+[17] Chenqing Hua, Guillaume Rabusseau, Jian Tang, "High-Order Pooling for Graph Neural Networks with Tensor Decomposition," NeurIPS'2022 </br>
 [Paper on NeurIPS'2022 on openreview](https://openreview.net/forum?id=N7-EIciq3R)
 &emsp;&emsp;[Paper on arXiv'2022](https://arxiv.org/abs/2205.11691)
 
-[18] Yi-Chien Lin, Bingyi Zhang, Viktor Prasanna, "HP-GNN: Generating High Throughput GNN Training Implementation on CPU-FPGA Heterogeneous Platform," FPGA'2022
-
+[18] Yi-Chien Lin, Bingyi Zhang, Viktor Prasanna, "HP-GNN: Generating High Throughput GNN Training Implementation on CPU-FPGA Heterogeneous Platform," FPGA'2022 </br>
 [Paper on arXiv'2022](https://arxiv.org/abs/2112.11684)
 
-[19] Shangchen Zhou, Jiawei Zhang, Wangmeng Zuo, Chen Change Loy, "Cross-Scale Internal Graph Neural Network for Image Super-Resolution," NeurIPS'2020
-
+[19] Shangchen Zhou, Jiawei Zhang, Wangmeng Zuo, Chen Change Loy, "Cross-Scale Internal Graph Neural Network for Image Super-Resolution," NeurIPS'2020 </br>
 [IGNN Paper on NeurIPS'2020](https://papers.nips.cc/paper/2020/hash/23ad3e314e2a2b43b4c720507cec0723-Abstract.html)
 &emsp;&emsp;[Paper on arXiv'2020](https://arxiv.org/abs/2006.16673)
 &emsp;&emsp;[Code](https://github.com/sczhou/IGNN)
 
-[20] Chong Mou, Jian Zhang, Zhuoyuan Wu, "Dynamic Attentive Graph Learning for Image Restoration," ICCV'2021
-
+[20] Chong Mou, Jian Zhang, Zhuoyuan Wu, "Dynamic Attentive Graph Learning for Image Restoration," ICCV'2021 </br>
 [DAGL Paper on ICCV'2021](https://openaccess.thecvf.com/content/ICCV2021/html/Mou_Dynamic_Attentive_Graph_Learning_for_Image_Restoration_ICCV_2021_paper.html)
 &emsp;&emsp;[Paper on arXiv'2021](https://arxiv.org/abs/2109.06620)
 &emsp;&emsp;[Code](https://github.com/jianzhangcs/dagl)

@@ -5,7 +5,7 @@
 &emsp;&emsp;[![](https://img.shields.io/badge/CPlusPlus-github-brightgreen)](https://github.com/2694048168/C-and-C-plus-plus)
 &emsp;&emsp;[![](https://img.shields.io/badge/Linux-github-brightgreen)](https://github.com/2694048168/Linux_OS)
 
-> Wei Li&nbsp;(黎 为)</br> Email: weili_yzzcq@163.com;</br> the Internet of Things(IoT) Engineering for Bachelor's degree (物联网工程) in SOFTWARE JXUFE;</br> the New Generation Electronic Information Technology for Master's degree (新一代电子信息技术) and Research in Image Super-Resolution & Low-Light Image Enhancement and Image Restoration (图像超分辨率和图像复原) in SOFTWARE JXUFE;</br> the Technical points of interest: Artificial Intelligence(AI), Deep Learning(DL), PyTorch and TensorFlow2, CPlusPlus and Python, Linux and shell and LaTex;</br> the main research area: Image Processing & Image Restoration, Computer Vision & Neural Networks, 3D Vision & Multiple-View Geometry.
+> Wei Li&nbsp;(黎 为)</br> Email: weili_yzzcq@163.com</br> the Internet of Things(IoT) Engineering for Bachelor's degree (物联网工程) in SOFTWARE JXUFE;</br> the New Generation Electronic Information Technology for Master's degree (新一代电子信息技术) and Research in Image Super-Resolution & Low-Light Image Enhancement and Image Restoration (图像超分辨率和图像复原) in SOFTWARE JXUFE;</br> the Technical points of interest: Artificial Intelligence(AI), Deep Learning(DL), PyTorch and TensorFlow2, CPlusPlus and Python, Linux and shell and LaTex;</br> the main research area: Image Processing & Image Restoration, Computer Vision & Neural Networks, 3D Vision & Multiple-View Geometry.
 
 <!-- paper and project -->
 <div class="project">
