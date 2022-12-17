@@ -5,7 +5,7 @@
 &emsp;&emsp;[![](https://img.shields.io/badge/CPlusPlus-github-brightgreen)](https://github.com/2694048168/C-and-C-plus-plus)
 &emsp;&emsp;[![](https://img.shields.io/badge/Linux-github-brightgreen)](https://github.com/2694048168/Linux_OS)
 
-> Wei Li&nbsp;(黎 为)</br> Email: weili_yzzcq@163.com</br> the Internet of Things(IoT) Engineering for Bachelor's degree (物联网工程) in SOFTWARE JXUFE;</br> the New Generation Electronic Information Technology for Master's degree (新一代电子信息技术) and Research in Image Super-Resolution & Low-Light Image Enhancement and Image Restoration (图像超分辨率和图像复原) in SOFTWARE JXUFE;</br> the Technical points of interest: Artificial Intelligence(AI), Deep Learning(DL), PyTorch and TensorFlow2, CPlusPlus and Python, Linux and shell and LaTex;</br> the main research area: Image Processing & Image Restoration, Computer Vision & Neural Networks, 3D Vision & Multiple-View Geometry.
+> Wei Li&nbsp;(黎 为)</br> Email: weili_yzzcq@163.com</br> the Internet of Things(IoT) Engineering for Bachelor's degree (物联网工程) in SOFTWARE JXUFE;</br> the New Generation Electronic Information Technology for Master's degree (新一代电子信息技术) and Research in Image Super-Resolution & Low-Light Image Enhancement and Image Restoration (图像超分辨率和图像复原) in SOFTWARE JXUFE;</br> the Technical points of interest: Artificial Intelligence(AI), Deep Learning(DL), PyTorch and TensorFlow2, CPlusPlus and Python, Linux and shell and LaTex;</br> the main research area: **Image Processing & Image Restoration**, **Computer Vision & Neural Networks**, **3D Vision & Neural Rendering**.
 
 <!-- paper and project -->
 <div class="project">
@@ -15,7 +15,7 @@
 
 ### Diffusion: Image Generation via Diffusion Models and Scored-Matching and SDEs
 <!-- <p> -->
-[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;||&nbsp;[Project Link](PaperMD/diffusion_models.md)
+[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;|&nbsp;[Project Link](PaperMD/diffusion_models.md)
 <!-- * 一般表示通信作者,  ✝ 一般表示相同的贡献, 然后作者排名按照贡献降序排列(第一作者)-->
 </blockquote>
 </div>
@@ -28,7 +28,7 @@
 <blockquote>
 
 ### GNNs: Graph Neural Networks and Non-Euclidean Convolution
-[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;||&nbsp;[Project Link](PaperMD/gnn.md)
+[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;|&nbsp;[Project Link](PaperMD/gnn.md)
 </blockquote>
 </div>
 </div><br>
@@ -40,7 +40,7 @@
 <blockquote>
 
 ### Transformer: Vision Transformer and Swin Transformer and Masked AutoEncoder
-[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;||&nbsp;[Project Link](PaperMD/transformer.md)
+[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;|&nbsp;[Project Link](PaperMD/transformer.md)
 </blockquote>
 </div>
 </div><br>
@@ -52,7 +52,7 @@
 <blockquote>
 
 ### Image SR: Image Super-Resolution and Image Restoration
-[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;||&nbsp;[Project Link](PaperMD/image_super_resolution.md)
+[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;|&nbsp;[Project Link](PaperMD/image_super_resolution.md)
 </blockquote>
 </div>
 </div><br>
@@ -64,7 +64,7 @@
 <blockquote>
 
 ### CNNs: Awesome Understanding of Convolution and Transpose Convolution
-[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;||&nbsp;[Project Link](PaperMD/awesome_conv.md)
+[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;|&nbsp;[Project Link](PaperMD/awesome_conv.md)
 </blockquote>
 </div>
 </div><br>
@@ -76,7 +76,7 @@
 <blockquote>
 
 ### PyTorch: the tutorial of Learning PyTorch
-[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;||&nbsp;[Project Link](PaperMD/learning_pytorch.md)&nbsp;||&nbsp;[Annotation Code](https://github.com/2694048168/ComputerVisionDeepLearning/tree/main/Learning_PyTorch)
+[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;|&nbsp;[Project Link](PaperMD/learning_pytorch.md)&nbsp;|&nbsp;[Annotation Code](https://github.com/2694048168/ComputerVisionDeepLearning/tree/main/Learning_PyTorch)
 </blockquote>
 </div>
 </div><br>
@@ -88,7 +88,7 @@
 <blockquote>
 
 ### TensorFlow2: the tutorial of Learning TensorFlow
-[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;||&nbsp;[Project Link](PaperMD/learning_tensorflow.md)&nbsp;||&nbsp;[Annotation Code](https://github.com/2694048168/ComputerVisionDeepLearning/tree/main/Learning_TensorFlow2)
+[Wei Li<sup>*✝](https://2694048168.github.io/blog/)&nbsp;|&nbsp;[Project Link](PaperMD/learning_tensorflow.md)&nbsp;|&nbsp;[Annotation Code](https://github.com/2694048168/ComputerVisionDeepLearning/tree/main/Learning_TensorFlow2)
 </blockquote>
 </div>
 </div><br>
