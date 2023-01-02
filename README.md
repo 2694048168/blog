@@ -94,6 +94,12 @@
 </div><br>
 
 
+<!-- ![Conference and Journal]() -->
+<div>
+<img src="images/ConferenceJournal.png" width="100%" />
+</div>
+
+
 <!-- the article of notes -->
 ----------------
 # Artificial Intelligence and Computer Vision
