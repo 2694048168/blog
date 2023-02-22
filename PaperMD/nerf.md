@@ -125,8 +125,9 @@
 [Paper on arXiv'2022](https://arxiv.org/abs/2210.10108)
 &emsp;&emsp;[Paper Project](https://pnerfp.github.io/)
 
-[14] Ben Poole, Ajay Jain, Jonathan T. Barron, Ben Mildenhall, "DreamFusion: Text-to-3D using 2D Diffusion," Google Research'2022 </br>
-[DreamFusion paper arXiv'2022](https://arxiv.org/abs/2209.14988)
+[14] Ben Poole, Ajay Jain, Jonathan T. Barron, Ben Mildenhall, "DreamFusion: Text-to-3D using 2D Diffusion," ICLR'2023 </br>
+[DreamFusion paper ICLR'2023](https://openreview.net/forum?id=FjNys5c7VyY)
+&emsp;&emsp;[arXiv](https://arxiv.org/abs/2209.14988)
 &emsp;&emsp;[Project page](https://dreamfusion3d.github.io/)
 &emsp;&emsp;[Reference Code](https://github.com/ashawkey/stable-dreamfusion)
 

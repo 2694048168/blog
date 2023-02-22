@@ -2535,9 +2535,10 @@ Cited as:
 &emsp;&emsp;[Code](https://github.com/lmxyy/sige)
 
 ----------------------------
-[38] Ben Poole, Ajay Jain, Jonathan T. Barron, Ben Mildenhall, "DreamFusion: Text-to-3D using 2D Diffusion," Google Corporation'2022
+[38] Ben Poole, Ajay Jain, Jonathan T. Barron, Ben Mildenhall, "DreamFusion: Text-to-3D using 2D Diffusion," ICLR'2023
 
-[DreamFusion paper arXiv'2022](https://arxiv.org/abs/2209.14988)
+[DreamFusion paper ICLR'2023](https://openreview.net/forum?id=FjNys5c7VyY)
+&emsp;&emsp;[arXiv](https://arxiv.org/abs/2209.14988)
 &emsp;&emsp;[Project page](https://dreamfusion3d.github.io/)
 &emsp;&emsp;[Reference Code](https://github.com/ashawkey/stable-dreamfusion)
 
@@ -2590,3 +2591,15 @@ Cited as:
 
 [Magic3D paper arXiv'2022](https://arxiv.org/abs/2211.10440)
 &emsp;&emsp;[Project](https://deepimagination.cc/Magic3D/)
+
+----------------------------
+[46] Jiale Xu, Xintao Wang, Weihao Cheng, Yan-Pei Cao, Ying Shan, Xiaohu Qie, Shenghua Gao, "Dream3D: Zero-Shot Text-to-3D Synthesis Using 3D Shape Prior and Text-to-Image Diffusion Models," Tencent'2022
+
+[Dream3D paper arXiv'2022](https://arxiv.org/abs/2212.14704)
+&emsp;&emsp;[Project](https://bluestyle97.github.io/dream3d/)
+
+----------------------------
+[47] Lvmin Zhang, Maneesh Agrawala, "Adding Conditional Control to Text-to-Image Diffusion Models," Tencent'2022
+
+[ControlNet paper arXiv'2023](https://arxiv.org/abs/2302.05543)
+&emsp;&emsp;[Code](https://github.com/lllyasviel/ControlNet)
