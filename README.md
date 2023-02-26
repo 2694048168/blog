@@ -117,6 +117,8 @@
 - [Deep Generative Learning: Variational AutoEncoder and and Flow-based and GANs](PaperMD/vae.md)
 - [3D Reconstruction: Neural Radiance Fields (NeRF) technique](PaperMD/nerf.md)
 
+# CPlusPlus
+- [vcpkg and find_package](PaperMD/vcpkg.md)
 
 # Python & CPlusPlus configure
 - [Python 环境配置](PaperMD/python_env_ai.md)
