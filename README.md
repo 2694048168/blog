@@ -119,9 +119,10 @@
 
 # CPlusPlus
 - [vcpkg and find_package](PaperMD/vcpkg.md)
+- [CMake Examples](https://github.com/2694048168/C-and-C-plus-plus/blob/master/CMakeReadme.md)
+- [C++ Configuration](PaperMD/cpp_env_test.md)
 
-# Python & CPlusPlus configure
-- [Python 环境配置](PaperMD/python_env_ai.md)
+# Python
+- [Python Configuration](PaperMD/python_env_ai.md)
 - [TensorFlow2 环境测试](PaperMD/tf_env_test.md)
 - [PyTorch 环境测试](PaperMD/pt_env_test.md)
-- [C++ 环境配置](PaperMD/cpp_env_test.md)

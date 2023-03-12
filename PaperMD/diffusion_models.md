@@ -2262,7 +2262,7 @@ Cited as:
 
 ----------------------------
 
-[5] Chitwan Saharia, Jonathan Ho, et al. "Image Super-Resolution via Iterative Refinement," ICCV'2021
+[5] Chitwan Saharia, Jonathan Ho, et al. "Image Super-Resolution via Iterative Refinement," TPAMI'2023
 
 **Denoising diffusion models for image super-resolution and cascaded image generation.**
 
