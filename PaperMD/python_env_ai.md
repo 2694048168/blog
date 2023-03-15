@@ -15,6 +15,7 @@
 - Ubuntu Termianal + Tmux + Zsh + oh-my-zsh on Linux Platform
 - iTerm2 + Tmux + Zsh + oh-my-zsh on Mac OS Platform
 - bing and google search engine, not baidu
+- [Tmux introduction](https://www.bilibili.com/video/BV1da4y1p7e1/)
 
 **Conda 包管理环境常用命令**
 ```shell
@@ -146,3 +147,120 @@ pip install tensorboard
 - Ctrl + Shift + P ---> Select Interpreter ---> configure python Interpreter
 - File ---> Settings ---> Project ---> Python Interpreter ---> add & configure
 - anyway, google search
+
+**Git and GitHub**
+
+[Learning Git quick start](https://www.bookstack.cn/read/learngit-basic/336eaf68268808a4.md)
+
+> download and install Git
+
+```shell
+# download for Windows
+# https://git-scm.com/download/win
+# https://gitforwindows.org/
+# 正常软件安装, 安装时需要注意环境变量的添加,以及使用者
+# 否则需要自己手动配置环境变量,才能在终端使用
+
+# 全局配置 git 基本信息(--system, --global, --local)
+git config --global user.name "Wei Li"
+git config --global user.email "weili_yzzcq@163.com"
+
+# 查看 git 配置信息
+git config --global --list
+git config --list
+
+# 设置和恢复 git HTTPS 协议代理(SSH协议单独配置)
+git config --global http.proxy 'socks5://127.0.0.1:7891' 
+git config --global https.proxy 'socks5://127.0.0.1:7891'
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+# git SSH协议单独配置文件写入内容(~/.ssh/config)
+# 全局 
+ProxyCommand nc -X 5 -x 127.0.0.1:7891 %h %p
+# 只为特定域名设定
+Host github.com
+    ProxyCommand nc -X 5 -x 127.0.0.1:7891 %h %p
+
+# ----------------------
+# install git on Debian and Ubuntu(apt or nala)
+# https://gitlab.com/volian/nala/-/wikis/Installation
+# you can select the fast mirrors by nala
+sudo nala fetch
+sudo nala update && sudo nala upgrade
+sudo nala install git
+
+# CentOS
+sudo yum install git
+# Arch Linux and Manjaro
+sudo pacman -Sy git
+
+# install git on MacOS(brew)
+# https://brew.sh/
+# https://gitee.com/cunkai/HomebrewCN/
+brew install git
+```
+
+> we can write a shell or python script to configure.
+
+```shell
+# https://www.bilibili.com/video/BV1r3411F7kn/
+# 增删查改基本操作
+# how to read the help information of Command line
+git --help
+
+# git clone github repo.
+# HTTPS and SSH 协议(涉及科学上网方式)
+git clone https://github.com/2694048168/ComputerVisionDeepLearning.git
+# all branchs default or special branch
+git clone --branch <branchname> <remote-repo-url>
+git clone -b <branchname> <remote-repo-url>
+# 本地分支且只能跟踪此分支
+git clone --branch <branchname> --single-branch <remote-repo-url>
+git clone -b <branchname> --single-branch <remote-repo-url>
+
+# git 仓库项目中依然引用其他 git 仓库时候, 需要递归克隆
+git clone --recursive https://github.com/nvlabs/instant-ngp
+cd instant-ngp
+
+# simple pipeline: git add & commint & push
+mkdir git_folder
+cd git_folder
+
+# 生成隐藏文件夹 .git/ 用于管理和记录和 Git 相关的信息
+# 初始化 git 代码仓库版本控制(默认为master or main branch)
+git init .
+
+# 查看 git 仓库里面的状态
+git status
+
+# 提交源代码文件到暂缓区
+git add new_file
+git add .
+
+# 提交源代码文件到本地仓库
+git commit -m "commit information"
+
+# 提交源代码文件到远程仓库(Gitee or GitHub, et al.)
+git push origin_repo_name
+
+# 更新本地仓库(library from other)
+# learning from --help option
+git pull
+git fetch
+git diff
+
+# 查看 git 项目关联的远程仓库信息
+git remote --verbose
+git remote -v
+
+# 查看 git 提交日志, q 推出日志查看状态
+git log
+
+# 让 git 忽略文件方式, 有规则
+touch .gitignore
+
+# 如何和 GitHub and Gitee 进行关联
+# 分支操作; 
+# 从暂缓区删除文件; 从本地仓库删除文件; 从远程仓库删除文件; 从磁盘上删除文件
+```
