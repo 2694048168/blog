@@ -16,11 +16,12 @@
 - iTerm2 + Tmux + Zsh + oh-my-zsh on Mac OS Platform
 - bing and google search engine, not baidu
 - [Tmux introduction](https://www.bilibili.com/video/BV1da4y1p7e1/)
+- [Configuration of Terminal](https://github.com/2694048168/Linux_OS/tree/main/Configuration)
 
 **Conda 包管理环境常用命令**
 ```shell
 # 1. conda 创建新的 python 环境
-conda create --name pytorch_SR python=3.10
+conda create --name pytorch_SR python=3.11
 
 # 2. 查看 conda 管理的 python 环境
 conda info --envs
@@ -38,7 +39,7 @@ conda deactivate
 conda remove --name pytorch_SR --all
 ```
 
-**Conda 包管理环境常用命令**
+**pip 包管理常用命令**
 ```shell
 # 查看 pip 包管理器版本
 pip --vesion
@@ -52,7 +53,10 @@ pip search numpy
 
 # pip 安装 python package online and offline
 pip install numpy
+# https://tensorflow.google.cn/install/source_windows?hl=en#gpu
+pip install tensorflow==2.10.0
 pip install torch-1.13.0+cu117-cp311-cp311-linux_x86_64.whl
+pip install torch-2.0.0+cu117-cp311-cp311-win_amd64.whl
 
 # pip 卸载 python package
 pip uninstall numpy
@@ -73,12 +77,27 @@ pip install --help
 pip install -r requirements.txt
 ```
 
+**Python 项目管理虚拟环境**
+
+> 无法创建特定 Python 版本的虚拟环境, 但是关于该虚拟环境和项目进行绑定.
+
+```shell
+# https://docs.python.org/3/library/venv.html
+python -m venv path2venv
+python 3.11 -m venv .venv
+
+# VSCode 可以自动识别该虚拟环境
+```
+
+
 **pip 对应的包和库在 pypi 这个仓库下, 配置 pypi 镜像源**
 - [南京大学 pypi 镜像源](https://mirrors.nju.edu.cn/help/pypi)
 - [清华大学 pypi 镜像源](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
 - [阿里巴巴 pypi 镜像源](https://developer.aliyun.com/mirror/pypi)
 - [华为云 pypi 镜像源](https://mirrors.huaweicloud.com/home)
 - [腾讯云 pypi 镜像源](https://mirrors.tencent.com/help/pypi.html)
+- [上海交通大学 conda 镜像源](https://mirrors.sjtug.sjtu.edu.cn/docs/anaconda)
+- [清华大学 conda 镜像源](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
 
 ```shell
 # pypi mirrors source for pip
@@ -91,6 +110,20 @@ pip config set global.index-url https://developer.aliyun.com/mirror/pypi/simple
 
 # 也可以配置文件 .pip/config? how to modify？
 # 太麻烦了, 一条命令可以搞定的事情, why not？
+
+# ---------------------
+# 配置完后需要清除缓存
+conda clean -i
+# ---------------------
+# 编辑 ~/.condarc
+default_channels:
+  - https://mirror.sjtu.edu.cn/anaconda/pkgs/r
+  - https://mirror.sjtu.edu.cn/anaconda/pkgs/main
+custom_channels:
+  conda-forge: https://mirror.sjtu.edu.cn/anaconda/cloud/
+  pytorch: https://mirror.sjtu.edu.cn/anaconda/cloud/
+channels:
+  - defaults
 ```
 
 **Python editor**
@@ -150,9 +183,16 @@ pip install tensorboard
 
 **Git and GitHub**
 
-[Learning Git quick start](https://www.bookstack.cn/read/learngit-basic/336eaf68268808a4.md)
+- [1小时学会 Git 视频](https://www.bilibili.com/video/BV1JM4y1k7Pq/)
+- [Learning Git quick start](https://www.bookstack.cn/read/learngit-basic/336eaf68268808a4.md)
+- [GitHub Proxy](https://ghproxy.com/)
 
 > download and install Git
+
+```powershell
+# 安装或者升级 Git by PowerShell on Windows Terminal
+winget install --id Git.Git -e --source winget
+```
 
 ```shell
 # download for Windows
@@ -164,6 +204,13 @@ pip install tensorboard
 # 全局配置 git 基本信息(--system, --global, --local)
 git config --global user.name "Wei Li"
 git config --global user.email "weili_yzzcq@163.com"
+git config --global core.editor "code --wait"
+# 以默认的编辑器, 查看全局配置文件
+git config --global -e
+# Windows "\r\n(CRLF)" ---> true
+# Linux and Mac "\n(LR)" ---> input
+git config --global core.autocrlf true # Windows
+git config --global core.autocrlf input # Mac or Linux
 
 # 查看 git 配置信息
 git config --global --list
@@ -210,6 +257,7 @@ brew install git
 git --help
 
 # git clone github repo.
+git clone https://ghproxy.com/https://github.com/2694048168/ComputerVisionDeepLearning.git
 # HTTPS and SSH 协议(涉及科学上网方式)
 git clone https://github.com/2694048168/ComputerVisionDeepLearning.git
 # all branchs default or special branch
@@ -220,8 +268,10 @@ git clone --branch <branchname> --single-branch <remote-repo-url>
 git clone -b <branchname> --single-branch <remote-repo-url>
 
 # git 仓库项目中依然引用其他 git 仓库时候, 需要递归克隆
-git clone --recursive https://github.com/nvlabs/instant-ngp
+git clone --recursive https://github.com/NVlabs/instant-ngp.git
 cd instant-ngp
+git clone --recursive https://github.com/NVlabs/instant-ngp.git -b master NGP
+cd NGP
 
 # simple pipeline: git add & commint & push
 mkdir git_folder
@@ -230,6 +280,7 @@ cd git_folder
 # 生成隐藏文件夹 .git/ 用于管理和记录和 Git 相关的信息
 # 初始化 git 代码仓库版本控制(默认为master or main branch)
 git init .
+# git push -u origin <本地分支名> github 空白仓库的创建后有指引
 
 # 查看 git 仓库里面的状态
 git status
@@ -239,9 +290,12 @@ git add new_file
 git add .
 
 # 提交源代码文件到本地仓库
+git commit # 以默认编辑器打开提交信息文件, 顶部commit
 git commit -m "commit information"
 
 # 提交源代码文件到远程仓库(Gitee or GitHub, et al.)
+# git push origin_repo_name<default main branch>
+# git push origin <本地分支名>:<远程分支名>
 git push origin_repo_name
 
 # 更新本地仓库(library from other)
@@ -253,6 +307,10 @@ git diff
 # 查看 git 项目关联的远程仓库信息
 git remote --verbose
 git remote -v
+git remote --help
+# 添加/移除远程仓库并指定名称为 'mirror'
+git remote add mirror https://github.com/NVlabs/instant-ngp.git
+git remote remove mirror
 
 # 查看 git 提交日志, q 推出日志查看状态
 git log

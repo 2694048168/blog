@@ -11,14 +11,16 @@
 @Date: 2022-03-12
 """
 
+# https://tensorflow.google.cn/install/source_windows?hl=en#gpu
 import tensorflow as tf
 
 
 def tensorflow_environment():
     """Test host computer whether supported TensorFlow version and GPU ?
     """
-    print(f"TensorFlow Version : {tf.__version__}")
-    print(f"Host Computer supported Devices : {tf.config.list_physical_devices()}")
+    print(f"TensorFlow Version: {tf.__version__}")
+    print(f"CUDA available: {tf.config.list_physical_devices("GPU")}")
+    print(f"Host Computer supported Devices: {tf.config.list_physical_devices()}")
 
 
 if __name__ == "__main__":

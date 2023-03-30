@@ -96,6 +96,7 @@
 - [Stable Diffusion rest at Hugging Face](https://huggingface.co/spaces/huggingface/diffuse-the-rest)
 - [Exponentially Weighted Average for Deep Neural Networks](https://medium.datadriveninvestor.com/exponentially-weighted-average-for-deep-neural-networks-39873b8230e9)
 - [Understanding “Exponential Moving Averages” in Data Science](https://medium.com/analytics-vidhya/understanding-exponential-moving-averages-e3f020d9d13b)
+- [一键式自动安装 StableDiffusion](https://github.com/EmpireMediaScience/A1111-Web-UI-Installer)
 
 **Paradigm of Deep Generative Models**
 
@@ -2603,3 +2604,8 @@ Cited as:
 
 [ControlNet paper arXiv'2023](https://arxiv.org/abs/2302.05543)
 &emsp;&emsp;[Code](https://github.com/lllyasviel/ControlNet)
+
+----------------------------
+[48] Hshmat Sahak, Daniel Watson, Chitwan Saharia, David Fleet, "Denoising Diffusion Probabilistic Models for Robust Image Super-Resolution in the Wild," arXiv'2023
+
+[paper arXiv'2023](https://arxiv.org/abs/2302.07864)
