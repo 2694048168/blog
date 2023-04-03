@@ -175,7 +175,7 @@ pip install tensorflow_gpu-2.6.0-cp39-cp39-win_amd64.whl
 pip install tensorboard
 ```
 
-**VSCode and Pycharm**
+**VSCode and Pycharm Interpreter**
 
 - Ctrl + Shift + P ---> Select Interpreter ---> configure python Interpreter
 - File ---> Settings ---> Project ---> Python Interpreter ---> add & configure
@@ -186,6 +186,8 @@ pip install tensorboard
 - [1小时学会 Git 视频](https://www.bilibili.com/video/BV1JM4y1k7Pq/)
 - [Learning Git quick start](https://www.bookstack.cn/read/learngit-basic/336eaf68268808a4.md)
 - [GitHub Proxy](https://ghproxy.com/)
+
+<img src="https://git-scm.com/images/about/index1@2x.png" width="50%" /><img src="https://git-scm.com/images/about/index2@2x.png" width="50%" />
 
 > download and install Git
 
@@ -292,17 +294,39 @@ git add .
 # 提交源代码文件到本地仓库
 git commit # 以默认编辑器打开提交信息文件, 顶部commit
 git commit -m "commit information"
+# add and commit
+git commit -am "commit information"
+git commit -a # 打开默认编辑器填写提交描述
 
 # 提交源代码文件到远程仓库(Gitee or GitHub, et al.)
 # git push origin_repo_name<default main branch>
 # git push origin <本地分支名>:<远程分支名>
 git push origin_repo_name
+# 注: 文件大小有限制, GitHub中模型的权重文件都是给的链接形式
 
 # 更新本地仓库(library from other)
 # learning from --help option
 git pull
 git fetch
+
+# 对比工作区和暂缓区的文件差异
 git diff
+# 对比暂缓区的版本文件间差异
+git diff --staged
+# 利用一些可视化工具进行对比查看, 如 VSCode
+# git difftool --tool-help
+git config --global diff.tool vscode
+git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
+git config --global -e
+git difftool
+git difftool --staged
+
+# 冲突解决 conflict
+# git mergetool --tool-help
+git config --global merge.tool vscode
+git config --global mergetool.vscode.cmd "code --wait $MERGED"
+# '$' 变量符号好像无法解析, 需要检查一下配置文件, 添加完整内容
+git config --global -e
 
 # 查看 git 项目关联的远程仓库信息
 git remote --verbose
@@ -314,11 +338,29 @@ git remote remove mirror
 
 # 查看 git 提交日志, q 推出日志查看状态
 git log
+git log oneline
+git log --pretty=oneline
+git show HEAD
+git show "hash-id"
+# 'tree' 表示是一个目录, 'blob' 表示是一个文件
+# 'tag' and 'commit'
+git ls-tree HEAD
 
 # 让 git 忽略文件方式, 有规则
+# https://github.com/github/gitignore
 touch .gitignore
 
 # 如何和 GitHub and Gitee 进行关联
 # 分支操作; 
 # 从暂缓区删除文件; 从本地仓库删除文件; 从远程仓库删除文件; 从磁盘上删除文件
+rm file.txt
+git commit -am "delete file.txt"
+git ls-files # 显示暂存区的文件
+
+git rm -h
+git rm file
+git commit m "delete file.txt"
+
+mv file.txt main.cpp
+git mv file.txt main.cpp
 ```

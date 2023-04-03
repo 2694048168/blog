@@ -102,7 +102,7 @@
 
 <!-- the article of notes -->
 ----------------
-# Artificial Intelligence and Computer Vision
+### Artificial Intelligence and Computer Vision
 - [Image Super-Resolution and Image Restoration](PaperMD/image_super_resolution.md)
 - [Image Generation via Diffusion Models and Scored-Matching and SDEs](PaperMD/diffusion_models.md)
 - [Graph Neural Networks and Non-Euclidean Convolution](PaperMD/gnn.md)
@@ -117,12 +117,13 @@
 - [Deep Generative Learning: Variational AutoEncoder and and Flow-based and GANs](PaperMD/vae.md)
 - [3D Reconstruction: Neural Radiance Fields (NeRF) technique](PaperMD/nerf.md)
 
-# CPlusPlus
+### CPlusPlus
 - [vcpkg and find_package](PaperMD/vcpkg.md)
 - [CMake Examples](https://github.com/2694048168/C-and-C-plus-plus/blob/master/CMakeReadme.md)
 - [C++ Configuration](PaperMD/cpp_env_test.md)
+- [WSL2 on Windows11](PaperMD/wsl_install.md)
 
-# Python
+### Python
 - [Python Configuration](PaperMD/python_env_ai.md)
 - [TensorFlow2 环境测试](PaperMD/tf_env_test.md)
 - [PyTorch 环境测试](PaperMD/pt_env_test.md)
