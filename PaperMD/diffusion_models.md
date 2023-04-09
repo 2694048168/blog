@@ -2600,7 +2600,7 @@ Cited as:
 &emsp;&emsp;[Project](https://bluestyle97.github.io/dream3d/)
 
 ----------------------------
-[47] Lvmin Zhang, Maneesh Agrawala, "Adding Conditional Control to Text-to-Image Diffusion Models," Tencent'2022
+[47] Lvmin Zhang, Maneesh Agrawala, "Adding Conditional Control to Text-to-Image Diffusion Models," Tencent'2023
 
 [ControlNet paper arXiv'2023](https://arxiv.org/abs/2302.05543)
 &emsp;&emsp;[Code](https://github.com/lllyasviel/ControlNet)

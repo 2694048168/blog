@@ -180,6 +180,10 @@ pip install tensorboard
 - Ctrl + Shift + P ---> Select Interpreter ---> configure python Interpreter
 - File ---> Settings ---> Project ---> Python Interpreter ---> add & configure
 - anyway, google search
+- [DDP Exmaple PyTorch](https://github.com/pytorch/examples/tree/main/distributed/ddp)
+- [DDP Tutorial PyTorch](https://github.com/pytorch/examples/tree/main/distributed/ddp-tutorial-series)
+- 多GPU分布式训练: PyTorch DDP ---> Huggingface Accelerate library
+- [Huggingface Accelerate](https://github.com/huggingface/accelerate) 
 
 **Git and GitHub**
 
