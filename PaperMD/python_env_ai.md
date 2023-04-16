@@ -1,4 +1,12 @@
-## Python for Deep Learning and Machine Learning
+## Python for Deep Learning form Scratch
+
+- &ensp;<span style="color:MediumPurple">Title</span>: Python for Deep Learning form Scratch
+- &ensp;<span style="color:Moccasin">Tags</span>: Python; Miniconda; Git; GitHub
+- &ensp;<span style="color:PaleVioletRed">Type</span>: Mini-Survey
+- &ensp;<span style="color:DarkSeaGreen">Author</span>: [黎为](https://2694048168.github.io/blog/#/)
+- &ensp;<span style="color:DarkMagenta">DateTime</span>: 2023-04-15
+
+> <span style="color:Red">Talk is cheap, show me the code. Quote from Linus Torvalds</span>
 
 **Python interpreter**
 - [Python download site](https://www.python.org/)
@@ -367,4 +375,46 @@ git commit m "delete file.txt"
 
 mv file.txt main.cpp
 git mv file.txt main.cpp
+```
+
+
+**Tmux 分离会话和终端 训练模型**
+
+```shell
+# 1. 安装 git tmux, 可以通过源码安装方式获取最新？
+sudo nala update && sudo nala upgrade
+sudo nala install tmux git cmake
+# 查看 tmux 版本
+tmux -V
+
+# 2. 新建一个 session, 并设置 session 的名称为 'training'
+tmux new -s training
+
+# and then training model on Server
+python train.py
+
+# 分离会话, 此时模型的训练依然需要进行
+# or enter 'Ctrl + b', 'd'
+tmux detach
+
+# 查看当前所有 session
+tmux ls
+tmux list-session
+
+# 接入已有的会话 'training'
+tmux attach -t training
+
+# -------------------------
+# kill session 'training'
+tmux kill-session -t training
+
+# tmux switch 命令用于切换会话
+tmux new -s model
+tmux new -s task
+tmux
+tmux switch -t task
+tmux switch -t model
+
+# -------------------------------------
+# 3. 安装 NeoVim, 以满足 LunarVim 的需求
 ```
