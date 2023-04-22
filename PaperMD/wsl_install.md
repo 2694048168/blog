@@ -15,6 +15,9 @@ wsl --install -d Ubuntu-22.04
 # 下载并更新 WSL2 内核, 直接运行下载好的文件
 # 在 Windows Terminal 可以直接打开 Ubuntu-22.04 终端
 # 设置 用户名和密码, 同时可以使用 VSCode 进行连接 WSL
+
+# 更新 WSL
+wsl --update
 ```
 
 **Ubuntu 基本配置**
@@ -116,6 +119,35 @@ sudo systemctl enable ssh
 # Synchronizing state of ssh.service with SysV service script with
 #  /lib/systemd/systemd-sysv-install.
 # Executing: /lib/systemd/systemd-sysv-install enable ssh
+
+# 6. 内网穿透
+# Ngrok | 钉钉穿透 | 花生壳 | NATAPP | FRP | coplar 
+sudo nala update
+# https://github.com/neutrinolabs/xrdp
+sudo nala install xrdp
+
+# 然后启动,如在启动提示错误,可能是端口冲突,重启设备再尝试
+sudo systemctl start xrdp
+
+# 查看状态,active表示成功
+systemctl status xrdp
+
+# 设置开机启动
+sudo systemctl enable xrdp
+ip address
+# 以免连接出现问题,先在防火墙中添加一个3389端口
+sudo ufw allow from any to any port 3389 proto tcp
+
+# https://www.cpolar.com/
+# cpolar公网地址测试访问:连接的时候,ubuntu一定是处于锁屏界面,否则连接不成功
+# 向系统添加服务
+sudo systemctl enable cpolar
+
+# 启动cpolar服务
+sudo systemctl start cpolar
+
+# 查看服务状态
+sudo systemctl status cpolar
 ```
 
 **Tmux + LunarVim 配置**
