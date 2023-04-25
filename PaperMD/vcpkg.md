@@ -9,9 +9,10 @@
 > vcpkg that is C++ library manager from Microsoft and find_package command from CMake.
 
 ## Overview of vcpkg and find_package
-1. **Install vcpkg**
-2. **Use of vcpkg**
-3. **find_package in CMakeLists.txt**
+1. [**Install vcpkg**](#install-vcpkg-and-use)
+2. [**Use of vcpkg**](#install-vcpkg-and-use)
+3. [**find_package in CMakeLists.txt**](#find_package-in-cmakeliststxt)
+4. [**Example**](#example)
 
 ### **Install vcpkg and use**
 [vcpkg from Microsoft on Github](https://github.com/microsoft/vcpkg)
@@ -122,4 +123,54 @@ set(Eigen3_DIR path/to/Eigen3)
 list(APPEND CMAKE_MODULE_PATH /path/to/Eigen3Config.cmake)
 find_package(PackageName [PATHS path1 [path2 ... ]])
 find_package(PackageName [HINTS path1 [path2 ... ]])
+```
+
+### **Example**
+
+```CMake
+cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+
+# MinGW+Clang | Ninja | CMake | VSCode + clangd + c/c++ Snippets
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_C_COMPILER clang) # clang | gcc
+set(CMAKE_CXX_COMPILER clang++) # clang++ | g++
+
+# vcpkg configuration 需要根据平台进行配置
+# "vcpkg help triplet" command: Available architecture triplets
+set(CMAKE_TOOLCHAIN_FILE "D:/Development/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(VCPKG_HOST_TRIPLET x64-mingw-dynamic)
+set(VCPKG_TARGET_TRIPLET x64-mingw-dynamic)
+# https://learn.microsoft.com/en-us/vcpkg/reference/vcpkg-json
+# the configuration JSON file 'vcpkg.json'
+
+# cmake -B build -G Ninja
+# cmake --build build
+
+project(exmaple
+    VERSION 0.1.1
+    DESCRIPTION "the Best exmaple for CMake | Clang | Vcpkg"
+    LANGUAGES CXX C
+)
+
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_BUILD_TYPE "Debug") # "Release" | "Debug"
+if(CMAKE_BUILD_TYPE)
+    message(STATUS "The build type is ${CMAKE_BUILD_TYPE}")
+endif()
+
+# installing by vcpkg
+find_package(httplib CONFIG REQUIRED)
+
+add_executable(main)
+target_sources(main
+    PRIVATE
+        "src/main.cpp"
+)
+target_link_libraries(main
+    PRIVATE
+        "httplib::httplib"
+)
 ```
