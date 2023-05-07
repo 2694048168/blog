@@ -2,52 +2,49 @@
 
 ## Source code to Binary code
 
-```cpp
-/**
- * @file hello.cpp
- * @author Wei Li (weili_yzzcq@163.com)
- * @brief An introduction to C++, which introduce how to convert source code to binary.
- * @date 2022-04-04
- * 
- * @copyright Copyright (c) 2022
- * 
- * Verbose Mode (-v)
- * You can see the detailed compilation process by enabling -v (verbose) option. For example,
- * g++ -v -o hello hello.cpp
- * clang++ -v -o hello hello.cpp
- * 
- * What goes inside the compilation process?
- * Compiler converts a C/C++ program into an executable. 
- * There are four phases for a C program to become an executable: 
- * 1. Pre-processing (hello.cpp ---> hello.ii)
- * 2. Compilation (hello.ii ---> hello.s)
- * 3. Assembly (hello.s ---> hello.o)
- * 4. Linking (hello.o ---> hello)
- * 
- * For example following command line,
- * g++ -Wall -save-temps hello.cpp –o hello
- * clang++ -Wall -save-temps hello.cpp –o hello
- * 
- * 1. Pre-processing
- * g++ -Wall -E hello.cpp > hello.i
- * g++ -Wall -E hello.cpp -o hello.ii
- * clang++ -Wall -E hello.cpp > hello.i
- * clang++ -Wall -E hello.cpp -o hello.ii
- * 
- * 2. Compile
- * g++ -Wall -S hello.ii -o hello.s
- * clang++ -Wall -S hello.ii -o hello.s
- * 
- * 3. Assembly
- * g++ -Wall -c hello.s -o hello.o
- * clang++ -Wall -c hello.s -o hello.o
- * 
- * 4. Linking
- * g++ -Wall hello.o -o hello
- * clang++ -Wall hello.o -o hello
- * 
- */
+```shell
+#  * @file hello.cpp
+#  * @author Wei Li (weili_yzzcq@163.com)
+#  * @brief An introduction to C++, which introduce how to convert source code to binary.
+#  * @date 2022-04-04 || 2023-05-07
+#  * 
+#  * @copyright Copyright (c) 2022
+#  * 
+#  * Verbose Mode (-v)
+#  * You can see the detailed compilation process by enabling -v (verbose) option. For example,
+g++ -v -o hello hello.cpp
+clang++ -v -o hello hello.cpp
 
+#  * What goes inside the compilation process?
+#  * Compiler converts a C/C++ program into an executable. 
+#  * There are four phases for a C program to become an executable: 
+#  * 1. Pre-processing (hello.cpp ---> hello.ii)
+#  * 2. Compilation (hello.ii ---> hello.s)
+#  * 3. Assembly (hello.s ---> hello.o)
+#  * 4. Linking (hello.o ---> hello)
+ 
+#  * For example following command line,
+g++ -Wall -save-temps –o hello hello.cpp
+clang++ -Wall -save-temps –o hello hello.cpp 
+
+#  * 1. Pre-processing
+g++ -Wall -E hello.cpp -o hello.ii
+clang++ -Wall -E hello.cpp -o hello.ii
+
+#  * 2. Compile
+g++ -Wall -S hello.ii -o hello.s
+clang++ -Wall -S hello.ii -o hello.s
+
+#  * 3. Assembly
+g++ -Wall -c hello.s -o hello.o
+clang++ -Wall -c hello.s -o hello.o
+
+#  * 4. Linking
+g++ -Wall hello.o -o hello
+clang++ -Wall hello.o -o hello
+```
+
+```cpp
 #include <iostream>
 
 int main(int argc, char const *argv[])
@@ -66,20 +63,16 @@ g++ -v -o hello hello.cpp
 clang++ -v -o hello hello.cpp
 
 # For example following command line,
-g++ -Wall -save-temps hello.cpp –o hello
-clang++ -Wall -save-temps hello.cpp –o hello
+g++ -Wall -save-temps –o hello hello.cpp
+clang++ -Wall -save-temps –o hello hello.cpp
 
 # 1. Pre-processing
 g++ -Wall -E hello.cpp -o hello.ii
-# or
-g++ -Wall -E hello.cpp -o hello.i
-clang++ -Wall -E hello.cpp -o hello.i
+clang++ -Wall -E hello.cpp -o hello.ii
 
 # 2. Compile
 g++ -Wall -S hello.ii -o hello.s
-# or 
-g++ -Wall -S hello.i -o hello.s
-clang++ -Wall -S hello.i -o hello.s
+clang++ -Wall -S hello.ii -o hello.s
  
 # 3. Assembly
 g++ -Wall -c hello.s -o hello.o
