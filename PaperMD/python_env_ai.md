@@ -206,6 +206,7 @@ pip install tensorboard
 ```powershell
 # 安装或者升级 Git by PowerShell on Windows Terminal
 winget install --id Git.Git -e --source winget
+winget install --id Git.Git -e --source winget --location D:\DevelopTools\Git
 ```
 
 ```shell
