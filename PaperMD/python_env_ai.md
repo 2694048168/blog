@@ -45,6 +45,9 @@ conda deactivate
 
 # 6. 删除 conda python 环境
 conda remove --name pytorch_SR --all
+
+# 7. 设置 conda create virtual envs 的安装位置(optional)
+conda config --add envs_dirs  D:/DevelopTools/Miniconda3/envs
 ```
 
 **pip 包管理常用命令**

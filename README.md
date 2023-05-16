@@ -1,11 +1,33 @@
-<!-- 自定义徽章 对应 github 仓库 -->
-[![](https://img.shields.io/badge/ComputerVisionDeepLearning-github-brightgreen)](https://github.com/2694048168/ComputerVisionDeepLearning)
-&emsp;&emsp;[![](https://img.shields.io/badge/MachineLearning-github-brightgreen)](https://github.com/2694048168/MachineLearning)
-&emsp;&emsp;[![](https://img.shields.io/badge/LeetCodeAlgorithm-github-brightgreen)](https://github.com/2694048168/LeetCodeAlgorithm)
-&emsp;&emsp;[![](https://img.shields.io/badge/CPlusPlus-github-brightgreen)](https://github.com/2694048168/C-and-C-plus-plus)
-&emsp;&emsp;[![](https://img.shields.io/badge/Linux-github-brightgreen)](https://github.com/2694048168/Linux_OS)
-
 > Wei Li&nbsp;(黎 为)</br> Email: weili_yzzcq@163.com</br> the Internet of Things(IoT) Engineering for Bachelor's degree in SOFTWARE JXUFE;</br> the New Generation Electronic Information Technology for Master's degree and Research in Image Super-Resolution & Low-Light Image Enhancement and Image Restoration in SOFTWARE JXUFE;</br> the Technical points of interest: Artificial Intelligence(AI), Deep Learning(DL), PyTorch and TensorFlow2, CPlusPlus and Python, Linux and shell and LaTex;</br> the main research area: **Image Processing & Image Restoration**, **Computer Vision & Neural Networks**, **3D Vision & Neural Rendering**.
+
+### My skills
+<p align="left">
+  <img src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png" alt="cpp" width="50" height="50"/>
+  <img src="https://www.vectorlogo.zone/logos/cmake/cmake-icon.svg" alt="cmake" width="50" height="50"/>
+  <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="50" height="50"/>
+  <img src="https://img.icons8.com/dusk/64/000000/python.png" alt="python" width="50" height="50"/>
+  <img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg" alt="pytorch" width="50" height="50"/>
+  <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="50" height="50"/>
+  <img src="https://www.vectorlogo.zone/logos/opencv/opencv-icon.svg" alt="opencv" width="50" height="50"/>
+  <img src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg" alt="vscode" width="50" height="50"/>
+</p>
+
+<p>
+  <img align="left" width="350" src="https://github-readme-stats.vercel.app/api/top-langs/?username=2694048168&layout=compact&hide=html,asp,jupyter%20notebook" alt="2694048168" />
+  <img align="center" width="400" src="https://github-readme-stats.vercel.app/api?username=2694048168&show_icons=true" alt="2694048168" />
+</p>
+</br>
+
+<!-- [![github](https://www.vectorlogo.zone/logos/github/github-ar21.svg)![](https://img.shields.io/github/followers/2694048168?style=social)![](https://img.shields.io/github/stars/2694048168?style=social)](https://github.com/2694048168) -->
+
+<!-- 自定义徽章 对应 github 仓库 -->
+<!-- [![](https://img.shields.io/badge/ComputerVisionDeepLearning-github-brightgreen)![](https://img.shields.io/github/stars/2694048168/ComputerVisionDeepLearning?style=social)![](https://img.shields.io/github/forks/2694048168/ComputerVisionDeepLearning?style=social)![](https://img.shields.io/github/watchers/2694048168/ComputerVisionDeepLearning?style=social)](https://github.com/2694048168/ComputerVisionDeepLearning)
+
+[![](https://img.shields.io/badge/CPlusPlus-github-brightgreen)![](https://img.shields.io/github/stars/2694048168/C-and-C-plus-plus?style=social)![](https://img.shields.io/github/forks/2694048168/C-and-C-plus-plus?style=social)![](https://img.shields.io/github/watchers/2694048168/C-and-C-plus-plus?style=social)](https://github.com/2694048168/C-and-C-plus-plus)
+
+[![](https://img.shields.io/badge/MachineLearning-github-brightgreen)![](https://img.shields.io/github/stars/2694048168/MachineLearning?style=social)![](https://img.shields.io/github/forks/2694048168/MachineLearning?style=social)![](https://img.shields.io/github/watchers/2694048168/MachineLearning?style=social)](https://github.com/2694048168/MachineLearning)
+
+[![](https://img.shields.io/badge/LeetCodeAlgorithm-github-brightgreen)![](https://img.shields.io/github/stars/2694048168/LeetCodeAlgorithm?style=social)![](https://img.shields.io/github/forks/2694048168/LeetCodeAlgorithm?style=social)![](https://img.shields.io/github/watchers/2694048168/LeetCodeAlgorithm?style=social)](https://github.com/2694048168/LeetCodeAlgorithm) -->
 
 <!-- paper and project -->
 <div class="project">
