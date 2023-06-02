@@ -141,6 +141,7 @@
 
 ### CPlusPlus & Python
 - [vcpkg and find_package](PaperMD/vcpkg.md)
+- [Modern CMake](PaperMD/ModernCMake.md)
 - [CMake Examples](https://github.com/2694048168/C-and-C-plus-plus/blob/master/CMakeReadme.md)
 - [C++ Configuration](PaperMD/cpp_env_test.md)
 - [WSL2 on Windows11](PaperMD/wsl_install.md)
