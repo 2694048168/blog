@@ -10,11 +10,13 @@ cmake -S . -B build
 cmake --build build
 cmake --build build -v -j16
 ```
+
 - 执行安装
 ```shell
 cmake --build build --target install
 cmake --install build
 ```
+
 - 指定编译器
 ```shell
 # 设置 CMakeLists.txt 的 cache 缓存变量
@@ -25,6 +27,7 @@ set(CMAKE_CXX_COMPILER clang++)
 # "build\compile_commands.json"
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 ```
+
 - 指定生成器
 ```shell
 cmake --build build -G Ninja
@@ -32,6 +35,7 @@ cmake --build build -G "Visual Studio 17 2022"
 cmake --build build -G "Unix Makefiles"
 cmake --build build -G "MinGW Makefiles"
 ```
+
 - 设置选项
 ```shell
 cmake  --help
@@ -52,6 +56,7 @@ cmake -DCMAKE_INSTALL_PREFIX=~/.local
 
 cmake -DBUILD_SHARED_LIBS=ON 或 OFF 来控制共享库的默认值
 ```
+
 - CMake 行为准则(Do's and Don'ts)
 
 ### 基础知识简介
@@ -63,6 +68,7 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
     cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif()
 ```
+
 - 顶层 CMakelists 设置项目
 ```shell
 project(ProjectName
@@ -72,10 +78,12 @@ project(ProjectName
 )
 # supported languages: CXX | C | Fortran | ASM | CUDA | CSharp | SWIFT, 默认是 C CXX
 ```
+
 - 生成可执行文件(target)
 ```shell
 add_executable(target_name main.cpp main.hpp)
 ```
+
 - 生成一个库(target)
 ```shell
 # CMake 将会通过 'BUILD_SHARED_LIBS' 的值
@@ -92,6 +100,7 @@ add_library(lib_name INTERFACE one.hpp two.hpp)
 # 这么做的一个好处是可以制作名称中带有 :: 的库
 add_library(lib_name ALIAS main.cpp main.hpp)
 ```
+
 - 目标信息
 ```shell
 target_include_directories(target_name
@@ -105,6 +114,7 @@ target_link_libraries(target_name
         "dep_lib_file"
 )
 ```
+
 - 变量和缓存
 - CMake 编程
 - CMake 与源代码交互(配置文件和读入文件两种方式)
@@ -140,6 +150,7 @@ target_link_libraries(target_name
 |   |—— build.bat
 |—— README.md
 ```
+
 - [CMakeExamplesTutorial](https://github.com/2694048168/C-and-C-plus-plus/tree/master/CMakeTutorial)
 - [CMakeClangVSCode](https://github.com/2694048168/C-and-C-plus-plus/tree/master/CMakeClangVcpkg)
 - [Modern-CMake 教程](https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/)
