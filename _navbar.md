@@ -1,5 +1,7 @@
 - [Home](README.md)
 
+- [Author(CV)](PaperMD/author.md)
+
 - Python
     - [**Python 解释器**](https://www.python.org/)
     - [**Anaconda 环境管理**](https://www.anaconda.com/)
@@ -16,5 +18,3 @@
 
 - Linux
     - [**Linux 命令查询**](https://www.linuxcool.com/)
-
-- [Author](PaperMD/author.md)
